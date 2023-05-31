@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /pornstar/query
+Disallow: /search/query   
+Disallow: /category/query
+Disallow: http://chutlunds.com/
+Disallow: https://chutlunds.com/
+Allow: /
+
+
+Sitemap: https://www.chutlunds.com/sitemap.xml

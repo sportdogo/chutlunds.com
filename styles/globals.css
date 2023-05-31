@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital@1&family=Tinos&display=swap');
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Delius+Unicase&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+
+    body {
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+      }
+    
+
+    .icon {
+        @apply h-5 md:h-6 mr-[3px] lg:mr-1  transform transition duration-200
+    }
+    .dark{
+        @apply bg-black text-white border-gray-800 
+    }
+    .light{
+        @apply bg-gray-100 text-black border-gray-300 
+    }
+
+    .header
+    {
+        @apply font-bold p-1 text-xl mt-10
+    }
+     
+    .basicMargin
+    {
+        @apply lg:w-11/12 lg:mx-auto mt-1 md:mt-3  mx-2 md:mx-4
+    }
+
+
+   
+    /* OTP page   */
+    .partitioned {
+            
+        padding-left: 15px;
+        padding-bottom: 5px;
+        letter-spacing: 41px;
+        border: 0;
+        background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 50px 1px;
+        background-repeat: repeat-x;
+        background-position-x: 35px;
+        width: 275px;
+        outline: none;
+    }
+
+
+    .divInner {
+        left: 0;
+        position: sticky;
+    }
+    
+    .divOuter {
+        width: 200px;
+        overflow: hidden;
+    }
+     
+
+
+
+ 
+
+    
+    
+}
+
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
