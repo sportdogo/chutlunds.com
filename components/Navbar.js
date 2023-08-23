@@ -107,6 +107,7 @@ function Navbar() {
     const goSearch = (e) => {
         e.preventDefault();
 
+        setshowSuggested(false);
 
         if (e.target[0].value) {
             router.push(`/search/${e.target[0].value.trim()
