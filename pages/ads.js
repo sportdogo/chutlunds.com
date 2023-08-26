@@ -6,7 +6,6 @@ import fileDownload from 'js-file-download'
 // import { getMessaging, getToken } from "firebase/messaging";
 // import { firebaseConfig } from "../firebase";
 // import { initializeApp } from "firebase/app";
-import BannerAds from "../components/Ads/BannerAds";
 import MultiformatAds from "../components/Ads/MultiFormatAds";
 import InstantMessageAds from "../components/Ads/InstantMessage";
 import Outstreams from "../components/Ads/Outstream";

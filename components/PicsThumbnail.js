@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { Banner, Outstream } from "exoclick-react";
 import Link from 'next/link'
 import MultiformatAds from './Ads/MultiFormatAds';
-import PopunderAds_2 from './Ads/Popunder_2';
 
 function PicsThumbnail({ data }) {
 

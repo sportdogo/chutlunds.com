@@ -7,9 +7,7 @@ import { useContext, useEffect } from 'react'
 import videosContext from '../context/videos/videosContext'
 import ReactCountryFlag from "react-country-flag"
 
-import BannerAds from './Ads/BannerAds'
-import Outstream from './Ads/Outstream'
-import RecommendedAds from './Ads/RecommendedAds'
+
 import Link from 'next/link'
 import {
     ChevronRightIcon,

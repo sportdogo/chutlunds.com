@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import Sidebar from "../../../components/Sidebar";
 import Videos from "../../../components/Videos";
 import Header from '../../../components/searchPage/Header'
-import RecommendedAds from '../../../components/Ads/RecommendedAds';
 import Head from 'next/head'
 import Pagination from '../../../components/Pagination';
 import { useEffect } from 'react';
@@ -92,7 +91,6 @@ function Category({ video_collection, pages }) {
       <Pagination data={{ url: `/search/${searchkey.toLowerCase().trim()}`, currentPageNumberURL: currentPageNumberURL, pages: pages, }} />
 
 
-      <RecommendedAds />
     </>
   )
 }

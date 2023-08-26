@@ -12,57 +12,10 @@ import {
 } from '@heroicons/react/solid';
 import InterstitialAds from '../../components/Ads/InterstitialAds';
 import Outstreams from '../../components/Ads/Outstream';
-import PopunderAds_2 from '../../components/Ads/Popunder_2';
+import Popunder_Web from '../../components/Ads/Popunder_Web';
 import MultiformatAds from '../../components/Ads/MultiFormatAds';
 
 function Index() {
-
-    // var JsonObj = []
-    // function runCode(index) {
-    //     var array = []
-    //     const jsonData = require(`../../JsonData/pornstars/page${index}.json`)
-    //     jsonData.map((pornstar, i) => {
-    //         getDownloadURL(ref(storage, `pornstars/${pornstar.Name.trim().replace(/ /g, "+").toLowerCase()}.jpg`))
-    //             .then((url) => {
-    //                 array.push({
-    //                     Name: pornstar.Name,
-    //                     thumbnail: url,
-    //                     numberofVideos: pornstar.numberofVideos,
-    //                     views: pornstar.views,
-    //                     href: pornstar.href
-    //                 })
-
-    //                 if (array.length === jsonData.length) {
-    //                     //Page loop finished  jsondata.map loop finished
-
-    //                     console.log(`--------------------------------------------------------`);
-
-    //                     console.log('Condition satisfied');
-    //                     console.log(`PAGE: ${index}`);
-
-    //                     console.log(`Above array length ${array.length}`);
-    //                     console.log(`jsonData array length ${jsonData.length}`);
-    //                     console.log(`--------------------------------------------------------`);
-    //                     JsonObj.push(array)
-
-    //                     if (index < 60) {
-    //                         runCode(index + 1)
-    //                     } else {
-    //                         console.log(JSON.stringify(JsonObj));
-    //                     }
-    //                 }
-
-
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error);
-    //             });
-    //     })
-
-    // }
-
-
-    // runCode(1)
 
     //Scroll to top
     const scrollTop = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); };
@@ -150,7 +103,7 @@ function Index() {
             </div> */}
 
             <Outstreams />
-            <PopunderAds_2 />
+            <Popunder_Web />
             <MultiformatAds />
             <InterstitialAds/>
 

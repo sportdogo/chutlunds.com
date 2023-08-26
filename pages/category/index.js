@@ -2,13 +2,12 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import jsonData from "../../JsonData/categoryImages/data.json"
 import Link from 'next/link'
-import RecommendedAds from '../../components/Ads/RecommendedAds';
-import BannerAds from '../../components/Ads/BannerAds';
+
 import Outstreams from '../../components/Ads/Outstream';
 import Head from 'next/head'
 import InterstitialAds from '../../components/Ads/InterstitialAds';
 import MultiformatAds from '../../components/Ads/MultiFormatAds';
-import PopunderAds_2 from '../../components/Ads/Popunder_2';
+import Popunder_Web from '../../components/Ads/Popunder_Web';
 
 
 function shuffle(array) {
@@ -90,7 +89,7 @@ function Index() {
             </h1> */}
 
             <Outstreams />
-            <PopunderAds_2 />
+            <Popunder_Web />
             <InterstitialAds />
             <MultiformatAds />
 

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Sidebar from '../../../components/Sidebar';
 import Videos from "../../../components/Videos";
 import Header from '../../../components/searchPage/Header'
-import RecommendedAds from '../../../components/Ads/RecommendedAds';
 import Head from 'next/head'
 import { BeatLoader } from 'react-spinners';
 import Pagination from '../../../components/Pagination';
@@ -49,7 +48,6 @@ function Category({ video_collection, pages }) {
             {/* PAGINATION */}
             <Pagination data={{ url: `/${homepageVideos}`, currentPageNumberURL: currentPageNumberURL, pages: pages, }} />
 
-            <RecommendedAds />
 
         </>
     )

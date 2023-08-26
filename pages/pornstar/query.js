@@ -7,7 +7,6 @@ import { BeatLoader } from 'react-spinners'
 import { useContext, useState } from 'react';
 import videosContext from '../../context/videos/videosContext';
 import Router from 'next/router'
-import RecommendedAds from '../../components/Ads/RecommendedAds';
 import Head from 'next/head'
 import Pagination from '../../components/Pagination';
 import PaginationQuery from '../../components/PaginationQuery';
@@ -54,7 +53,6 @@ function Pornstar({ video_collection, pages, query, keyword, currentPage, filter
 
       </div>
 
-      <RecommendedAds />
 
     </>
   )

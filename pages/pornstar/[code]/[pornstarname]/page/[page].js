@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import Sidebar from '../../../../../components/Sidebar';
 import Videos from "../../../../../components/Videos";
 import Header from '../../../../../components/Pornstar/Header'
-import RecommendedAds from '../../../../../components/Ads/RecommendedAds';
 import Head from 'next/head'
 import { BeatLoader } from 'react-spinners';
 import Link from 'next/link'
@@ -54,7 +53,6 @@ function Index({ video_collection, pages }) {
 
 
 
-            <RecommendedAds />
         </>
     )
 }

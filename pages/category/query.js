@@ -5,7 +5,6 @@ import Header from '../../components/searchPage/Header'
 import { useContext, useState } from 'react';
 import videosContext from '../../context/videos/videosContext';
 import Router from 'next/router'
-import RecommendedAds from '../../components/Ads/RecommendedAds';
 import Head from 'next/head'
 import PaginationQuery from '../../components/PaginationQuery';
 import { scrapeVideos } from '../../config/spangbang';
@@ -51,7 +50,6 @@ function Category({ video_collection, pages, query, keyword, currentPage, filter
 
       </div>
 
-      <RecommendedAds />
 
     </div>
   )

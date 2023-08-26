@@ -5,7 +5,6 @@ import ReactPaginate from "react-paginate";
 import { useContext } from 'react'
 import videosContext from '../context/videos/videosContext'
 import { BeatLoader } from 'react-spinners'
-import BannerAds from "./Ads/BannerAds";
 
 
 
@@ -66,7 +65,6 @@ function SearchVideos() {
     return (
         <div className="w-full">
 
-            <BannerAds />
 
 
             {spinnerLoading &&
@@ -80,7 +78,6 @@ function SearchVideos() {
             </div>
 
 
-            <BannerAds />
 
             {!spinnerLoading &&
 
