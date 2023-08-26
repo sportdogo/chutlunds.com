@@ -7,7 +7,7 @@ import {
 } from '@heroicons/react/solid';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import PopunderAds from './Ads/Popunder';
+import PopunderAds from './Ads/Popunder_Mob';
 
 
 
