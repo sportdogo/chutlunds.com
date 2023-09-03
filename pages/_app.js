@@ -38,9 +38,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff" />
 
         {/* Ads Netword Verification  */}
-        <meta name="hilltopads-site-verification" content="28c33bbf5c61164c74b2bdfcc2ff1d44bc9c45b5" />
-        <meta name='asg_verification' content='vVcWCcbbgmnqv221hpAjPojb' />
-        <meta name="exoclick-site-verification" content="6b1112fe173bdf782d96975e70bd4b95"></meta>
+        <meta name="6a97888e-site-verification" content="80bd73765fca365d8238dc1ccbdd975f"></meta>
 
       </Head>
 
