@@ -12,7 +12,7 @@ function PopunderAds_2() {
                 strategy="beforeInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-                    var ad_idzone = "4580014",
+                    var ad_idzone = "5069558",
                     ad_popup_fallback = true,
                     ad_popup_force = false,
                     ad_chrome_enabled = true,

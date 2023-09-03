@@ -33,7 +33,7 @@ function InterstitialAds({ command }) {
                 <a ref={clickRefMoble} href="#" onClick={e => e.preventDefault()} className="demo-mobile">
                 </a>
                 <FullpageInterstitial
-                    zoneId={4318840}
+                    zoneId={5069568}
                     frequencyType="clicks"
                     firstTriggerClicks={1}
                     nextTriggerClicks={1}
@@ -47,7 +47,7 @@ function InterstitialAds({ command }) {
                 <a ref={clickRefIntertitials} href="#" onClick={e => e.preventDefault()} className="demo-desktop">
                 </a>
                 <FullpageInterstitial
-                    zoneId={4580172}
+                    zoneId={5069562}
                     frequencyType="clicks"
                     firstTriggerClicks={1}
                     nextTriggerClicks={1}

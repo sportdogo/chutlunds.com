@@ -25,7 +25,7 @@ function Outstreams() {
             <div className="  lg:hidden space-y-20">
 
                 <Placeholder width="220" height="120">
-                    <Outstream zoneId="4586596" maxWidth={400} />
+                    <Outstream zoneId="5069574" maxWidth={400} />
                 </Placeholder>
 
             </div>
@@ -34,7 +34,7 @@ function Outstreams() {
             {/* lg---xl  */}
             <div className="hidden lg:flex  xl:hidden space-x-6">
                 <Placeholder width="400" height="266">
-                    <Outstream zoneId="4604096" maxWidth={400} />
+                    <Outstream zoneId="5069574" maxWidth={400} />
                 </Placeholder>
 
 
@@ -44,7 +44,7 @@ function Outstreams() {
 
             <div className={`hidden xl:flex ${videoPage ? "flex-col space-y-6" : "flex-row space-x-6"}`}>
                 <Placeholder width="400" height="266">
-                    <Outstream zoneId="4604096" maxWidth={400} />
+                    <Outstream zoneId="5069574" maxWidth={400} />
                 </Placeholder>
             </div>
             
