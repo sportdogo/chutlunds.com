@@ -8,7 +8,6 @@ import {
 // import { scrapeVideos } from '../../config/spangbang';
 import { getCookie, setCookie } from "cookies-next";
 import VideoPlayer from '../../components/VideoPlayer';
-import InterstitialAds from '../../components/Ads/InterstitialAds';
 import MultiformatAds from '../../components/Ads/MultiFormatAds';
 import Outstreams from '../../components/Ads/Outstream';
 
@@ -109,7 +108,6 @@ function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_v
     return (
         <div className="">
 
-            <InterstitialAds />
 
             {noVideo &&
                 <Head>

@@ -5,7 +5,6 @@ import Sidebar from '../components/Sidebar';
 import Videos from '../components/Videos';
 import React from 'react'
 import videosContext from '../context/videos/videosContext'
-// import { uploadString, getDownloadURL, uploadBytes } from "firebase/storage";
 import fetchdata from 'node-fetch';
 import cheerio from 'cheerio';
 import Category_slider from '../components/category_slider';
@@ -14,7 +13,6 @@ import { getLanguge } from '../config/getLanguge';
 import { getDatabase, ref, set, get, child } from "firebase/database";
 import { app } from '../firebase';
 import Script from 'next/script';
-import InterstitialAds from '../components/Ads/InterstitialAds';
 import { useRouter } from 'next/router';
 import { getCookie, deleteCookie, setCookie } from "cookies-next";
 import Outstreams from '../components/Ads/Outstream';

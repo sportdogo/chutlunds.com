@@ -7,7 +7,6 @@ import { BeatLoader } from 'react-spinners';
 import Link from 'next/link'
 import Pagination from '../../../../../components/Pagination';
 import { scrapeVideos } from '../../../../../config/spangbang';
-import InterstitialAds from "../../../../../components/Ads/InterstitialAds";
 
 
 
@@ -40,7 +39,6 @@ function Index({ video_collection, pages }) {
                     content={`Check out the best porn videos, images, gifs and playlists from pornstar ${capitalizeFirstLetter(pornstarname.replace('+', " ").replace("+", " "))}. Browse through the content she uploaded herself on her verified pornstar profile, only on Chutlunds.com. Subscribe to ${capitalizeFirstLetter(pornstarname.replace('+', " ").replace("+", " "))}'s feed and add her as a friend. See ${capitalizeFirstLetter(pornstarname.replace('+', " ").replace("+", " "))} naked in an incredible selection of hardcore FREE sex movies.`} />
             </Head>
 
-            <InterstitialAds />
 
             <Header keyword={pornstarname.replace('+', ' ')} pageNumber={currentPageNumberURL} />
             <div className="flex">
