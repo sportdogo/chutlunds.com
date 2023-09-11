@@ -32,13 +32,13 @@ function InterstitialAds({ command }) {
             <div className='sm:hidden bg-red-200'>
                 <a ref={clickRefMoble} href="#" onClick={e => e.preventDefault()} className="demo-mobile">
                 </a>
-                <FullpageInterstitial
-                    zoneId={5069568}
-                    frequencyType="clicks"
-                    firstTriggerClicks={1}
-                    nextTriggerClicks={1}
-                    triggerClass={['demo-mobile']}
-                />
+                // <FullpageInterstitial
+                //     zoneId={5069568}
+                //     frequencyType="clicks"
+                //     firstTriggerClicks={1}
+                //     nextTriggerClicks={1}
+                //     triggerClass={['demo-mobile']}
+                // />
             </div>
 
 
@@ -46,13 +46,13 @@ function InterstitialAds({ command }) {
             <div className='hidden sm:flex'>
                 <a ref={clickRefIntertitials} href="#" onClick={e => e.preventDefault()} className="demo-desktop">
                 </a>
-                <FullpageInterstitial
-                    zoneId={5069562}
-                    frequencyType="clicks"
-                    firstTriggerClicks={1}
-                    nextTriggerClicks={1}
-                    triggerClass={['demo-desktop']}
-                />
+                // <FullpageInterstitial
+                //     zoneId={5069562}
+                //     frequencyType="clicks"
+                //     firstTriggerClicks={1}
+                //     nextTriggerClicks={1}
+                //     triggerClass={['demo-desktop']}
+                // />
             </div>
         </div>
     )
