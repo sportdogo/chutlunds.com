@@ -10,7 +10,6 @@ import pornstarNameList from '../../JsonData/pornstarlist/alldata.json'
 import {
     ThumbUpIcon, ClockIcon, FilmIcon, EyeIcon, PlusIcon, MinusIcon, CogIcon
 } from '@heroicons/react/solid';
-import InterstitialAds from '../../components/Ads/InterstitialAds';
 import Outstreams from '../../components/Ads/Outstream';
 import Popunder_Web from '../../components/Ads/Popunder_Web';
 import MultiformatAds from '../../components/Ads/MultiFormatAds';
@@ -105,7 +104,6 @@ function Index() {
             <Outstreams />
             <Popunder_Web />
             <MultiformatAds />
-            <InterstitialAds/>
 
             <h2 className='flex-grow text-lg  my-1 p-2 font-semibold font-inter'>Trending Pornstars</h2>
 
