@@ -29,7 +29,7 @@ var navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Category', href: '/category', current: false },
     { name: 'Pornstars', href: '/pornstar', current: false },
-    { name: 'MobileApp', href: '/chutlundsAPK', current: false },
+    { name: 'FuckVideo', href: 'https://www.fuckvideo.live/', current: false },
     // { name: 'Live Cams', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
     // { name: 'Meet & Fuck', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
 ]
@@ -358,8 +358,8 @@ function Navbar() {
                 </Link>
 
         
-                <Link href='/chutlundsAPK'>
-                    <p className=' sm:text-xl xl:text-[28px] text-md text-theme  text-center p-1 hover:text-red-600 '>Mobile App</p>
+                <Link href='https://www.fuckvideo.live/'>
+                    <p className=' sm:text-xl xl:text-[28px] text-md text-theme  text-center p-1 hover:text-red-600 '>FuckVideo</p>
                 </Link>
 
 
