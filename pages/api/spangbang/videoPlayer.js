@@ -6,9 +6,9 @@ import extractUrls from "extract-urls";
 export default async function handler(req, res) {
 
     let href = req.body.href
-    if (href.includes("https://spankbang.com/")) {
-        href = href.replace("https://spankbang.com/", "https://spankbang.party/");
-    }
+    // if (href.includes("https://spankbang.com/")) {
+    //     href = href.replace("https://spankbang.com/", "https://spankbang.party/");
+    // }
 
     var finalDataArray = {}
     var preloaded_video_quality = ''
