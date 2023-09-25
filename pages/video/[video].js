@@ -13,10 +13,12 @@ import Outstreams from '../../components/Ads/Outstream';
 
 
 
-function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_video_quality, relatedVideos, pornstar, video_details, videoTitleBackUp, noVideo }) {
+function Videoplayer({ errorMessage, serverError, videolink_qualities_screenshots, preloaded_video_quality, relatedVideos, pornstar, video_details, videoTitleBackUp, noVideo }) {
 
     const router = useRouter()
-
+    if (errorMessage != null) {
+        console.log("The error message is:" + errorMessagel̥);
+    }
 
 
     const [Quality, setQuality] = useState(preloaded_video_quality)
@@ -102,7 +104,7 @@ function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_v
     }
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
-      }
+    }
 
 
     return (
@@ -241,6 +243,7 @@ export async function getServerSideProps(context) {
     var videodetails = {}
     var noVideos = false
     var serverError = false
+    var errorMessage = null
 
 
 
@@ -263,8 +266,9 @@ export async function getServerSideProps(context) {
         videodetails = data.video_details
         noVideos = data.noVideos
 
-    } catch (error) {
+    } catch (errorr) {
         serverError = true
+        errorMessage = errorr
     }
 
 
@@ -279,6 +283,7 @@ export async function getServerSideProps(context) {
             videoTitleBackUp: title,
             noVideo: noVideos,
             serverError: serverError,
+            errorMessage: errorMessage
         }
     }
 
