@@ -13,12 +13,10 @@ import Outstreams from '../../components/Ads/Outstream';
 
 
 
-function Videoplayer({ errorMessage, serverError, videolink_qualities_screenshots, preloaded_video_quality, relatedVideos, pornstar, video_details, videoTitleBackUp, noVideo }) {
+function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_video_quality, relatedVideos, pornstar, video_details, videoTitleBackUp, noVideo }) {
 
     const router = useRouter()
-    if (errorMessage != null) {
-        console.log("The error message is:" + errorMessage);
-    }
+
 
 
     const [Quality, setQuality] = useState(preloaded_video_quality)
@@ -97,14 +95,14 @@ function Videoplayer({ errorMessage, serverError, videolink_qualities_screenshot
     if (serverError) {
         return (
             <div className='my-72 flex flex-col items-center justify-center'>
-                <h1 className='text-center '> Something went wrong!</h1>
+                <h1 className='text-center '> Server down! we are working on it</h1>
                 <button onClick={() => { router.push('/') }} className='mx-auto my-4 bg-theme text-white rounded px-8 py-1 hover:bg-red-700'>Go to Home -&gt;</button>
             </div>
         )
     }
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+      }
 
 
     return (
@@ -243,9 +241,10 @@ export async function getServerSideProps(context) {
     var videodetails = {}
     var noVideos = false
     var serverError = false
-    var errorMessage = null
 
 
+
+    try {
         const response = await fetch(`${process.env.FRONTEND_URL}api/spangbang/videoPlayer`, {
             method: 'POST',
             headers: {
@@ -264,7 +263,9 @@ export async function getServerSideProps(context) {
         videodetails = data.video_details
         noVideos = data.noVideos
 
-  
+    } catch (error) {
+        serverError = true
+    }
 
 
 
@@ -278,7 +279,6 @@ export async function getServerSideProps(context) {
             videoTitleBackUp: title,
             noVideo: noVideos,
             serverError: serverError,
-            errorMessage: errorMessage
         }
     }
 
