@@ -62,8 +62,7 @@ function Videoplayer() {
 
             });
 
-            const resData = await rawResponse.json();
-            const data = resData.data;
+            const data = await rawResponse.json();
             setVideolinkQualitiesScreenshots(data.videolink_qualities_screenshots)
             setPreloadedVideoQuality(data.preloaded_video_quality)
             setRelatedVideos(data.relatedVideos)
