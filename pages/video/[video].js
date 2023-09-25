@@ -29,8 +29,8 @@ function Videoplayer() {
     const [noVideo, setNoVideo] = useState(false);
 
 
-    const [Quality, setQuality] = useState(preloaded_video_quality)
-    const [VideoSrc, setVideoSrc] = useState(videolink_qualities_screenshots.default_video_src)
+    const [Quality, setQuality] = useState("")
+    const [VideoSrc, setVideoSrc] = useState("")
     const [tagString, settagString] = useState('');
     const [loggedIn, setloggedIn] = useState(false);
     const [tags, settags] = useState([]);
@@ -69,6 +69,9 @@ function Videoplayer() {
             setVideoDetails(data.video_details)
             setNoVideo(data.noVideo)
             setspinnerLoading(false)
+
+
+            setQuality(data.preloaded_video_quality)
         }
         async function fetchCountryVideos() {
 
