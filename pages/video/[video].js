@@ -10,7 +10,7 @@ import { getCookie, setCookie } from "cookies-next";
 import VideoPlayer from '../../components/VideoPlayer';
 import MultiformatAds from '../../components/Ads/MultiFormatAds';
 import Outstreams from '../../components/Ads/Outstream';
-
+import { getVideoPageData } from '../../config/videoPlayer';
 
 
 function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_video_quality, relatedVideos, pornstar, video_details, videoTitleBackUp, noVideo }) {
@@ -87,7 +87,7 @@ function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_v
 
         }
 
-        fetchCountryVideos()
+        // fetchCountryVideos()
 
     }, []);
 
@@ -95,14 +95,14 @@ function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_v
     if (serverError) {
         return (
             <div className='my-72 flex flex-col items-center justify-center'>
-                <h1 className='text-center '> Server down! we are working on it</h1>
+                <h1 className='text-center '> Something went wrong!</h1>
                 <button onClick={() => { router.push('/') }} className='mx-auto my-4 bg-theme text-white rounded px-8 py-1 hover:bg-red-700'>Go to Home -&gt;</button>
             </div>
         )
     }
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
-      }
+    }
 
 
     return (
@@ -245,17 +245,7 @@ export async function getServerSideProps(context) {
 
 
     try {
-        const response = await fetch(`${process.env.FRONTEND_URL}api/spangbang/videoPlayer`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ href: `https://spankbang.party/${keyy}/video/${title}` })
-        });
-
-        const data = await response.json()
-
+        const data = await getVideoPageData(`https://spankbang.party/${keyy}/video/${title}`)
         videolink_qualities_screenshots = data.videolink_qualities_screenshots
         preloaded_video_quality = data.preloaded_video_quality
         relatedVideos = data.relatedVideos
