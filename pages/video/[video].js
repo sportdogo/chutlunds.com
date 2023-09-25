@@ -246,7 +246,6 @@ export async function getServerSideProps(context) {
     var errorMessage = null
 
 
-    try {
         const response = await fetch(`${process.env.FRONTEND_URL}api/spangbang/videoPlayer`, {
             method: 'POST',
             headers: {
@@ -265,10 +264,7 @@ export async function getServerSideProps(context) {
         videodetails = data.video_details
         noVideos = data.noVideos
 
-    } catch (errorr) {
-        serverError = true
-        errorMessage = errorr.message
-    }
+  
 
 
 
