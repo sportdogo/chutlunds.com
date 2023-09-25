@@ -5,12 +5,11 @@ import Videos from '../../components/Videos'
 import {
     ThumbUpIcon, ClockIcon, FilmIcon, EyeIcon, PlusIcon, MinusIcon, CogIcon, InformationCircleIcon, DownloadIcon
 } from '@heroicons/react/solid';
-// import { scrapeVideos } from '../../config/spangbang';
 import { getCookie, setCookie } from "cookies-next";
 import VideoPlayer from '../../components/VideoPlayer';
 import MultiformatAds from '../../components/Ads/MultiFormatAds';
 import Outstreams from '../../components/Ads/Outstream';
-import { getVideoPageData } from '../../config/videoPlayer';
+// import { getVideoPageData } from '../../config/videoPlayer';
 
 
 function Videoplayer({ serverError, videolink_qualities_screenshots, preloaded_video_quality, relatedVideos, pornstar, video_details, videoTitleBackUp, noVideo }) {
@@ -243,9 +242,22 @@ export async function getServerSideProps(context) {
     var serverError = false
 
 
-
     try {
-        const data = await getVideoPageData(`https://spankbang.party/${keyy}/video/${title}`)
+
+        const rawResponse = await fetch(`https://clownfish-app-jn7w9.ondigitalocean.app/getVideoPageDetails`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ href: `https://spankbang.party/${keyy}/video/${title}` })
+        });
+
+        const resData = await rawResponse.json();
+        const data = resData.data;
+     
+
+        // const data = await getVideoPageData(`https://spankbang.party/${keyy}/video/${title}`)
         videolink_qualities_screenshots = data.videolink_qualities_screenshots
         preloaded_video_quality = data.preloaded_video_quality
         relatedVideos = data.relatedVideos
