@@ -49,8 +49,10 @@ function Videoplayer() {
         setVideoTitleBackUp(title)
         const fetchVideoDetails = async () => {
 
+            let api=`https://www.chutlunds.com/api/spangbang/videoPlayer`
+            // let api=`https://clownfish-app-jn7w9.ondigitalocean.app/getVideoPageDetails`
 
-            const rawResponse = await fetch(`https://clownfish-app-jn7w9.ondigitalocean.app/getVideoPageDetails`, {
+            const rawResponse = await fetch(api, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -104,6 +106,9 @@ function Videoplayer() {
         try {
             fetchVideoDetails()
         } catch (error) {
+            console.log('====================================');
+            console.log(error);
+            console.log('====================================');
             setServerError(true)
         }
 

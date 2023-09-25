@@ -326,7 +326,7 @@ export default async function handler(req, res) {
     res.status(200).json({
         videolink_qualities_screenshots: finalDataArray,
         preloaded_video_quality: preloaded_video_quality,
-        relatedVideos: relatedVideos,
+        relatedVideos: relatedVideos.length > 100 ? relatedVideos.slice(0, 100) : relatedVideos,
         pornstar: pornstar,
         video_details: videodetails,
         noVideos: noVideos,
