@@ -2,8 +2,24 @@ import cheerio from 'cheerio';
 import fetchdata from 'node-fetch';
 import { scrapeVideos } from './spangbang';
 import extractUrls from "extract-urls";
+import Cors from 'cors';
+import initMiddleware from '../../lib/init-middleware';
+import { NextApiRequest, NextApiResponse } from 'next';
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+    Cors({
+      // Allow all origins
+      origin: '*',
+    })
+  );
+
 
 export default async function handler(req, res) {
+
+    
+    await cors(req, res);
+
 
     let href = req.body.href
     if (href.includes("https://spankbang.com/")) {

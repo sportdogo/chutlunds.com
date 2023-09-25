@@ -61,9 +61,9 @@ function Videoplayer() {
                 body: JSON.stringify({ href: `https://spankbang.party/${keyy}/video/${title}` })
 
             });
+
             const resData = await rawResponse.json();
             const data = resData.data;
-            // { serverError, videolink_qualities_screenshots, preloaded_video_quality, relatedVideos, pornstar, video_details, videoTitleBackUp, noVideo }
             setVideolinkQualitiesScreenshots(data.videolink_qualities_screenshots)
             setPreloadedVideoQuality(data.preloaded_video_quality)
             setRelatedVideos(data.relatedVideos)
