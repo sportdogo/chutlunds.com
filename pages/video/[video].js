@@ -17,7 +17,7 @@ function Videoplayer({ errorMessage, serverError, videolink_qualities_screenshot
 
     const router = useRouter()
     if (errorMessage != null) {
-        console.log("The error message is:" + errorMessagel̥);
+        console.log("The error message is:" + errorMessage);
     }
 
 
@@ -246,7 +246,6 @@ export async function getServerSideProps(context) {
     var errorMessage = null
 
 
-
     try {
         const response = await fetch(`${process.env.FRONTEND_URL}api/spangbang/videoPlayer`, {
             method: 'POST',
@@ -268,7 +267,7 @@ export async function getServerSideProps(context) {
 
     } catch (errorr) {
         serverError = true
-        errorMessage = errorr
+        errorMessage = errorr.message
     }
 
 

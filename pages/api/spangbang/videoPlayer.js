@@ -315,10 +315,10 @@ export default async function handler(req, res) {
     } catch (error) {
         console.log(error);
         noVideos = true;
-        // if (relatedVideos.length == 0) {  //sometimes the related videos not able to get scraped so trying again different way to scrap
-        //     const obj = await scrapeVideos(href)
-        //     relatedVideos = obj.finalDataArray;
-        // }
+        if (relatedVideos.length == 0) {  //sometimes the related videos not able to get scraped so trying again different way to scrap
+            const obj = await scrapeVideos(href)
+            relatedVideos = obj.finalDataArray;
+        }
     }
 
 
