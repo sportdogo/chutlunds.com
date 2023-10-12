@@ -7,7 +7,7 @@ import MultiformatAds from './Ads/MultiFormatAds';
 
 
 function Footer() {
-
+  
     //Use Context
     const context = useContext(videosContext);
     const { spinnerLoading } = context;
