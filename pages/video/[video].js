@@ -49,7 +49,8 @@ function Videoplayer() {
         setVideoTitleBackUp(title)
         const fetchVideoDetails = async () => {
 
-            let api=`https://lionfish-app-gm5h4.ondigitalocean.app/api/spangbang/videoPlayer`
+            let api=`/api/spangbang/videoPlayer`
+            // let api=`https://lionfish-app-gm5h4.ondigitalocean.app/api/spangbang/videoPlayer`
             // let api=`https://clownfish-app-jn7w9.ondigitalocean.app/getVideoPageDetails`
 
             const rawResponse = await fetch(api, {
