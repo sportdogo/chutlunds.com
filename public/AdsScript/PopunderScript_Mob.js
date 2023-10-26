@@ -1,5 +1,4 @@
 
-console.log("This is my custom JavaScript file.");
 
 (function() {
 
