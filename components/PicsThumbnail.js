@@ -1,8 +1,6 @@
-import React from 'react'
+import Link from 'next/link';
 import { useRouter } from "next/router";
-import { Banner, Outstream } from "exoclick-react";
-import Link from 'next/link'
-import MultiformatAds from './Ads/MultiFormatAds';
+import React from 'react';
 
 function PicsThumbnail({ data }) {
 

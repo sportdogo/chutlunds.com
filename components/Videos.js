@@ -1,21 +1,14 @@
-import VideoThumbnail from "./VideoThumbnail"
 import { useRouter } from "next/router";
-import { useState, useRef, } from "react";
-import ReactPaginate from "react-paginate";
-import { useContext, useEffect } from 'react'
-import videosContext from '../context/videos/videosContext'
-import ReactCountryFlag from "react-country-flag"
+import { useEffect, useState } from "react";
+import VideoThumbnail from "./VideoThumbnail";
 
-import Outstream from './Ads/Outstream'
-import Link from 'next/link'
-import {
-    ChevronRightIcon,
-} from '@heroicons/react/outline';
 import {
     LightningBoltIcon,
 } from '@heroicons/react/solid';
-import MultiformatAds from "./Ads/MultiFormatAds";
+import BannerAds from "./Ads/Banner1";
 import InstantMessageAds from "./Ads/InstantMessage";
+import MultiformatAds from "./Ads/MultiFormatAds";
+import Outstream from './Ads/Outstream';
 import PopunderAds from "./Ads/Popunder_Mob";
 
 function Videos({ data }) {
@@ -38,7 +31,10 @@ function Videos({ data }) {
     return (
         <div className=" w-full h-fit ">
             {currentPath !== "blocked" &&
-                <MultiformatAds />
+                <>
+                    <MultiformatAds />
+                </>
+
             }
 
 

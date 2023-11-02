@@ -1,6 +1,7 @@
 import { Outstream, Placeholder } from "exoclick-react";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from 'react';
+import Script from "next/script";
 
 
 function Outstreams() {
@@ -8,6 +9,10 @@ function Outstreams() {
 
     const [videoPage, setvideoPage] = useState(false);
     const router = useRouter();
+    
+    var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    var uniqid = randLetter + Date.now();
+
 
     useEffect(() => {
         if (window.location.href.includes('video')) {
@@ -48,6 +53,10 @@ function Outstreams() {
                 </Placeholder>
             </div>
              */}
+
+
+            <Script id={uniqid} src='//staggereddam.com/56/1d/06/561d0641f7b00b80cf88a24977269049.js'></Script>
+
         </div>
     )
 }

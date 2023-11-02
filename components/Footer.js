@@ -1,9 +1,7 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
-import { useContext, useEffect } from 'react';
-import videosContext from '../context/videos/videosContext'
-import MultiformatAds from './Ads/MultiFormatAds';
+import { useContext } from 'react';
+import videosContext from '../context/videos/videosContext';
 
 
 function Footer() {

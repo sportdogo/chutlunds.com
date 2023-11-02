@@ -1,16 +1,17 @@
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import Router, { useRouter } from "next/router";
-import Videos from '../../components/Videos'
 import {
-    ThumbUpIcon, ClockIcon, FilmIcon, EyeIcon, PlusIcon, MinusIcon, CogIcon, InformationCircleIcon, DownloadIcon
+    FilmIcon,
+    InformationCircleIcon
 } from '@heroicons/react/solid';
-import { getCookie, setCookie } from "cookies-next";
-import VideoPlayer from '../../components/VideoPlayer';
+import { getCookie } from "cookies-next";
+import Head from 'next/head';
+import { useRouter } from "next/router";
+import { useEffect, useState } from 'react';
 import MultiformatAds from '../../components/Ads/MultiFormatAds';
 import Outstreams from '../../components/Ads/Outstream';
+import VideoPlayer from '../../components/VideoPlayer';
+import Videos from '../../components/Videos';
 // import { getVideoPageData } from '../../config/videoPlayer';
-import { BeatLoader } from 'react-spinners'
+import { BeatLoader } from 'react-spinners';
 
 
 function Videoplayer() {

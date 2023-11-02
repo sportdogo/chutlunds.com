@@ -1,24 +1,21 @@
-import Head from 'next/head'
-import { useContext, useEffect, useState } from 'react'
+import Head from 'next/head';
+import { useContext, useEffect, useState } from 'react';
 
+import cheerio from 'cheerio';
+import { deleteCookie, getCookie, setCookie } from "cookies-next";
+import { useRouter } from 'next/router';
+import fetchdata from 'node-fetch';
+import React from 'react';
+import MultiformatAds from '../components/Ads/MultiFormatAds';
+import Outstreams from '../components/Ads/Outstream';
+import PopunderAds from '../components/Ads/Popunder_Mob';
+import HomepageTitle from '../components/HomepageTitle';
 import Sidebar from '../components/Sidebar';
 import Videos from '../components/Videos';
-import React from 'react'
-import videosContext from '../context/videos/videosContext'
-import fetchdata from 'node-fetch';
-import cheerio from 'cheerio';
 import Category_slider from '../components/category_slider';
-import HomepageTitle from '../components/HomepageTitle';
 import { getLanguge } from '../config/getLanguge';
-import { getDatabase, ref, set, get, child } from "firebase/database";
-import { app } from '../firebase';
-import Script from 'next/script';
-import { useRouter } from 'next/router';
-import { getCookie, deleteCookie, setCookie } from "cookies-next";
-import Outstreams from '../components/Ads/Outstream';
-import MultiformatAds from '../components/Ads/MultiFormatAds';
-import PopunderAds from '../components/Ads/Popunder_Mob';
 import { scrapeVideos } from '../config/spangbang';
+import videosContext from '../context/videos/videosContext';
 
 export default function Home({ video_collection, pages, desiVideosDataArray, desiMmsVideoArray }) {
 

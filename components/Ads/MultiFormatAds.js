@@ -36,6 +36,19 @@ function MultiformatAds() {
             /> */}
 
 
+            <Script
+                id={uniqid}
+                dangerouslySetInnerHTML={{
+                    __html: `atOptions = {
+		'key' : '56717b709474376d0fdefe33a5397221',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};`,
+                }}
+            />
+            <Script src='//staggereddam.com/56717b709474376d0fdefe33a5397221/invoke.js'></Script>
 
 
         </div>
