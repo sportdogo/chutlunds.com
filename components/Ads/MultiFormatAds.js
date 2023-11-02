@@ -3,17 +3,11 @@ import { useContext } from 'react';
 import videosContext from '../../context/videos/videosContext';
 import Script from "next/script";
 import Head from "next/head";
+import { useEffect, useState } from 'react';
 
 
 function MultiformatAds() {
 
-    const atOptions = {
-        key: '590bbfaa0c9d656e8a4aa68f89821ecd',
-        format: 'iframe',
-        height: 60,
-        width: 468,
-        params: {},
-    };
 
 
     var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
