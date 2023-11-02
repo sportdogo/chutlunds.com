@@ -22,32 +22,32 @@ function Outstreams() {
 
 
             {/* min---lg  */}
-            <div className="  lg:hidden space-y-20">
+            {/* <div className="  lg:hidden space-y-20">
 
                 <Placeholder width="220" height="120">
                     <Outstream zoneId="5069574" maxWidth={400} />
                 </Placeholder>
 
-            </div>
+            </div> */}
 
 
             {/* lg---xl  */}
-            <div className="hidden lg:flex  xl:hidden space-x-6">
+            {/* <div className="hidden lg:flex  xl:hidden space-x-6">
                 <Placeholder width="400" height="266">
                     <Outstream zoneId="5069574" maxWidth={400} />
                 </Placeholder>
 
 
-            </div>
+            </div> */}
 
             {/* xl---max  */}
 
-            <div className={`hidden xl:flex ${videoPage ? "flex-col space-y-6" : "flex-row space-x-6"}`}>
+            {/* <div className={`hidden xl:flex ${videoPage ? "flex-col space-y-6" : "flex-row space-x-6"}`}>
                 <Placeholder width="400" height="266">
                     <Outstream zoneId="5069574" maxWidth={400} />
                 </Placeholder>
             </div>
-            
+             */}
         </div>
     )
 }

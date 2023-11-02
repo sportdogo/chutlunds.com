@@ -18,47 +18,15 @@ function InstantMessageAds() {
         <div className={`max-w-full`}>
 
 
-            <Head>
-                {/* <script type="application/javascript" src="https://syndication.realsrv.com/splash.php?idzone=4580188&capping=0"></script>
-
- */}
-
-
-                {/* <script type="application/javascript" src="https://syndication.realsrv.com/splash.php?idzone=4813390"></script> */}
-
-            </Head >
-
+   
+{/* 
             <Script
                 src="https://syndication.realsrv.com/splash.php?idzone=5069566&capping=0"
             ></Script>
+ */}
 
 
 
-
-            {/* Mobile   */}
-
-            {/* <div className='lg:hidden'>
-
-                <Script
-                    id="instantMessageMobile"
-                    strategy="beforeInteractive"
-                    src="https://syndication.realsrv.com/splash.php?idzone=4580188&capping=0"
-                />
-
-
-            </div> */}
-
-
-            {/* Web  */}
-
-            {/* <div className='hidden lg:flex'>
-
-                <Script
-                    id="instantMessageWeb"
-                    strategy="beforeInteractive"
-                    src="https://syndication.realsrv.com/splash.php?idzone=4813390"
-                />
-            </div> */}
 
 
         </div >

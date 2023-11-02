@@ -7,13 +7,22 @@ import Head from "next/head";
 
 function MultiformatAds() {
 
+    const atOptions = {
+        key: '590bbfaa0c9d656e8a4aa68f89821ecd',
+        format: 'iframe',
+        height: 60,
+        width: 468,
+        params: {},
+    };
+
+
     var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
     var uniqid = randLetter + Date.now();
 
     return (
         <div className="bg-white  overflow-hidden mx-auto w-[350px] lg:w-[700px] xl:w-[900px]  my-2">
 
-            <Script
+            {/* <Script
                 id={uniqid + "sadfdsa"}
                 strategy="beforeInteractive"
                 src="https://a.realsrv.com/ad-provider.js"
@@ -24,7 +33,15 @@ function MultiformatAds() {
 
             <Script id={uniqid}>
                 {`(AdProvider = window.AdProvider || []).push({"serve": { }});`}
-            </Script>
+            </Script> */}
+
+            {/* <Script
+                strategy="beforeInteractive"
+                src="//www.highcpmcreativeformat.com/590bbfaa0c9d656e8a4aa68f89821ecd/invoke.js"
+                type="text/javascript"
+            /> */}
+
+
 
 
         </div>
