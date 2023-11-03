@@ -15,7 +15,7 @@ function PopunderAds() {
                 data-ts-extid="{extid}"
                 data-ts-session-duration="300"
                 data-ts-count="3"
-                
+                data-ts-mode="selective"
                 async
                 defer
             />

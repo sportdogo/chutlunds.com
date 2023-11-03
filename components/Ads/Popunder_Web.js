@@ -16,6 +16,7 @@ function PopunderAds_2() {
                 data-ts-count="3"
                 async
                 defer
+                data-ts-mode="selective"
             />
 
         </div>
