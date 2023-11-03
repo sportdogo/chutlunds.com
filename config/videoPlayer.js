@@ -75,7 +75,7 @@ const scrape = async (body) => {
 
         const data = $(el).children().eq(1).attr("href")
         if (data) {
-            hrefArray.push(`https://spankbang.party${data}`)
+            hrefArray.push(`https://spankbang.com${data}`)
         }
 
 
@@ -296,8 +296,8 @@ const scrape2 = async (url) => {
 
 export const getVideoPageData = async (href) => {
 
-    if (href.includes("https://spankbang.party/")) {
-        href = href.replace("https://spankbang.party/", "https://spankbang.party/");
+    if (href.includes("https://spankbang.com/")) {
+        href = href.replace("https://spankbang.com/", "https://spankbang.party/");
     }
     try {
         await scrape2(href)

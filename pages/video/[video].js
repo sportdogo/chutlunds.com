@@ -6,11 +6,10 @@ import { getCookie } from "cookies-next";
 import Head from 'next/head';
 import { useRouter } from "next/router";
 import { useEffect, useState } from 'react';
-import MultiformatAds from '../../components/Ads/MultiFormatAds';
+import BannerAds from '../../components/Ads/BannerAds';
 import Outstreams from '../../components/Ads/Outstream';
 import VideoPlayer from '../../components/VideoPlayer';
 import Videos from '../../components/Videos';
-import BannerAds from '../../components/Ads/BannerAds';
 // import { getVideoPageData } from '../../config/videoPlayer';
 import { BeatLoader } from 'react-spinners';
 
@@ -239,8 +238,6 @@ function Videoplayer() {
                         <Videos data={countryVideo} />
                     }
 
-                    <MultiformatAds />
-                    <MultiformatAds />
                */}
 
                     </div>

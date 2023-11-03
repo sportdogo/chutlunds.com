@@ -6,8 +6,8 @@ import extractUrls from "extract-urls";
 export default async function handler(req, res) {
 
     let href = req.body.href
-    if (href.includes("https://spankbang.party/")) {
-        href = href.replace("https://spankbang.party/", "https://spankbang.party/");
+    if (href.includes("https://spankbang.com/")) {
+        href = href.replace("https://spankbang.com/", "https://spankbang.party/");
     }
 
     var finalDataArray = {}
@@ -79,7 +79,7 @@ export default async function handler(req, res) {
 
             const data = $(el).children().eq(1).attr("href")
             if (data) {
-                hrefArray.push(`https://spankbang.party${data}`)
+                hrefArray.push(`https://spankbang.com${data}`)
             }
 
 

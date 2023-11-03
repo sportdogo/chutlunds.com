@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import Outstreams from '../../components/Ads/Outstream';
 import Head from 'next/head'
-import MultiformatAds from '../../components/Ads/MultiFormatAds';
 import Popunder_Web from '../../components/Ads/Popunder_Web';
 
 
@@ -89,7 +88,6 @@ function Index() {
 
             <Outstreams />
             <Popunder_Web />
-            <MultiformatAds />
 
             <div className={`grid grid-cols-3 py-3 sm:grid-cols-3 gap-2 md:gap-3 lg:gap-4  md:grid-cols-4 lg:grid-cols-5`}>
                 {shuffle(jsonData).map(category => {

@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Head from 'next/head'
 import Outstreams from '../../components/Ads/Outstream';
-import MultiformatAds from '../../components/Ads/MultiFormatAds';
 import Popunder_Web from '../../components/Ads/Popunder_Web';
 
 function Search({ tags }) {
@@ -91,7 +90,6 @@ function Search({ tags }) {
 
             <Outstreams />
             <Popunder_Web />
-            <MultiformatAds />
 
 
             <div className={`my-2  transition ease-in-out delay-150 mt-2 `}>

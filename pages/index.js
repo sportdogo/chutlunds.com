@@ -270,7 +270,7 @@ export async function getStaticProps({ req, res }) {
 
         const data = $(el).children().eq(1).attr("href")
         if (data) {
-          hrefArray.push(`https://spankbang.party${data}`)
+          hrefArray.push(`https://spankbang.com${data}`)
         }
       })
 
