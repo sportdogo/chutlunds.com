@@ -51,10 +51,10 @@ export async function getServerSideProps(context) {
     var pages = []
 
 
-    const obj = await scrapeVideos(`https://spankbang.party/s/${searchkey.toLowerCase().trim()}/${page}/?o=all`)
+    const obj = await scrapeVideos(`https://spankbang.com/s/${searchkey.toLowerCase().trim()}/${page}/?o=all`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
-    console.log(`https://spankbang.party/s/${searchkey.toLowerCase().trim()}/${page}/?o=all`)
+    console.log(`https://spankbang.com/s/${searchkey.toLowerCase().trim()}/${page}/?o=all`)
 
 
     return {

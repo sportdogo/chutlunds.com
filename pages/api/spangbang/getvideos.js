@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     console.log('====================================');
     
         if (url.includes("https://spankbang.com/")) {
-        url = url.replace("https://spankbang.com/", "https://spankbang.party/");
+        url = url.replace("https://spankbang.com/", "https://spankbang.com/");
     }
 
     var finalDataArray = []

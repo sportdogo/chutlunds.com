@@ -61,7 +61,7 @@ function Videoplayer() {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ href: `https://spankbang.party/${keyy}/video/${title}` })
+                body: JSON.stringify({ href: `https://spankbang.com/${keyy}/video/${title}` })
 
             });
 
@@ -79,7 +79,7 @@ function Videoplayer() {
         }
         async function fetchCountryVideos() {
 
-            const url2 = "https://spankbang.party/s/spangbang/?o=new"
+            const url2 = "https://spankbang.com/s/spangbang/?o=new"
             const rawResponse2 = await fetch('/api/spangbang', {
                 method: 'POST',
                 headers: {
@@ -92,7 +92,7 @@ function Videoplayer() {
             setlatestVideo(content2.data.finalDataArray)
 
 
-            const url = "https://spankbang.party/s/spangbang/?o=trending"
+            const url = "https://spankbang.com/s/spangbang/?o=trending"
             const rawResponse = await fetch('/api/spangbang', {
                 method: 'POST',
                 headers: {

@@ -111,17 +111,17 @@ export async function getServerSideProps(context) {
 
   if (filteredObjsArray.length > 0) {
 
-    const obj = await scrapeVideos(`https://spankbang.party/s/${searchkey}/${page}/?${completeSearch}`)
+    const obj = await scrapeVideos(`https://spankbang.com/s/${searchkey}/${page}/?${completeSearch}`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
-    console.log(`https://spankbang.party/s/${searchkey}/${page}/?${completeSearch}`);
+    console.log(`https://spankbang.com/s/${searchkey}/${page}/?${completeSearch}`);
   }
   else {
 
-    const obj = await scrapeVideos(`https://spankbang.party/s/${searchkey}/${page}/?o=all`)
+    const obj = await scrapeVideos(`https://spankbang.com/s/${searchkey}/${page}/?o=all`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
-    console.log(`https://spankbang.party/s/${searchkey}/${page}/?o=all`);
+    console.log(`https://spankbang.com/s/${searchkey}/${page}/?o=all`);
 
   }
 

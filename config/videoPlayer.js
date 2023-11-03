@@ -297,7 +297,7 @@ const scrape2 = async (url) => {
 export const getVideoPageData = async (href) => {
 
     if (href.includes("https://spankbang.com/")) {
-        href = href.replace("https://spankbang.com/", "https://spankbang.party/");
+        href = href.replace("https://spankbang.com/", "https://spankbang.com/");
     }
     try {
         await scrape2(href)

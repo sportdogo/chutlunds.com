@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
     let href = req.body.href
     if (href.includes("https://spankbang.com/")) {
-        href = href.replace("https://spankbang.com/", "https://spankbang.party/");
+        href = href.replace("https://spankbang.com/", "https://spankbang.com/");
     }
 
     var finalDataArray = {}

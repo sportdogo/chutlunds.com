@@ -81,10 +81,10 @@ export async function getStaticProps(context) {
 
 
 
-    const obj = await scrapeVideos(`https://spankbang.party/s/${category}/${page}/?o=all`)
+    const obj = await scrapeVideos(`https://spankbang.com/s/${category}/${page}/?o=all`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
-    console.log(`https://spankbang.party/s/${category}/${page}/?o=all`)
+    console.log(`https://spankbang.com/s/${category}/${page}/?o=all`)
 
 
 
