@@ -78,7 +78,7 @@ const scrape = async (url) => {
 
         const data = $(el).children().eq(1).attr("href")
         if (data) {
-            hrefArray.push(`https://spankbang.com${data}`)
+            hrefArray.push(`https://spankbang.party${data}`)
         }
 
 
@@ -123,202 +123,202 @@ const scrape = async (url) => {
 
 const categories = [
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/1.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/1.jpg',
         Title: 'Amateur'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/2.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/2.jpg',
         Title: 'Anal'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/3.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/3.jpg',
         Title: 'Asian'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/4.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/4.jpg',
         Title: 'Babe'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/5.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/5.jpg',
         Title: 'BBW'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/48.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/48.jpg',
         Title: 'Big Ass'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/6.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/6.jpg',
         Title: 'Big Dick'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/7.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/7.jpg',
         Title: 'Big Tits'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/41.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/41.jpg',
         Title: 'Blonde'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/8.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/8.jpg',
         Title: 'Blowjob'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/9.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/9.jpg',
         Title: 'Bondage'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/49.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/49.jpg',
         Title: 'Brunette'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/50.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/50.jpg',
         Title: 'Cam'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/38.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/38.jpg',
         Title: 'Compilation'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/10.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/10.jpg',
         Title: 'Creampie'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/11.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/11.jpg',
         Title: 'Cumshot'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/12.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/12.jpg',
         Title: 'Deep Throat'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/13.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/13.jpg',
         Title: 'DP'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/14.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/14.jpg',
         Title: 'Ebony'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/17.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/17.jpg',
         Title: 'Fetish'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/18.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/18.jpg',
         Title: 'Fisting'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/37.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/37.jpg',
         Title: 'Gay'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/19.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/19.jpg',
         Title: 'Groupsex'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/20.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/20.jpg',
         Title: 'Handjob'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/21.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/21.jpg',
         Title: 'Hardcore'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/39.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/39.jpg',
         Title: 'Hentai'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/15.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/15.jpg',
         Title: 'Homemade'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/46.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/46.jpg',
         Title: 'Indian'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/22.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/22.jpg',
         Title: 'Interracial'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/47.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/47.jpg',
         Title: 'Japanese'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/23.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/23.jpg',
         Title: 'Latina'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/24.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/24.jpg',
         Title: 'Lesbian'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/25.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/25.jpg',
         Title: 'Massage'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/26.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/26.jpg',
         Title: 'Masturbation'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/27.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/27.jpg',
         Title: 'Mature'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/28.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/28.jpg',
         Title: 'MILF'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/30.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/30.jpg',
         Title: 'POV'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/40.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/40.jpg',
         Title: 'Redhead'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/32.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/32.jpg',
         Title: 'Shemale'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/43.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/43.jpg',
         Title: 'Small Tits'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/33.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/33.jpg',
         Title: 'Solo'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/34.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/34.jpg',
         Title: 'Squirt'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/42.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/42.jpg',
         Title: 'Striptease'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/35.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/35.jpg',
         Title: 'Teen'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/44.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/44.jpg',
         Title: 'Threesome'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/36.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/36.jpg',
         Title: 'Toy'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/45.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/45.jpg',
         Title: 'Vintage'
     },
     {
-        thumbnailImage: 'https://spankbang.com//static/desktop/Images/categories/ids/51.jpg',
+        thumbnailImage: 'https://spankbang.party//static/desktop/Images/categories/ids/51.jpg',
         Title: 'VR'
     }
 ]
 
 for (let index = 0; index < categories.length; index++) {
 
-    await scrape(`https://spankbang.com/category/${categories[index].Title}`)
+    await scrape(`https://spankbang.party/category/${categories[index].Title}`)
     if (finalDataArray.length > 2) {
         console.log(`Completed Page-${index + 1} : ${categories[index].Title} `);
     }

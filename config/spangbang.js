@@ -68,7 +68,7 @@ export const scrapeVideos = async (url) => {
 
         const data = $(el).children().eq(1).attr("href")
         if (data) {
-            hrefArray.push(`https://spankbang.com${data}`)
+            hrefArray.push(`https://spankbang.party${data}`)
         }
 
 

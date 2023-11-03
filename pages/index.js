@@ -31,7 +31,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
     setcountryLanguage(lang)
 
     //value is languge of country
-    let url = `https://spankbang.com/s/${lang.toLowerCase().trim()}/`
+    let url = `https://spankbang.party/s/${lang.toLowerCase().trim()}/`
 
     const rawResponse = await fetch('/api/spangbang', {
       method: 'POST',
@@ -270,7 +270,7 @@ export async function getStaticProps({ req, res }) {
 
         const data = $(el).children().eq(1).attr("href")
         if (data) {
-          hrefArray.push(`https://spankbang.com${data}`)
+          hrefArray.push(`https://spankbang.party${data}`)
         }
       })
 
@@ -312,15 +312,15 @@ export async function getStaticProps({ req, res }) {
   }
 
 
-  await scrape(`https://spankbang.com/`)
+  await scrape(`https://spankbang.party/`)
 
 
   var desiVideosDataArray = []
-  const obj = await scrapeVideos(`https://spankbang.com/s/desi%20sex%20videos/?o=all`)
+  const obj = await scrapeVideos(`https://spankbang.party/s/desi%20sex%20videos/?o=all`)
   desiVideosDataArray = obj.finalDataArray
 
   var desiMmsVideoArray = []
-  const obj2 = await scrapeVideos(`https://spankbang.com/s/desi%20mms/?o=all`)
+  const obj2 = await scrapeVideos(`https://spankbang.party/s/desi%20mms/?o=all`)
   desiMmsVideoArray = obj2.finalDataArray
 
 

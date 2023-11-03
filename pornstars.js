@@ -85,7 +85,7 @@ const scrape = async (url) => {
 
 for (let page = 1; page <= 109; page++) {
 
-    await scrape(`https://spankbang.com/pornstars/${page}`)
+    await scrape(`https://spankbang.party/pornstars/${page}`)
 
     fs.writeFileSync(`JsonData/pornstars/page${page}.json`, JSON.stringify(finalDataArray))
     finalDataArray = []

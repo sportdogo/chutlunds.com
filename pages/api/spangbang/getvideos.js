@@ -8,8 +8,8 @@ export default async function handler(req, res) {
     console.log(url);
     console.log('====================================');
     
-        if (url.includes("https://spankbang.com/")) {
-        url = url.replace("https://spankbang.com/", "https://spankbang.com/");
+        if (url.includes("https://spankbang.party/")) {
+        url = url.replace("https://spankbang.party/", "https://spankbang.party/");
     }
 
     var finalDataArray = []
@@ -79,7 +79,7 @@ export default async function handler(req, res) {
 
         const data = $(el).children().eq(1).attr("href")
         if (data) {
-            hrefArray.push(`https://spankbang.com${data}`)
+            hrefArray.push(`https://spankbang.party${data}`)
         }
 
 

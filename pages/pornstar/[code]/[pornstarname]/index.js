@@ -190,7 +190,7 @@ export async function getStaticProps(context) {
 
             const data = $(el).children().eq(1).attr("href")
             if (data) {
-                hrefArray.push(`https://spankbang.com${data}`)
+                hrefArray.push(`https://spankbang.party${data}`)
             }
 
 
@@ -272,7 +272,7 @@ export async function getStaticProps(context) {
         }
     }
 
-    await scrape(`https://spankbang.com/${code}/pornstar/${pornstarname}/?o=all`)
+    await scrape(`https://spankbang.party/${code}/pornstar/${pornstarname}/?o=all`)
 
 
     return {

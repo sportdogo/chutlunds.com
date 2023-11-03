@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     var previewVideoArray = []
     var hrefArray = []
 
-    const response = await fetchdata('https://spankbang.com/')
+    const response = await fetchdata('https://spankbang.party/')
     const body = await response.text();
     const $ = cheerio.load(body)
 
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
 
             const data = $(el).children().eq(1).attr("href")
             if (data) {
-                hrefArray.push(`https://spankbang.com${data}`)
+                hrefArray.push(`https://spankbang.party${data}`)
             }
         })
 

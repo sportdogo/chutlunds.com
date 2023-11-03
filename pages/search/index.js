@@ -166,7 +166,7 @@ export async function getServerSideProps() {
     }
 
 
-    await scrape(`https://spankbang.com/tags`)
+    await scrape(`https://spankbang.party/tags`)
 
 
 

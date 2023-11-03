@@ -114,20 +114,20 @@ export async function getServerSideProps(context) {
 
   if (filteredObjsArray.length > 0) {
 
-    const obj = await scrapeVideos(`https://spankbang.com/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`)
+    const obj = await scrapeVideos(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
     pages[0] = page;
-    console.log(`https://spankbang.com/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`);
+    console.log(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`);
   }
   else {
 
-    const obj = await scrapeVideos(`https://spankbang.com/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?o=all`)
+    const obj = await scrapeVideos(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?o=all`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
     pages[0] = page;
 
-    console.log(`https://spankbang.com/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?o=all`);
+    console.log(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?o=all`);
 
 
   }
