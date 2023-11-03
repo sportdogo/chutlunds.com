@@ -18,14 +18,6 @@ function InstantMessageAds() {
         <div className={`max-w-full`}>
 
 
-   
-{/* 
-            <Script
-                src="https://syndication.realsrv.com/splash.php?idzone=5069566&capping=0"
-            ></Script>
- */}
-
-
 
 
 

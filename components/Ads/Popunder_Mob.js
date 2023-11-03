@@ -8,11 +8,16 @@ function PopunderAds() {
 
 
 
-{/* <script type='text/javascript' src='//pl21188520.toprevenuegate.com/96/02/f3/9602f3f9f2bbbd7f346fcc0806eb33df.js'></script> */}
-
-
-            <Script src='//pl21188520.toprevenuegate.com/96/02/f3/9602f3f9f2bbbd7f346fcc0806eb33df.js'></Script>
-            {/* <Script src="/AdsScript/PopunderScript_Mob.js"></Script> */}
+            <Script
+                type="text/javascript"
+                src="//cdn.tsyndicate.com/sdk/v1/p.js"
+                data-ts-spot="0fede73077d5463e9a84946bbe3c27ff"
+                data-ts-extid="{extid}"
+                data-ts-session-duration="5"
+                data-ts-count="3"
+                async
+                defer
+            />
 
 
 

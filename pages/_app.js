@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }) {
         </div>
         <hr />
         
-        <Footer />
+        {/* <Footer /> */}
       </VideoState>
     </>
   )

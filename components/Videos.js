@@ -5,11 +5,11 @@ import VideoThumbnail from "./VideoThumbnail";
 import {
     LightningBoltIcon,
 } from '@heroicons/react/solid';
-import BannerAds from "./Ads/Banner1";
 import InstantMessageAds from "./Ads/InstantMessage";
 import MultiformatAds from "./Ads/MultiFormatAds";
 import Outstream from './Ads/Outstream';
 import PopunderAds from "./Ads/Popunder_Mob";
+import BannerAds from "./Ads/BannerAds";
 
 function Videos({ data }) {
 
@@ -32,7 +32,7 @@ function Videos({ data }) {
         <div className=" w-full h-fit ">
             {currentPath !== "blocked" &&
                 <>
-                    <MultiformatAds />
+                    {/* <MultiformatAds /> */}
                 </>
 
             }
@@ -67,10 +67,9 @@ function Videos({ data }) {
                 <>
                     {currentPath !== "blocked" &&
                         <>
-                            < Outstream />
-                            <MultiformatAds />
-                            <PopunderAds />
-                            <InstantMessageAds />
+                          <BannerAds/>
+                          <PopunderAds/>
+                          <Outstream/>
                         </>
                     }
                 </>

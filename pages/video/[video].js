@@ -10,6 +10,7 @@ import MultiformatAds from '../../components/Ads/MultiFormatAds';
 import Outstreams from '../../components/Ads/Outstream';
 import VideoPlayer from '../../components/VideoPlayer';
 import Videos from '../../components/Videos';
+import BannerAds from '../../components/Ads/BannerAds';
 // import { getVideoPageData } from '../../config/videoPlayer';
 import { BeatLoader } from 'react-spinners';
 
@@ -50,7 +51,7 @@ function Videoplayer() {
         setVideoTitleBackUp(title)
         const fetchVideoDetails = async () => {
 
-            let api=`/api/spangbang/videoPlayer`
+            let api = `/api/spangbang/videoPlayer`
             // let api=`https://lionfish-app-gm5h4.ondigitalocean.app/api/spangbang/videoPlayer`
             // let api=`https://clownfish-app-jn7w9.ondigitalocean.app/getVideoPageDetails`
 
@@ -222,10 +223,6 @@ function Videoplayer() {
 
 
 
-
-
-                        <MultiformatAds />
-
                         <div className='flex flex-col p-1 px-3 space-x-2  items-center md:flex-row sm:justify-items-start'>
                             <p className='font-semibold text-button text-[18px] lg:text-[24px] font-manrope'>Videos related to</p>
                             <p className='font-semibold text-[15px] lg:text-[20px] pl-1 font-inter'>{video_details.Title}</p>
@@ -233,12 +230,11 @@ function Videoplayer() {
                         <Videos data={relatedVideos} />
 
 
-                        <MultiformatAds />
+                        <BannerAds />
                         <Outstreams />
                         {latestVideo.length !== 0 &&
                             <Videos data={latestVideo} />
                         }
-                        <MultiformatAds />
                         {/* {countryVideo.length !== 0 &&
                         <Videos data={countryVideo} />
                     }

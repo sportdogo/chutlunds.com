@@ -16,39 +16,7 @@ function MultiformatAds() {
     return (
         <div className="bg-white  overflow-hidden mx-auto w-[350px] lg:w-[700px] xl:w-[900px]  my-2">
 
-            {/* <Script
-                id={uniqid + "sadfdsa"}
-                strategy="beforeInteractive"
-                src="https://a.realsrv.com/ad-provider.js"
-            />
-
-            <ins className="adsbyexoclick" data-zoneid={5069588} />
-
-
-            <Script id={uniqid}>
-                {`(AdProvider = window.AdProvider || []).push({"serve": { }});`}
-            </Script> */}
-
-            {/* <Script
-                strategy="beforeInteractive"
-                src="//www.highcpmcreativeformat.com/590bbfaa0c9d656e8a4aa68f89821ecd/invoke.js"
-                type="text/javascript"
-            /> */}
-
-
-            <Script
-                id={uniqid}
-                dangerouslySetInnerHTML={{
-                    __html: `atOptions = {
-		'key' : '56717b709474376d0fdefe33a5397221',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};`,
-                }}
-            />
-            <Script src='//staggereddam.com/56717b709474376d0fdefe33a5397221/invoke.js'></Script>
+    
 
 
         </div>

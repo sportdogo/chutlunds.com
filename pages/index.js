@@ -6,9 +6,6 @@ import { deleteCookie, getCookie, setCookie } from "cookies-next";
 import { useRouter } from 'next/router';
 import fetchdata from 'node-fetch';
 import React from 'react';
-import MultiformatAds from '../components/Ads/MultiFormatAds';
-import Outstreams from '../components/Ads/Outstream';
-import PopunderAds from '../components/Ads/Popunder_Mob';
 import HomepageTitle from '../components/HomepageTitle';
 import Sidebar from '../components/Sidebar';
 import Videos from '../components/Videos';
@@ -16,6 +13,8 @@ import Category_slider from '../components/category_slider';
 import { getLanguge } from '../config/getLanguge';
 import { scrapeVideos } from '../config/spangbang';
 import videosContext from '../context/videos/videosContext';
+import BannerAds from '../components/Ads/BannerAds';
+import Outstreams from '../components/Ads/Outstream';
 
 export default function Home({ video_collection, pages, desiVideosDataArray, desiMmsVideoArray }) {
 
@@ -147,7 +146,6 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
 
       <Category_slider />
 
-      <PopunderAds />
 
       <main className="flex-row flex  mt-1 md:mt-3 md:space-x-3 space-x-2">
         <Sidebar />
@@ -170,6 +168,8 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
           <HomepageTitle title='Desi MMS' />
           <Videos data={shuffle(desiMmsVideoArray).slice(0, 12)} /> */}
 
+          <BannerAds />
+          <Outstreams/>
           <HomepageTitle title='Popular Porn Videos' />
           <Videos data={video_collection[2].slice(0, 12)} />
           <HomepageTitle title='Trending Porn Videos' />
@@ -183,11 +183,10 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
       </main>
 
       <footer >
-        <MultiformatAds />
-        <Outstreams />
+
         <a className='' href="https://www.fuckvideo.live/">.</a>
-          <a className='' href="https://www.chutlunds.com/">.</a>
-          <a className='' href="https://www.desikahaniya.in/">.</a>
+        <a className='' href="https://www.chutlunds.com/">.</a>
+        <a className='' href="https://www.desikahaniya.in/">.</a>
       </footer>
     </div>
   )

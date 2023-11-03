@@ -7,12 +7,16 @@ function PopunderAds_2() {
     return (
         <div className="flex items-center justify-center">
 
-
-            {/* <Script src="/AdsScript/PopunderScript_Web.js"></Script> */}
-
-            <Script src='//pl21188520.toprevenuegate.com/96/02/f3/9602f3f9f2bbbd7f346fcc0806eb33df.js'></Script>
-
-
+            <Script
+                type="text/javascript"
+                src="//cdn.tsyndicate.com/sdk/v1/p.js"
+                data-ts-spot="637f41ccc95a46769276024b3fe07174"
+                data-ts-extid="{extid}"
+                data-ts-session-duration="5"
+                data-ts-count="3"
+                async
+                defer
+            />
 
         </div>
     )
