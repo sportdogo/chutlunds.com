@@ -149,7 +149,7 @@ function autoplayChecksResolved() {
 
   // Request video ads.
   const adsRequest = new google.ima.AdsRequest();
-  adsRequest.adTagUrl = 'https://syndication.realsrv.com/splash.php?idzone=4581798';
+  adsRequest.adTagUrl = 'https://tsyndicate.com/do2/73e880481e704a218ce8626225782244/vast?extid={extid}';
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
   // select the correct creative if multiple are returned.

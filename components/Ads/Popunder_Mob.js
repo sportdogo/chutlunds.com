@@ -8,7 +8,7 @@ function PopunderAds() {
 
 
 
-            <Script
+            {/* <Script
                 type="text/javascript"
                 src="//cdn.tsyndicate.com/sdk/v1/p.js"
                 data-ts-spot="0fede73077d5463e9a84946bbe3c27ff"
@@ -17,7 +17,7 @@ function PopunderAds() {
                 data-ts-count="3"
                 async
                 defer
-            />
+            /> */}
 
 
 
