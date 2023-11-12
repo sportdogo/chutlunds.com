@@ -1,20 +1,19 @@
 import Head from 'next/head';
 import { useContext, useEffect, useState } from 'react';
 
-import cheerio from 'cheerio';
 import { deleteCookie, getCookie, setCookie } from "cookies-next";
 import { useRouter } from 'next/router';
-import fetchdata from 'node-fetch';
 import React from 'react';
 import HomepageTitle from '../components/HomepageTitle';
 import Sidebar from '../components/Sidebar';
 import Videos from '../components/Videos';
 import Category_slider from '../components/category_slider';
 import { getLanguge } from '../config/getLanguge';
-import { scrapeVideos } from '../config/spangbang';
 import videosContext from '../context/videos/videosContext';
 import BannerAds from '../components/Ads/BannerAds';
 import Outstreams from '../components/Ads/Outstream';
+// import { getHomePageVideos } from '../config/getHomepageVideos';
+import {scrapeVideos} from '../config/spangbang';
 
 export default function Home({ video_collection, pages, desiVideosDataArray, desiMmsVideoArray }) {
 
@@ -169,7 +168,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
           <Videos data={shuffle(desiMmsVideoArray).slice(0, 12)} /> */}
 
           <BannerAds />
-          <Outstreams/>
+          <Outstreams />
           <HomepageTitle title='Popular Porn Videos' />
           <Videos data={video_collection[2].slice(0, 12)} />
           <HomepageTitle title='Trending Porn Videos' />
@@ -197,122 +196,17 @@ export async function getStaticProps({ req, res }) {
 
 
 
-  var finalDataArray_Arrar = []
-  var finalDataArray = []
-
-  const scrape = async (url) => {
-
-    var thumbnailArray = []
-    var TitleArray = []
-    var durationArray = []
-    var likedPercentArray = []
-    var viewsArray = []
-    var previewVideoArray = []
-    var hrefArray = []
-
-    const response = await fetchdata(url)
-    const body = await response.text();
-    const $ = cheerio.load(body)
-
-
-
-
-
-    $('.videos .video-list.video-rotate').each((i, el) => {
-
-      const select = cheerio.load(el)
-
-      select('.video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("data-src")
-        thumbnailArray.push(data)
-
-
-      })
-
-      select('.video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("alt")
-        TitleArray.push(data)
-
-
-      })
-
-      select('.video-item .l').each((i, el) => {
-
-        const data = $(el).text()
-        durationArray.push(data)
-      })
-
-
-
-      select('.video-item .stats').each((i, el) => {
-
-        const text = $(el).text()
-        const likePercentage = text.substring(text.indexOf("%") - 4, text.indexOf("%") + 1)
-        const views = text.substring(0, text.indexOf("%") - 4)
-
-        likedPercentArray.push(likePercentage.trim())
-        viewsArray.push(views.trim())
-
-      })
-
-
-      select('.video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("data-preview")
-        previewVideoArray.push(data)
-      })
-
-
-
-      select('.video-item').each((i, el) => {
-
-        const data = $(el).children().eq(1).attr("href")
-        if (data) {
-          hrefArray.push(`https://spankbang.com${data}`)
-        }
-      })
-
-
-
-      for (let index = 0; index < thumbnailArray.length; index++) {
-
-        if (hrefArray[index] != undefined && previewVideoArray[index] != undefined && !thumbnailArray[index].includes("//assets.sb-cdate.com")) {
-
-          finalDataArray.push({
-            thumbnailArray: thumbnailArray[index],
-            TitleArray: TitleArray[index],
-            durationArray: durationArray[index],
-            likedPercentArray: likedPercentArray[index],
-            viewsArray: viewsArray[index],
-            previewVideoArray: previewVideoArray[index],
-            hrefArray: hrefArray[index],
-
-          })
-        }
-      }
-
-      if (finalDataArray.length > 2) {
-        finalDataArray_Arrar.push(finalDataArray)
-      }
-
-      thumbnailArray = []
-      TitleArray = []
-      durationArray = []
-      likedPercentArray = []
-      viewsArray = []
-      previewVideoArray = []
-      hrefArray = []
-
-      finalDataArray = []
-    })
-
-
-  }
-
-
-  await scrape(`https://spankbang.party/`)
+  const parcelData = { href: "https://spankbang.party/" }
+  const rawResponse = await fetch(`https://clownfish-app-jn7w9.ondigitalocean.app/getHomePageVideos`, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(parcelData),
+  });
+  const ress = await rawResponse.json();;
+  const finalDataArray_Arrar=ress.data;
 
 
   var desiVideosDataArray = []
