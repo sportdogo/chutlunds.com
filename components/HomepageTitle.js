@@ -42,7 +42,7 @@ const HomepageTitle = ({ title, country, language }) => {
 
 
             {title &&
-                <Link href={href}>
+                <a href={href}>
                     <div className="flex justify-between items-center  rounded bg-button text-white  p-2 px-3  hover:bg-theme ">
                         <div className="flex space-x-2 items-center ">
 
@@ -62,7 +62,7 @@ const HomepageTitle = ({ title, country, language }) => {
                         </div>
                         <ChevronRightIcon className="icon" />
                     </div>
-                </Link>
+                </a>
             }
         </div>
 
