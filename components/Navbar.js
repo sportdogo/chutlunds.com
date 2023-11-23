@@ -29,7 +29,7 @@ var navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Category', href: '/category', current: false },
     { name: 'Pornstars', href: '/pornstar', current: false },
-    { name: 'Sex Chat', href: 'https://play.google.com/store/apps/details?id=com.bhola.realvideochat1&hl=en-IN', current: false },
+    { name: 'Sex Chat', href: 'https://play.google.com/store/apps/details?id=com.bhola.livevideochat4&hl=en-IN', current: false },
     // { name: 'Live Cams', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
     // { name: 'Meet & Fuck', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
 ]
@@ -358,7 +358,7 @@ function Navbar() {
                 </Link>
 
         
-                <Link href='https://play.google.com/store/apps/details?id=com.bhola.realvideochat1&hl=en-IN'>
+                <Link href='https://play.google.com/store/apps/details?id=com.bhola.livevideochat4&hl=en-IN'>
                     <p className=' sm:text-xl xl:text-[28px] text-md text-theme  text-center p-1 hover:text-red-600 '>Sex Chat</p>
                 </Link>
 
