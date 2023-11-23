@@ -52,24 +52,24 @@ function Category({ video_collection, pages }) {
 
 export default Category
 
-export async function getStaticPaths() {
+// export async function getStaticPaths() {
 
 
-    return {
+//     return {
 
-        paths: [
-            { params: { homepageVideos: 'trending' } },
-            { params: { homepageVideos: 'upcoming' } },
-            { params: { homepageVideos: 'new' } },
-            { params: { homepageVideos: 'popular' } },
+//         paths: [
+//             { params: { homepageVideos: 'trending' } },
+//             { params: { homepageVideos: 'upcoming' } },
+//             { params: { homepageVideos: 'new' } },
+//             { params: { homepageVideos: 'popular' } },
 
-        ],
-        fallback: true // false or 'blocking'
-    };
-}
+//         ],
+//         fallback: true // false or 'blocking'
+//     };
+// }
 
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
 
 
 
