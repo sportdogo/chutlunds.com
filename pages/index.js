@@ -195,7 +195,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
 export async function getStaticProps({ req, res }) {
 
   const parcelData = { href: "https://spankbang.party/" }
-  const rawResponse = await fetch(`https://chutlunds.com/api/spangbang/homepage`, {
+  const rawResponse = await fetch(`https://chutlunds-com-puce.vercel.app/api/spangbang/homepage`, {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -204,7 +204,7 @@ export async function getStaticProps({ req, res }) {
     body: JSON.stringify(parcelData),
   });
   const ress = await rawResponse.json();;
-  const finalDataArray_Arrar = await ress.finalDataArray;
+  const finalDataArray_Arrar =  ress.finalDataArray;
 
 
   var desiVideosDataArray = []
