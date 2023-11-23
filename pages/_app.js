@@ -8,7 +8,7 @@ import Head from 'next/head'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
-
+  
 
 function MyApp({ Component, pageProps }) {
 
