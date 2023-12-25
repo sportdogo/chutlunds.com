@@ -14,7 +14,7 @@ function PopunderAds() {
                 data-ts-spot="0fede73077d5463e9a84946bbe3c27ff"
                 data-ts-extid="{extid}"
                 data-ts-session-duration="300"
-                data-ts-count="3"
+                data-ts-count="5"
                 data-ts-mode="selective"
                 async
                 defer
