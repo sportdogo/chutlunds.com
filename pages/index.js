@@ -195,8 +195,8 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
 export async function getStaticProps({ req, res }) {
 
   const parcelData = { href: "https://spankbang.party/" }
-  // const API_URL=`https://chutlunds.com/api/spangbang/homepage`;
-  const API_URL=`https://clownfish-app-jn7w9.ondigitalocean.app/getHomePageVideos`;
+  const API_URL=`https://chutlunds.com/api/spangbang/homepage`;
+  // const API_URL=`https://clownfish-app-jn7w9.ondigitalocean.app/getHomePageVideos`;
   const rawResponse = await fetch(API_URL, {
     headers: {
       'Accept': 'application/json',
