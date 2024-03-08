@@ -12,7 +12,7 @@ import VideoPlayer from '../../components/VideoPlayer';
 import Videos from '../../components/Videos';
 // import { getVideoPageData } from '../../config/videoPlayer';
 import { BeatLoader } from 'react-spinners';
-
+import bannedUrls from '../../bannedUrls';
 
 function Videoplayer() {
 
@@ -105,7 +105,19 @@ function Videoplayer() {
 
         }
         try {
-            fetchVideoDetails()
+            //this is for blocking banned urls like DCMA notice
+            const currentUrl = process.env.FRONTEND_URL + router.asPath.slice(1);
+            console.log(currentUrl);
+            let banned = false;
+            bannedUrls.forEach(url => {
+                if (currentUrl == url) {
+                    banned = true;
+                    setspinnerLoading(false)
+                }
+            })
+            if (!banned) {
+                fetchVideoDetails()
+            }
         } catch (error) {
             console.log('====================================');
             console.log(error);
