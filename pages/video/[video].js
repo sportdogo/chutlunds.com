@@ -108,9 +108,10 @@ function Videoplayer() {
             //this is for blocking banned urls like DCMA notice
             const currentUrl = process.env.FRONTEND_URL + router.asPath.slice(1);
             console.log(currentUrl);
-            let banned = false;
+            var banned = false;
             bannedUrls.forEach(url => {
-                if (currentUrl == url) {
+                if (currentUrl === url) {
+                    console.log(url);
                     banned = true;
                     setspinnerLoading(false)
                 }
