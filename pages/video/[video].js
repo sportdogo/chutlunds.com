@@ -110,10 +110,10 @@ function Videoplayer() {
             console.log(currentUrl);
             var banned = false;
             bannedUrls.forEach(url => {
-                if (currentUrl === url) {
-                    console.log(url);
+                if (currentUrl.trim() === url.trim()) {
                     banned = true;
                     setspinnerLoading(false)
+                    
                 }
             })
             if (!banned) {
