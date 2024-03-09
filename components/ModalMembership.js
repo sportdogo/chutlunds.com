@@ -7,6 +7,11 @@ const ModalMembership = () => {
 
 
 
+    const [card_paypal, setcard_paypal] = useState("card");
+    const [nameOnCard, setnameOnCard] = useState("");
+    const [cardnumber, setcardnumber] = useState("");
+    const [expirationDate, setexpirationDate] = useState("");
+    const [cvv, setcvv] = useState("");
 
     const [beatLoader, setbeatLoader] = useState(false);
 
@@ -85,27 +90,27 @@ const ModalMembership = () => {
     return (
         <div className={`fixed flex justify-center items-center inset-0 z-30  `}>
 
-            <div className={`bg-white w-4/5 lg:w-2/4 p-[20px] rounded-xl shadow-md `}>
+            <div className={`bg-white w-4/5 lg:w-2/4 2xl:w-1/4 p-[20px] rounded-xl shadow-md `}>
 
                 <div className="w-full pt-1 pb-5">
-                    <div className="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
+                    <div className="bg-theme text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
                         <i className="mdi mdi-credit-card-outline text-3xl"></i>
                     </div>
                 </div>
                 <div className="mb-10">
                     <h1 className="text-center font-bold text-xl uppercase">Secure payment info</h1>
                 </div>
-                <div className="mb-3 flex -mx-2 items-center">
+                <div className="mb-3 lg:flex -mx-2 items-center">
                     <div className="px-2">
                         <label htmlFor="type1" className="flex items-center cursor-pointer">
                             <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked />
                             <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" />
                         </label>
                     </div>
-                    <div className="px-2">
+                    <div className="px-2 lg:mt-0 mt-2">
                         <label htmlFor="type2" className="flex items-center cursor-pointer">
                             <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type2" />
-                            <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-12 ml-3" />
+                            <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-[45px] ml-3" />
                         </label>
                     </div>
                 </div>
@@ -157,13 +162,13 @@ const ModalMembership = () => {
                     </div>
                 </div>
                 <div className="mb-10">
-                    <label className="font-bold text-sm mb-2 ml-1">Security code</label>
+                    <label className="font-bold text-sm mb-2 ml-1">CVV</label>
                     <div>
                         <input className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="number" />
                     </div>
                 </div>
                 <div>
-                    <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ($2.99)</button>
+                    <button className="block w-full max-w-xs mx-auto bg-theme hover:bg-indigo-900 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ($2.99)</button>
                 </div>
             </div>
 
