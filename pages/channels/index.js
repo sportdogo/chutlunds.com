@@ -114,7 +114,7 @@ function Index({ video_collection, trendingChannels, newChannels }) {
                 href = obj.channel_href
             }
         })
-        const code = href.substring(href.indexOf("party/") + 6, href.indexOf("/channel") )
+        const code = href.substring(href.indexOf("party/") + 6, href.indexOf("/channel"))
         const channelname_href = href.substring(href.indexOf("channel/") + 8, href.length)
 
         return `/channels/${code}/${channelname_href}`
@@ -129,6 +129,32 @@ function Index({ video_collection, trendingChannels, newChannels }) {
                 <meta name="description" content="Watch hot porn channels and sex videos for free only on Chutlunds." />
 
             </Head>
+
+
+            <div className={`mx-3 mt-4  transition ease-in-out delay-150 `}>
+                <div className='flex my-1 pr-2 md:w-3/5 md:mx-auto'  >
+                    <input className='focus:outline-none flex-grow mr-1 font-inter rounded-lg p-2 px-3  bg-slate-100' type='text' onChange={(event) => { onChangeHandler(event.target.value) }} placeholder='Search channel...'></input>
+                </div>
+            </div>
+
+            <div className={`grid grid-cols-4  sm:grid-cols-4 gap-3 md:gap-5 lg:gap-4  md:grid-cols-6 2xl:grid-cols-7`}>
+                {suggestedData.length != 0 && suggestedData.map(channelName => {
+                    const href = customiseUrl(channelName)
+                    return (
+                        <Link key={channelName} href={href}>  <div className='  relative hover:scale-105 transform transition duration-150 rounded   aspect-box  ' >
+                            <img
+                                className='object-cover w-full rounded-[15px] border-[1px] border-gray-200 '
+                                alt={channelName}
+                                src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channelName.replace(/ /g, "_").toLowerCase()}.jpg`}
+                                loading="lazy"
+                            ></img>
+                            <h2 className='mt-1 font-inter rounded-b font-medium  text-[12px]  sm:text-md lg:text-lg 2xl:text-2xl  px-1  pb-3 lg:pb-4 w-full text-center   text-theme '>{channelName}</h2>
+                        </div>
+                        </Link>
+                    )
+                })}
+
+            </div>
 
 
             <div className="mt-4 mb-2 lg:mb-4 2xl:my-6 flex justify-between items-center  rounded shadow-md shadow-blue-100 text-white  p-2 px-3  w-full">
@@ -191,30 +217,6 @@ function Index({ video_collection, trendingChannels, newChannels }) {
             </div>
 
 
-            <div className={`my-4  transition ease-in-out delay-150 `}>
-                <div className='flex my-1 pr-2 md:w-3/5 md:mx-auto'  >
-                    <input className='focus:outline-none flex-grow mr-1 font-inter rounded p-1 px-2  bg-slate-100' type='text' onChange={(event) => { onChangeHandler(event.target.value) }} placeholder='Search channel...'></input>
-                </div>
-            </div>
-
-            <div className={`grid grid-cols-4  sm:grid-cols-4 gap-3 md:gap-5 lg:gap-4  md:grid-cols-6 2xl:grid-cols-7`}>
-                {suggestedData.length != 0 && suggestedData.map(channelName => {
-                    const href = customiseUrl(channelName)
-                    return (
-                        <Link key={channelName} href={href}>  <div className='  relative hover:scale-105 transform transition duration-150 rounded   aspect-box  ' >
-                            <img
-                                className='object-cover w-full rounded-[15px] border-[1px] border-gray-200 '
-                                alt={channelName}
-                                src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channelName.replace(/ /g, "_").toLowerCase()}.jpg`}
-                                loading="lazy"
-                            ></img>
-                            <h2 className='mt-1 font-inter rounded-b font-medium  text-[12px]  sm:text-md lg:text-lg 2xl:text-2xl  px-1  pb-3 lg:pb-4 w-full text-center   text-theme '>{channelName}</h2>
-                        </div>
-                        </Link>
-                    )
-                })}
-
-            </div>
 
 
             {

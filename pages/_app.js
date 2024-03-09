@@ -7,10 +7,15 @@ import '../styles/nProgress.css'
 import Head from 'next/head'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import { useRouter } from 'next/router';
 
-  
+
 
 function MyApp({ Component, pageProps }) {
+
+  const router = useRouter();
+  const currentRoute = router.pathname;
+  console.log(currentRoute);
 
   Router.events.on("routeChangeStart", (ur = -0) => {
     NProgress.start();
@@ -26,7 +31,7 @@ function MyApp({ Component, pageProps }) {
 
       <Head>
         <meta name='asg_verification' content='vVcWCcbbgmnqv221hpAjPojb' />
-        <meta name="Trafficstars" content="48702"/>
+        <meta name="Trafficstars" content="48702" />
         <meta name="exoclick-site-verification" content="6b1112fe173bdf782d96975e70bd4b95"></meta>
         <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -64,11 +69,11 @@ function MyApp({ Component, pageProps }) {
         <SignUpFormOTP/>
         <PasswordReset/> */}
         <Navbar />
-        <div className='basicMargin '>
+        <div className={`${currentRoute == "/membership" ? "" : "basicMargin"} `}>
           <Component {...pageProps} />
         </div>
         <hr />
-        
+
         {/* <Footer /> */}
       </VideoState>
     </>

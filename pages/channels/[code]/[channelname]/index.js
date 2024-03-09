@@ -51,7 +51,7 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
                 <div className=' flex font-semibold  items-center justify-start  md:ml-4 m-2 ' >
 
                     <img
-                        className={`object-cover w-44 h-56    rounded-[15px] border-[1px] border-gray-200 `}
+                        className={`object-cover w-44 h-44    rounded-[15px] border-[1px] border-gray-200 `}
                         src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channel_name.replace(/ /g, "_").toLowerCase()}.jpg`}
                         alt={channel_name}
                         loading='lazy'
