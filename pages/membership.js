@@ -52,8 +52,8 @@ const Membership = () => {
                         return (
                             <div key={obj.img} className=''>
                                 <img src={obj.img} alt="" className='w-[70px] lg:w-[100px] 2xl:w-[120px] mx-auto mb-6 lg:mb-10' />
-                                <p className='text-white font-semibold font-inter tracking-wider block mx-auto text-center my-1 text-[13px] lg:text-[20px]'>{obj.heading}</p>
-                                <p className='text-gray-300 font-thin font-poppins  block mx-auto text-center lg:w-3/4 text-[10px] lg:text-[15px]'>{obj.sub_heading}</p>
+                                <p className='text-white font-semibold font-inter tracking-wider block mx-auto text-center my-1 text-[14px] lg:text-[20px]'>{obj.heading}</p>
+                                <p className='text-gray-300 font-thin font-poppins  block mx-auto text-center lg:w-3/4 text-[11px] lg:text-[15px]'>{obj.sub_heading}</p>
                             </div>
 
                         )
