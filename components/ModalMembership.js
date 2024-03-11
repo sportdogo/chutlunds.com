@@ -1,6 +1,10 @@
 import Cookies from 'js-cookie';
 import { useContext, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
+import videosContext from '../context/videos/videosContext';
+import {
+    XCircleIcon
+} from '@heroicons/react/solid';
 
 
 const ModalMembership = () => {
@@ -16,6 +20,11 @@ const ModalMembership = () => {
     const [beatLoader, setbeatLoader] = useState(false);
 
 
+    const { paymentModalVisible, setpaymentModalVisible } = useContext(videosContext);
+
+    const radioBtn = (e) => {
+        setcard_paypal(e.target.value);
+    }
     const confirmClick = async () => {
         setbeatLoader(true)
 
@@ -83,12 +92,12 @@ const ModalMembership = () => {
             return
         }
 
-        setModalPublishVisible(!ModalPublishVisible);
+        setpaymentModalVisible(!paymentModalVisible);
 
     }
 
     return (
-        <div className={`fixed flex justify-center items-center inset-0 z-30  `}>
+        <div className={` select-none fixed flex justify-center items-center inset-0 z-30  ${paymentModalVisible ? "" : "invisible"}`}>
 
             <div className={`bg-white w-4/5 lg:w-2/4 2xl:w-1/4 p-[20px] rounded-xl shadow-md `}>
 
@@ -97,80 +106,91 @@ const ModalMembership = () => {
                         <i className="mdi mdi-credit-card-outline text-3xl"></i>
                     </div>
                 </div>
+
                 <div className="mb-10">
                     <h1 className="text-center font-bold text-xl uppercase">Secure payment info</h1>
                 </div>
                 <div className="mb-3 lg:flex -mx-2 items-center">
                     <div className="px-2">
                         <label htmlFor="type1" className="flex items-center cursor-pointer">
-                            <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked />
+                            <input value="card" onClick={radioBtn} type="radio" className="form-radio h-5 w-5 text-indigo-500" name="radioBtn" id="radioBtn" checked />
                             <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" />
                         </label>
                     </div>
                     <div className="px-2 lg:mt-0 mt-2">
                         <label htmlFor="type2" className="flex items-center cursor-pointer">
-                            <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type2" />
+                            <input value="paypal" onClick={radioBtn} type="radio" className="form-radio h-5 w-5 text-indigo-500" name="radioBtn" id="radioBtn" />
                             <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-[45px] ml-3" />
                         </label>
                     </div>
                 </div>
 
-                <div className="mb-3">
-                    <label className="font-bold text-sm mb-2 ml-1">Name on card</label>
-                    <div>
-                        <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text" />
-                    </div>
-                </div>
-                <div className="mb-3">
-                    <label className="font-bold text-sm mb-2 ml-1">Card number</label>
-                    <div>
-                        <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text" />
-                    </div>
-                </div>
-                <div className="mb-3 -mx-2 flex items-end">
-                    <div className="px-2 w-1/2">
-                        <label className="font-bold text-sm mb-2 ml-1">Expiration date</label>
+                <div className={`${card_paypal === "card" ? "" : "opacity-50 pointer-events-none"}`}>
+
+                    <div className={`mb-3 `}>
+                        <label className="font-bold text-sm mb-2 ml-1">Name on card</label>
                         <div>
+                            <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text" />
+                        </div>
+                    </div>
+                    <div className="mb-3">
+                        <label className="font-bold text-sm mb-2 ml-1">Card number</label>
+                        <div>
+                            <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text" />
+                        </div>
+                    </div>
+                    <div className="mb-3 -mx-2 flex items-end">
+                        <div className="px-2 w-1/2">
+                            <label className="font-bold text-sm mb-2 ml-1">Expiration date</label>
+                            <div>
+                                <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                    <option value="01">01 - January</option>
+                                    <option value="02">02 - February</option>
+                                    <option value="03">03 - March</option>
+                                    <option value="04">04 - April</option>
+                                    <option value="05">05 - May</option>
+                                    <option value="06">06 - June</option>
+                                    <option value="07">07 - July</option>
+                                    <option value="08">08 - August</option>
+                                    <option value="09">09 - September</option>
+                                    <option value="10">10 - October</option>
+                                    <option value="11">11 - November</option>
+                                    <option value="12">12 - December</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="px-2 w-1/2">
                             <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                                <option value="01">01 - January</option>
-                                <option value="02">02 - February</option>
-                                <option value="03">03 - March</option>
-                                <option value="04">04 - April</option>
-                                <option value="05">05 - May</option>
-                                <option value="06">06 - June</option>
-                                <option value="07">07 - July</option>
-                                <option value="08">08 - August</option>
-                                <option value="09">09 - September</option>
-                                <option value="10">10 - October</option>
-                                <option value="11">11 - November</option>
-                                <option value="12">12 - December</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2029">2030</option>
+                                <option value="2029">2031</option>
+                                <option value="2029">2032</option>
                             </select>
                         </div>
                     </div>
-                    <div className="px-2 w-1/2">
-                        <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2029">2030</option>
-                            <option value="2029">2031</option>
-                            <option value="2029">2032</option>
-                        </select>
+                    <div className="mb-10">
+                        <label className="font-bold text-sm mb-2 ml-1">CVV</label>
+                        <div>
+                            <input className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="number" />
+                        </div>
                     </div>
+
                 </div>
-                <div className="mb-10">
-                    <label className="font-bold text-sm mb-2 ml-1">CVV</label>
-                    <div>
-                        <input className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="number" />
-                    </div>
-                </div>
+
                 <div>
                     <button className="block w-full max-w-xs mx-auto bg-theme hover:bg-indigo-900 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ($2.99)</button>
                 </div>
+
+                <div>
+                    <button onClick={()=>setpaymentModalVisible(false)} className="block w-full max-w-xs mx-auto  items-center text-theme underline rounded-lg px-3 py-3 font-semibold"> Cancel</button>
+                </div>
             </div>
+
 
 
 

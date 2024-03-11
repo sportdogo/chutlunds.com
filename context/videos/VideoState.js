@@ -6,13 +6,14 @@ import { useRouter } from "next/router";
 
 
 
-
 const VideoState = (props) => {
 
     const router = useRouter();
     const [spinnerLoading, setspinnerLoading] = useState(false)
+    const [paymentModalVisible, setpaymentModalVisible] = useState(false)
     const [DarkTheme, setDarkTheme] = useState('')
     const [currentLocation, setcurrentLocation] = useState(null)
+    
 
     //Login stuffs
 
@@ -45,7 +46,7 @@ const VideoState = (props) => {
 
 
     return (
-        <videosContext.Provider value={{ spinnerLoading, setSpinner, setDarkThemeFunc, DarkTheme, currentLocation, setcurrentLocation, OTPemail, setOTPemail, loggedIn, setloggedIn ,tagsContext, settagsContext}}>
+        <videosContext.Provider value={{ spinnerLoading, setSpinner, setDarkThemeFunc, DarkTheme, currentLocation, setcurrentLocation, OTPemail, setOTPemail, loggedIn, setloggedIn ,tagsContext, settagsContext,paymentModalVisible, setpaymentModalVisible}}>
             {props.children}
         </videosContext.Provider>
     )
