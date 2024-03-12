@@ -139,7 +139,7 @@ const ModalMembership = () => {
     return (
         <div className={` select-none fixed flex justify-center items-center inset-0 z-30  ${paymentModalVisible ? "" : "invisible"}`}>
 
-            <div className={`relative bg-white lg:bg-red-300 w-4/5 sm:w-3/4 md:w-1/2 lg:w-2/5/3 xl:w-1/3 2xl:w-1/5 p-[20px] py-[10px] rounded-xl shadow-md `}>
+            <div className={`relative bg-white w-4/5 sm:w-3/4 md:w-1/2 lg:w-2/5/3 xl:w-1/3 2xl:w-1/5 p-[20px] py-[5px] rounded-xl shadow-md `}>
 
                 <div className={`absolute inset-0 flex flex-col items-center justify-center   ${beatLoader ? "" : "invisible"}`}>
                     <BeatLoader loading size={25} color={'blue'} />
@@ -155,7 +155,7 @@ const ModalMembership = () => {
                         </div>
                     </div>
 
-                    <div className="mb-6 lg:mb-10">
+                    <div className="mb-6 ">
                         <h1 className="text-center font-semibold font-poppins text-theme text-lg lg:text-xl uppercase">Chutlunds Secure payment</h1>
                     </div>
 
@@ -183,20 +183,20 @@ const ModalMembership = () => {
 
                     <div className={`${card_paypal === "card" ? "" : "opacity-50 pointer-events-none"}`}>
 
-                        <div className=" lg:mb-3">
+                        <div className=" lg:mb-1">
                             <label className="font-semibold font-theme text-theme text-xs lg:text-sm ml-1">Name on Credit card</label>
                             <div>
                                 <input value={nameOnCard} onChange={(e) => { setnameOnCard(e.target.value) }} className="font-poppins w-full px-3 py-1 lg:py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none  transition-colors" placeholder="John Smith" type="text" />
                             </div>
                         </div>
-                        <div className=" lg:mb-3">
+                        <div className=" lg:mb-1">
                             <label className="font-semibold font-theme text-theme text-xs lg:text-sm  ml-1 ">Credit Card number</label>
                             <div>
                                 <input value={cardnumber}
                                     onChange={handleCardNumber} className="font-poppins w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none  transition-colors" placeholder="0000 0000 0000 0000" type="text" inputMode="numeric" />
                             </div>
                         </div>
-                        <div className="lg:mb-3 -mx-2 flex items-end">
+                        <div className="lg:mb-1 -mx-2 flex items-end">
                             <div className="px-2 w-1/2">
                                 <label className="font-semibold font-theme text-theme text-xs lg:text-sm mb-2 ml-1">Expiration date</label>
                                 <div>
@@ -230,7 +230,7 @@ const ModalMembership = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="mb-6 lg:mb-10 ">
+                        <div className="mb-3 ">
                             <label className="font-semibold font-theme text-theme text-xs lg:text-sm mb-2 ml-1">CVV</label>
                             <div>
                                 <input value={cvv} onChange={handlerCvv} className="font-poppins text-xs lg:text-sm w-32 px-3  py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none  transition-colors" placeholder="000" type="number" />
