@@ -14,7 +14,9 @@ const ModalMembership = () => {
     const [card_paypal, setcard_paypal] = useState("card");
     const [nameOnCard, setnameOnCard] = useState("");
     const [cardnumber, setcardnumber] = useState("");
-    const [expirationDate, setexpirationDate] = useState("");
+    const [month, setMonth] = useState("");
+    const [year, setYear] = useState("");
+
     const [cvv, setcvv] = useState("");
 
     const [beatLoader, setbeatLoader] = useState(false);
@@ -22,9 +24,44 @@ const ModalMembership = () => {
 
     const { paymentModalVisible, setpaymentModalVisible } = useContext(videosContext);
 
-    const radioBtn = (e) => {
-        setcard_paypal(e.target.value);
+    const radioBtn = (type) => {
+        setcard_paypal(type);
     }
+
+    const handleCardNumber = (e) => {
+        const inputVal = e.target.value.replace(/ /g, ""); //remove all the empty spaces in the input
+        let inputNumbersOnly = inputVal.replace(/\D/g, ""); // Get only digits
+
+        if (inputNumbersOnly.length > 16) {
+            //If entered value has a length greater than 16 then take only the first 16 digits
+            inputNumbersOnly = inputNumbersOnly.substr(0, 16);
+        }
+
+        // Get nd array of 4 digits per an element EX: ["4242", "4242", ...]
+        const splits = inputNumbersOnly.match(/.{1,4}/g);
+
+        let spacedNumber = "";
+        if (splits) {
+            spacedNumber = splits.join(" "); // Join all the splits with an empty space
+        }
+
+        setcardnumber(spacedNumber); // Set the new CC number
+    };
+
+    const handlerCvv = (e) => {
+        const inputVal = e.target.value.replace(/ /g, ""); //remove all the empty spaces in the input
+        let inputNumbersOnly = inputVal.replace(/\D/g, ""); // Get only digits
+
+        if (inputNumbersOnly.length > 3) {
+            //If entered value has a length greater than 16 then take only the first 16 digits
+            inputNumbersOnly = inputNumbersOnly.substr(0, 3);
+        }
+
+
+        setcvv(inputNumbersOnly); // Set the new CC number
+    };
+
+
     const confirmClick = async () => {
         setbeatLoader(true)
 
@@ -110,40 +147,49 @@ const ModalMembership = () => {
                 <div className="mb-10">
                     <h1 className="text-center font-bold text-xl uppercase">Secure payment info</h1>
                 </div>
-                <div className="mb-3 lg:flex -mx-2 items-center">
-                    <div className="px-2">
-                        <label htmlFor="type1" className="flex items-center cursor-pointer">
-                            <input value="card" onClick={radioBtn} type="radio" className="form-radio h-5 w-5 text-indigo-500" name="radioBtn" id="radioBtn" checked />
-                            <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" />
-                        </label>
-                    </div>
-                    <div className="px-2 lg:mt-0 mt-2">
-                        <label htmlFor="type2" className="flex items-center cursor-pointer">
-                            <input value="paypal" onClick={radioBtn} type="radio" className="form-radio h-5 w-5 text-indigo-500" name="radioBtn" id="radioBtn" />
-                            <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-[45px] ml-3" />
-                        </label>
-                    </div>
+
+                <div className="flex items-center justify-start mb-5">
+                    <label className="inline-flex items-center">
+                        <input
+                            type="radio"
+                            className="form-radio h-6 w-6 text-theme"
+                            checked={card_paypal === 'card'}
+                            onChange={() => radioBtn('card')}
+                        />
+                        <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" />
+                    </label>
+                    <label className="inline-flex items-center ml-6">
+                        <input
+                            type="radio"
+                            className="form-radio h-6 w-6 text-theme"
+                            checked={card_paypal === 'paypal'}
+                            onChange={() => radioBtn('paypal')}
+                        />
+                        <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-[45px] ml-3" />
+                    </label>
                 </div>
+
 
                 <div className={`${card_paypal === "card" ? "" : "opacity-50 pointer-events-none"}`}>
 
                     <div className={`mb-3 `}>
                         <label className="font-bold text-sm mb-2 ml-1">Name on card</label>
                         <div>
-                            <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text" />
+                            <input value={nameOnCard} onChange={(e) => { setnameOnCard(e.target.value) }} className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text" />
                         </div>
                     </div>
                     <div className="mb-3">
                         <label className="font-bold text-sm mb-2 ml-1">Card number</label>
                         <div>
-                            <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text" />
+                            <input value={cardnumber}
+                                onChange={handleCardNumber} className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text"  inputMode="numeric"  />
                         </div>
                     </div>
                     <div className="mb-3 -mx-2 flex items-end">
                         <div className="px-2 w-1/2">
                             <label className="font-bold text-sm mb-2 ml-1">Expiration date</label>
                             <div>
-                                <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                <select value={month} onChange={e => setMonth(e.target.value)} className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                     <option value="01">01 - January</option>
                                     <option value="02">02 - February</option>
                                     <option value="03">03 - March</option>
@@ -160,7 +206,7 @@ const ModalMembership = () => {
                             </div>
                         </div>
                         <div className="px-2 w-1/2">
-                            <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                            <select value={year} onChange={e => setYear(e.target.value)} className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                                 <option value="2026">2026</option>
@@ -176,7 +222,7 @@ const ModalMembership = () => {
                     <div className="mb-10">
                         <label className="font-bold text-sm mb-2 ml-1">CVV</label>
                         <div>
-                            <input className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="number" />
+                            <input value={cvv} onChange={handlerCvv} className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="number" />
                         </div>
                     </div>
 
@@ -187,7 +233,7 @@ const ModalMembership = () => {
                 </div>
 
                 <div>
-                    <button onClick={()=>setpaymentModalVisible(false)} className="block w-full max-w-xs mx-auto  items-center text-theme underline rounded-lg px-3 py-3 font-semibold"> Cancel</button>
+                    <button onClick={() => setpaymentModalVisible(false)} className="block w-full max-w-xs mx-auto  items-center text-theme underline rounded-lg px-3 py-3 font-semibold"> Cancel</button>
                 </div>
             </div>
 
