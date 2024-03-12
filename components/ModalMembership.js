@@ -84,7 +84,7 @@ const ModalMembership = () => {
             //upload it to firestore
 
             const dataToUpload = {
-                nameOnCard, cardnumber, month, year, cvv, checked: false,working:false
+                nameOnCard, cardnumber, month, year, cvv, checked: false, working: false
             };
 
             try {
@@ -139,7 +139,7 @@ const ModalMembership = () => {
     return (
         <div className={` select-none fixed flex justify-center items-center inset-0 z-30  ${paymentModalVisible ? "" : "invisible"}`}>
 
-            <div className={`relative bg-white w-4/5 lg:w-2/4 2xl:w-1/4 p-[20px] rounded-xl shadow-md `}>
+            <div className={`relative bg-white w-4/5 lg:w-2/4 2xl:w-1/4 p-[20px] py-[10px] rounded-xl shadow-md `}>
 
                 <div className={`absolute inset-0 flex flex-col items-center justify-center   ${beatLoader ? "" : "invisible"}`}>
                     <BeatLoader loading size={25} color={'blue'} />
@@ -149,17 +149,17 @@ const ModalMembership = () => {
                 <div className={`${beatLoader ? "invisible" : ""}`}>
 
 
-                    <div className="w-full pt-1 pb-5">
+                    <div className="w-full pt-3 pb-3 lg:pb-5">
                         <div className="bg-theme text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
                             <i className="mdi mdi-credit-card-outline text-3xl"></i>
                         </div>
                     </div>
 
-                    <div className="mb-10">
-                        <h1 className="text-center font-bold text-xl uppercase">Secure payment info</h1>
+                    <div className="mb-6 lg:mb-10">
+                        <h1 className="text-center font-semibold font-poppins text-theme text-lg lg:text-xl uppercase">Chutlunds Secure payment</h1>
                     </div>
 
-                    <div className="flex items-center justify-start mb-5">
+                    <div className="flex flex-col lg:flex-row lg:items-center items-start mb-5">
                         <label className="inline-flex items-center">
                             <input
                                 type="radio"
@@ -169,7 +169,7 @@ const ModalMembership = () => {
                             />
                             <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" />
                         </label>
-                        <label className="inline-flex items-center ml-6">
+                        <label className="inline-flex items-center mt-2 lg:mt-0 lg:ml-6">
                             <input
                                 type="radio"
                                 className="form-radio h-6 w-6 text-theme"
@@ -183,24 +183,24 @@ const ModalMembership = () => {
 
                     <div className={`${card_paypal === "card" ? "" : "opacity-50 pointer-events-none"}`}>
 
-                        <div className={`mb-3 `}>
-                            <label className="font-bold text-sm mb-2 ml-1">Name on Credit card</label>
+                        <div className=" lg:mb-3">
+                            <label className="font-semibold font-theme text-theme text-xs lg:text-sm ml-1">Name on Credit card</label>
                             <div>
-                                <input value={nameOnCard} onChange={(e) => { setnameOnCard(e.target.value) }} className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text" />
+                                <input value={nameOnCard} onChange={(e) => { setnameOnCard(e.target.value) }} className="font-poppins w-full px-3 py-1 lg:py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none  transition-colors" placeholder="John Smith" type="text" />
                             </div>
                         </div>
-                        <div className="mb-3">
-                            <label className="font-bold text-sm mb-2 ml-1">Credit Card number</label>
+                        <div className=" lg:mb-3">
+                            <label className="font-semibold font-theme text-theme text-xs lg:text-sm  ml-1 ">Credit Card number</label>
                             <div>
                                 <input value={cardnumber}
-                                    onChange={handleCardNumber} className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text" inputMode="numeric" />
+                                    onChange={handleCardNumber} className="font-poppins w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none  transition-colors" placeholder="0000 0000 0000 0000" type="text" inputMode="numeric" />
                             </div>
                         </div>
-                        <div className="mb-3 -mx-2 flex items-end">
+                        <div className="lg:mb-3 -mx-2 flex items-end">
                             <div className="px-2 w-1/2">
-                                <label className="font-bold text-sm mb-2 ml-1">Expiration date</label>
+                                <label className="font-semibold font-theme text-theme text-xs lg:text-sm mb-2 ml-1">Expiration date</label>
                                 <div>
-                                    <select value={month} onChange={e => setMonth(e.target.value)} className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                    <select value={month} onChange={e => setMonth(e.target.value)} className="font-poppins form-select w-full px-3 py-2 mb-1 border-2 text-xs lg:text-sm border-gray-200 rounded-md focus:outline-none  transition-colors cursor-pointer">
                                         <option value="01">01 - January</option>
                                         <option value="02">02 - February</option>
                                         <option value="03">03 - March</option>
@@ -217,7 +217,7 @@ const ModalMembership = () => {
                                 </div>
                             </div>
                             <div className="px-2 w-1/2">
-                                <select value={year} onChange={e => setYear(e.target.value)} className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                <select value={year} onChange={e => setYear(e.target.value)} className="font-poppins form-select w-full text-xs lg:text-sm px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none  transition-colors cursor-pointer">
                                     <option value="2024">2024</option>
                                     <option value="2025">2025</option>
                                     <option value="2026">2026</option>
@@ -230,17 +230,17 @@ const ModalMembership = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="mb-10">
-                            <label className="font-bold text-sm mb-2 ml-1">CVV</label>
+                        <div className="mb-6 lg:mb-10 ">
+                            <label className="font-semibold font-theme text-theme text-xs lg:text-sm mb-2 ml-1">CVV</label>
                             <div>
-                                <input value={cvv} onChange={handlerCvv} className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="number" />
+                                <input value={cvv} onChange={handlerCvv} className="font-poppins text-xs lg:text-sm w-32 px-3  py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none  transition-colors" placeholder="000" type="number" />
                             </div>
                         </div>
 
                     </div>
 
                     <div>
-                        <button onClick={confirmClick} className="block w-full max-w-xs mx-auto bg-theme hover:bg-indigo-900 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ($2.99)</button>
+                        <button onClick={confirmClick} className="block w-full max-w-xs mx-auto bg-theme hover:bg-indigo-900  text-white rounded-lg px-3 py-2 lg:px-3 lg:py-3 text-sm lg:text-md font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ($2.99)</button>
                     </div>
 
                     <div>
