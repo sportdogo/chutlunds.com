@@ -139,7 +139,7 @@ const ModalMembership = () => {
     return (
         <div className={` select-none fixed flex justify-center items-center inset-0 z-30  ${paymentModalVisible ? "" : "invisible"}`}>
 
-            <div className={`relative bg-white w-4/5 lg:w-2/4 2xl:w-1/4 p-[20px] py-[10px] rounded-xl shadow-md `}>
+            <div className={`relative bg-white lg:bg-red-300 w-4/5 sm:w-3/4 md:w-1/2 lg:w-2/5/3 xl:w-1/3 2xl:w-1/5 p-[20px] py-[10px] rounded-xl shadow-md `}>
 
                 <div className={`absolute inset-0 flex flex-col items-center justify-center   ${beatLoader ? "" : "invisible"}`}>
                     <BeatLoader loading size={25} color={'blue'} />
