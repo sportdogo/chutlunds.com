@@ -66,6 +66,14 @@ const Membership = () => {
 
     useEffect(() => {
 
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape' || event.key === 'Backspace') {
+              // Handle the back button press here
+              alert("Cancel transaction")
+              console.log('Back button pressed');
+            }
+          };
+
 
         const handleResize = () => {
             const width = window.innerWidth
@@ -78,12 +86,15 @@ const Membership = () => {
         };
 
         window.addEventListener('resize', handleResize);
+        window.addEventListener('keydown', handleKeyDown);
 
         handleResize()
 
 
         return () => {
             window.removeEventListener('resize', handleResize);
+            window.removeEventListener('keydown', handleKeyDown);
+
         };
 
 
