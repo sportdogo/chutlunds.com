@@ -1,7 +1,33 @@
 import videosContext from "./videosContext";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+const plans = [
+    {
+        duration: "1 month",
+        offer: "",
+        price: "$2.99",
+        type: "month"
+    },
+    {
+        duration: "3 months",
+        offer: "20% OFF",
+        price: "$4.99",
+        type: "month"
+    },
+    {
+        duration: "12 months",
+        offer: "40% OFF",
+        price: "$9.99",
+        type: "month"
+    },
 
+    {
+        duration: "Lifetime",
+        offer: "USE FOREVER",
+        price: "$19.99",
+        type: "once"
+    },
+]
 
 
 
@@ -13,7 +39,8 @@ const VideoState = (props) => {
     const [paymentModalVisible, setpaymentModalVisible] = useState(false)
     const [DarkTheme, setDarkTheme] = useState('')
     const [currentLocation, setcurrentLocation] = useState(null)
-    
+
+    const [selectedPlan, setSelectedPlan] = useState(plans[0]);
 
     //Login stuffs
 
@@ -46,7 +73,7 @@ const VideoState = (props) => {
 
 
     return (
-        <videosContext.Provider value={{ spinnerLoading, setSpinner, setDarkThemeFunc, DarkTheme, currentLocation, setcurrentLocation, OTPemail, setOTPemail, loggedIn, setloggedIn ,tagsContext, settagsContext,paymentModalVisible, setpaymentModalVisible}}>
+        <videosContext.Provider value={{ spinnerLoading, setSpinner, setDarkThemeFunc, DarkTheme, currentLocation, setcurrentLocation, OTPemail, setOTPemail, loggedIn, setloggedIn, tagsContext, settagsContext, paymentModalVisible, setpaymentModalVisible, selectedPlan, setSelectedPlan }}>
             {props.children}
         </videosContext.Provider>
     )

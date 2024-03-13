@@ -60,13 +60,12 @@ const plans = [
 ]
 const Membership = () => {
 
-    const [selectedPlan, setSelectedPlan] = useState(plans[0]);
 
     const handlePlanChange = (plan) => {
         setSelectedPlan(plan);
     };
 
-    const { paymentModalVisible, setpaymentModalVisible } = useContext(videosContext);
+    const { paymentModalVisible, setpaymentModalVisible, selectedPlan, setSelectedPlan } = useContext(videosContext);
     return (
         <div className='relative h-screen' >
 
@@ -80,28 +79,24 @@ const Membership = () => {
                 </div>
 
                 <div className='block mx-auto w-4/5 md:w-3/5 lg:w-[500px] 2xl:w-[600px]'>
-
                     {plans.map((plan, index) => (
-                        <div key={index} className="flex items-center justify-between mb-2 py-3 px-4 lg:px-8 lg:py-4  bg-white bg-opacity-80 rounded-md">
+                        <div key={index} className="flex items-center justify-between mb-2 py-3 px-4 lg:px-8 lg:py-4  bg-white bg-opacity-80 rounded-md cursor-pointer select-none" onClick={() => handlePlanChange(plan)}>
                             <div className='flex items-center'>
-
                                 <input
                                     type="radio"
                                     id={`plan-${index}`}
                                     name="plan"
-
                                     value={index}
-                                    checked={selectedPlan === plan}
+                                    checked={selectedPlan.duration === plan.duration}
                                     onChange={() => handlePlanChange(plan)}
                                     className="form-radio h-5 w-5 lg:h-6 lg:w-6 mr-2 lg:mr-3 text-theme border-theme focus:ring-theme"
                                 />
-                                <span className="font-poppins text-md lg:text-lg">{plan.duration}</span>
-                                <span className={`font-arial font-semibold text-xs lg:text-sm ml-2 bg-red-500 text-white rounded-md px-1 py-0.5 ${plan.offer.length == 0 ? "hidden" : ""}`}>{plan.offer}</span>
+                                <label htmlFor={`plan-${index}`} className="font-poppins text-md lg:text-lg">{plan.duration}</label>
+                                <span className={`font-arial font-semibold text-xs lg:text-sm ml-2 bg-red-500 text-white rounded-md px-1 py-0.5 ${plan.offer.length === 0 ? "hidden" : ""}`}>{plan.offer}</span>
                             </div>
                             <div>
                                 <span className="font-bold font-inter text-lg lg:text-2xl">{plan.price}</span>
                                 <span className="text-sm lg:text-md">/{plan.type}</span>
-
                             </div>
                         </div>
                     ))}
@@ -111,7 +106,7 @@ const Membership = () => {
                 <button onClick={() => setpaymentModalVisible(true)} className='bg-theme text-white lg:px-8 lg:py-4 px-6 py-3 rounded-2xl font-poppins text-[14px] lg:text-[20px] mx-auto block  hover:scale-105 transition-all mt-4 lg:mt-8'>Get Access now!</button>
 
 
-                <div className='fixed bottom-0 lg:fixed p-6 gap-6 left-0 grid grid-cols-2 lg:grid-cols-4 bg-black bg-opacity-70  w-full'>
+                <div className='absolute bottom-0 lg:fixed p-6 gap-6 left-0 grid grid-cols-2 lg:grid-cols-4 bg-black bg-opacity-70  w-full'>
 
                     {features.map(obj => {
                         return (

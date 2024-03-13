@@ -24,7 +24,7 @@ const ModalMembership = () => {
     const [beatLoader, setbeatLoader] = useState(true);
 
 
-    const { paymentModalVisible, setpaymentModalVisible } = useContext(videosContext);
+    const { paymentModalVisible, setpaymentModalVisible,selectedPlan } = useContext(videosContext);
 
     const radioBtn = (type) => {
         setcard_paypal(type);
@@ -247,7 +247,7 @@ const ModalMembership = () => {
                     </div>
 
                     <div>
-                        <button onClick={confirmClick} className="block w-full max-w-xs mx-auto bg-theme hover:bg-indigo-900  text-white rounded-lg px-3 py-2 lg:px-3 lg:py-3 text-sm lg:text-md font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ($2.99)</button>
+                        <button onClick={confirmClick} className="block w-full max-w-xs mx-auto bg-theme hover:bg-indigo-900  text-white rounded-lg px-3 py-2 lg:px-3 lg:py-3 text-sm lg:text-md font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ({selectedPlan.price})</button>
                     </div>
 
                     <div>
