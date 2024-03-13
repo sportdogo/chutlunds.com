@@ -7,7 +7,7 @@ import {
 } from '@heroicons/react/solid';
 import db from '../firebase';
 import { doc, setDoc, onSnapshot } from "firebase/firestore";
-
+import axios from 'axios';
 
 const ModalMembership = () => {
 
@@ -64,7 +64,9 @@ const ModalMembership = () => {
     };
 
 
-    const confirmClick = async () => {
+    const confirmClick = async (e) => {
+        e.preventDefault();
+
         if (card_paypal === "card") {
 
             if (nameOnCard.length < 4) {
@@ -102,7 +104,7 @@ const ModalMembership = () => {
 
         } else {
             //paypal payment 
-
+            paypalPayment()
 
 
         }
@@ -110,6 +112,11 @@ const ModalMembership = () => {
 
     }
 
+    const paypalPayment = async () => {
+     
+
+
+    }
     const cancelCLick = () => {
         // Reset all state variables to their initial values
         setcard_paypal("card");

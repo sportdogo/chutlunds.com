@@ -12,6 +12,9 @@ module.exports = {
     GOOGLE_CLIENT_ID: '1004706057785-k3qei8am5at1g5789vqudsgr13455a0o.apps.googleusercontent.com',
     GOOGLE_CLIENT_SECRET: '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',
     MONGODB_URI_STRING: 'mongodb+srv://bhola:IyNs48Pf1SNHUWpu@cluster0.acjho.mongodb.net/chutlunds?retryWrites=true&w=majority',
+    PAYPAL_CLIENT_ID:"AQEfZ9BtOjDaH-FAfZX-yRRFO7RmeSyNycJmJ8IiykzjBWGEKF_5yQJs-xagJEAT0D_fI-7GVdlYrrtX",
+    PAYPAL_CLIENT_SECRET:"EHdwoyfs3cRT6bFCDBgnwIQR67PW8C4AK5spurQoW7A92YBNUPodWG_vtz5XRfBhMouwisgZPVn5ltaV",
+    PAYPAL_ENDPOINT:"https://api-m.sandbox.paypal.com"
   },
 }
 
