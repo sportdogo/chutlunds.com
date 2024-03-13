@@ -62,12 +62,15 @@ const plans = [
 const Membership = () => {
 
     const [featuresSelected, setfeaturesSelected] = useState(features)
+    const [width, setwidth] = useState(0);
 
     useEffect(() => {
 
+
         const handleResize = () => {
             const width = window.innerWidth
-            if (width > 900) {
+            setwidth(width)
+            if (width > 1000) {
                 setfeaturesSelected(features)
             } else {
                 setfeaturesSelected(features.slice(0, 4))
@@ -75,6 +78,8 @@ const Membership = () => {
         };
 
         window.addEventListener('resize', handleResize);
+
+        handleResize()
 
 
         return () => {
@@ -93,6 +98,7 @@ const Membership = () => {
     return (
         <div className='relative h-screen' >
 
+            <span className='absolute top-0 text-white text-[30px] m-5'>{width}</span>
             <img src="/membership_bg.png" className="-z-10 absolute top-0 left-0 object-cover w-screen h-full brightness-75 " alt="" />
 
             <div className='z-10'>
