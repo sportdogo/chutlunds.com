@@ -140,6 +140,22 @@ const ModalMembership = () => {
                 clearTimeout(timeoutId); // Clear timeout when modal is closed before 3 seconds
             };
         }
+
+        const handleKeyDown = (event) => {
+            if (event.key === 'Escape' || event.key === 'Backspace') {
+              // Handle the back button press here
+              alert("Cancel transaction")
+              console.log('Back button pressed');
+            }
+          };
+          window.addEventListener('keydown', handleKeyDown);
+
+          return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+
+        };
+
+
     }, [paymentModalVisible]);
 
 
