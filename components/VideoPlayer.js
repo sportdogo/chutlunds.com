@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
-    ThumbUpIcon, ClockIcon, FilmIcon, EyeIcon, PlusIcon, MinusIcon, CogIcon, InformationCircleIcon, DownloadIcon
+    ThumbUpIcon, ClockIcon, FilmIcon, EyeIcon, PlusIcon, MinusIcon, CogIcon, InformationCircleIcon, DownloadIcon, LockClosedIcon
 } from '@heroicons/react/solid';
 import Router, { useRouter } from "next/router";
 import { Fragment } from 'react'
@@ -36,6 +36,10 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
     //Quality Changer Onclick
     const menuItemOnClick = (quality) => {
+        if (quality == "1080p" || quality == "4k") {
+            router.push("/membership")
+            return
+        }
         if (quality != Quality) {
 
             const currentTime = videoPlayerRef.current.currentTime;
@@ -82,6 +86,8 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
     const download = () => {
 
+        router.push("/membership")
+        return
         if (!loggedIn) {
             setCookie('videoRoute', window.location.href
             );
@@ -120,7 +126,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
             <Script src="//imasdk.googleapis.com/js/sdkloader/ima3.js" strategy="beforeInteractive" />
             <Script onLoad={() => { initDesktopAutoplayExample() }} src="/vastAd.js" strategy="lazyOnload" />
 
-        
+
             <div id="mainContainer" className={`relative w-full aspect-video object-contain  group  shadow-2xl`}>
                 <video className={`w-full h-full cursor-pointer`} id="contentElement" onContextMenu={(e) => e.preventDefault()} ref={videoPlayerRef} poster={video_details.thumbnail} width="852" height="480" controls controlsList="nodownload"
                 >
@@ -155,12 +161,12 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
                     {/* <DownloadIcon className='h-7 text-gray-700' /> */}
 
-                    <button onClick={download} className='font-inter text-[12px] lg:text-lg px-2 lg:px-4 py-1 lg:py-1.5 bg-button rounded-md text-white text-center lg:mt-1'>Download</button>
+                    <button onClick={download} className='font-inter text-[12px] lg:text-lg px-2 lg:px-4 py-1 lg:py-1.5 bg-button rounded-md text-white text-center lg:mt-1 navbar'>Download</button>
                     <Menu as="div" className="relative  text-left">
                         <div className=' w-fit relative '>
                             <Menu.Button className="flex items-center space-x-1">
                                 <CogIcon className="h-9 text-gray-600 m-1  duration-300" />
-                                <p className={`${Quality === '720p' || Quality === '1080p' || Quality === '4k' ? "" : "hidden"} text-xs bg-red-500 rounded text-white absolute top-1 right-0`}>HD</p>
+                                <p className={`${Quality === '720p' || Quality === '1080p' || Quality === '4k' ? "" : "hidden"}  text-xs bg-red-500 rounded text-white absolute top-1 right-0`}>HD</p>
                             </Menu.Button>
                         </div>
 
@@ -173,7 +179,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                         >
-                            <Menu.Items className="z-50 origin-top-right absolute right-0 bottom-11 mt-2 w-[80px] rounded-md shadow-lg  bg-gray-200  ">
+                            <Menu.Items className="z-50 origin-top-right absolute right-0 bottom-11 mt-2 w-[80px] rounded-md shadow-lg  bg-gray-200  navbar">
                                 <div className=" rounded">
 
                                     {videolink_qualities_screenshots.video_qualities_available.map(quality => {
@@ -182,6 +188,8 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
                                                 {({ active }) => (
                                                     <div className='hover:bg-gray-300 hover:shadow-lg hover:rounded'>
                                                         <div className={`${quality === Quality ? "text-red-500" : ""} relative px-4  w-fit flex items-center justify-between`}>
+
+                                                            <LockClosedIcon className={`${quality === '1080p' || quality === '4k' ? "" : "hidden"} h-3 text-gray-600 absolute top-3 left-0.5`} />
                                                             <a
                                                                 href="#"
                                                                 className={classNames(

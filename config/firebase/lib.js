@@ -96,5 +96,10 @@ async function updateloggedIn(email) {
     return existingDoc.exists();
 }
 
+async function updateMembership(email) {
+    const existingDoc = await getDoc(doc(db, "Users", email));
+    return existingDoc.exists();
+}
 
-export { saveUserProfile, checkUserExists_Firestore, updateCountry, updatekeywords, updateloggedIn };
+
+export { saveUserProfile, checkUserExists_Firestore, updateCountry, updatekeywords, updateloggedIn, updateMembership };

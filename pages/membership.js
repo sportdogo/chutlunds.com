@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import ModalMembership from '../components/ModalMembership'
 import videosContext from '../context/videos/videosContext'
+import { setCookie, deleteCookie ,getCookie} from "cookies-next";
 
 const features = [
     {
@@ -65,9 +66,6 @@ const Membership = () => {
     const [width, setwidth] = useState(0);
 
     useEffect(() => {
-
-       
-
 
         const handleResize = () => {
             const width = window.innerWidth

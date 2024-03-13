@@ -166,7 +166,7 @@ function Navbar() {
 
     return (
 
-        <div className='font-inter'>
+        <div className='font-inter navbar'>
 
             <div className="bg-[#13274F] text-white p-2  shadow-md lg:hidden">
 
