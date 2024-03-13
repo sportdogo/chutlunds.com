@@ -98,7 +98,7 @@ const Membership = () => {
     return (
         <div className='relative h-screen' >
 
-            <span className='absolute top-0 text-white text-[30px] m-5'>{width}</span>
+            <span className='absolute top-0 text-white text-[30px] m-5 hidden'>{width}</span>
             <img src="/membership_bg.png" className="-z-10 absolute top-0 left-0 object-cover w-screen h-full brightness-75 " alt="" />
 
             <div className='z-10'>
