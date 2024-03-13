@@ -33,25 +33,28 @@ const features = [
 
 const plans = [
     {
-        duration: "12 months",
-        offer: "40% OFF",
-        price: "$5.99",
+        duration: "1 month",
+        offer: "",
+        price: "$2.99",
         type: "month"
     },
     {
         duration: "3 months",
         offer: "20% OFF",
-        price: "$7.99",
+        price: "$4.99",
         type: "month"
-    }, {
-        duration: "1 month",
-        offer: "",
+    },
+    {
+        duration: "12 months",
+        offer: "40% OFF",
         price: "$9.99",
         type: "month"
-    }, {
+    },
+
+    {
         duration: "Lifetime",
         offer: "USE FOREVER",
-        price: "$299.99",
+        price: "$19.99",
         type: "once"
     },
 ]
