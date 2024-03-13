@@ -74,7 +74,7 @@ const Membership = () => {
             <div className='z-10'>
 
                 <div className='flex items-center justify-center pt-5'>
-                    <p className=' align-center text-center font-Dancing font-bold text-white  text-[50px] lg:text-[80px] cursor-pointer lg:text-left '>Chutlunds</p>
+                    <p className=' align-center text-center font-Dancing font-bold text-white  text-[50px] lg:text-[80px] cursor-pointer lg:text-left select-none'>Chutlunds</p>
                     <img src="/vip-pass.png" alt="" className='h-[70px] lg:h-[120px] animate-shine' />
                 </div>
 
