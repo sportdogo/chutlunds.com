@@ -52,6 +52,7 @@ async function updatekeywords(searchkey, email) {
 
     try {
         const userExist = await checkUserExists_Firestore(email)
+
         if (userExist) {
 
 
@@ -60,7 +61,7 @@ async function updatekeywords(searchkey, email) {
             const userobj = await getDoc(reff);
 
             let newArray = []
-            const previousKeywords = userobj.keywords
+            const previousKeywords = userobj.data().keywords
 
             if (previousKeywords.length === 0) {
                 newArray.push(searchkey)
@@ -77,23 +78,23 @@ async function updatekeywords(searchkey, email) {
 
             const docRef = doc(db, "Users", email);
             await updateDoc(docRef, { keywords: newArray });
-            console.log("keywords successfully updated!");
+            console.log("keywords successfully updated!", newArray);
 
             var json_str = JSON.stringify(newArray);
             setCookie('keywords', json_str, { maxAge: 900000 });
 
         }
     } catch (error) {
-
+        console.log(error);
     }
 
-
-
 }
+
 
 async function updateloggedIn(email) {
     const existingDoc = await getDoc(doc(db, "Users", email));
     return existingDoc.exists();
 }
+
 
 export { saveUserProfile, checkUserExists_Firestore, updateCountry, updatekeywords, updateloggedIn };
