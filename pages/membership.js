@@ -106,7 +106,7 @@ const Membership = () => {
                 <button onClick={() => setpaymentModalVisible(true)} className='bg-theme text-white lg:px-8 lg:py-4 px-6 py-3 rounded-2xl font-poppins text-[14px] lg:text-[20px] mx-auto block  hover:scale-105 transition-all mt-4 lg:mt-8'>Get Access now!</button>
 
 
-                <div className='absolute bottom-0 lg:fixed p-6 gap-6 left-0 grid grid-cols-2 lg:grid-cols-4 bg-black bg-opacity-70  w-full'>
+                <div className='absolute bottom-0 lg:fixed p-4 lg:p-6 gap-4 lg:gap-6 left-0 grid grid-cols-2 lg:grid-cols-4 bg-black bg-opacity-70  w-full'>
 
                     {features.map(obj => {
                         return (
