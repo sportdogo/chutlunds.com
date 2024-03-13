@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 import videosContext from '../context/videos/videosContext';
 import {
-    XCircleIcon
+    XCircleIcon, ShieldCheckIcon,EyeOffIcon
 } from '@heroicons/react/solid';
 import db from '../firebase';
 import { doc, setDoc, onSnapshot } from "firebase/firestore";
@@ -24,7 +24,7 @@ const ModalMembership = () => {
     const [beatLoader, setbeatLoader] = useState(true);
 
 
-    const { paymentModalVisible, setpaymentModalVisible,selectedPlan } = useContext(videosContext);
+    const { paymentModalVisible, setpaymentModalVisible, selectedPlan } = useContext(videosContext);
 
     const radioBtn = (type) => {
         setcard_paypal(type);
@@ -113,7 +113,7 @@ const ModalMembership = () => {
     }
 
     const paypalPayment = async () => {
-     
+
 
 
     }
@@ -166,7 +166,7 @@ const ModalMembership = () => {
                         <h1 className="text-center font-semibold font-poppins text-theme text-lg lg:text-xl uppercase">Chutlunds Secure payment</h1>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row lg:items-center items-start mb-5">
+                    <div className="flex flex-col lg:flex-row lg:items-center items-start mb-1.5">
                         <label className="inline-flex items-center">
                             <input
                                 type="radio"
@@ -176,7 +176,7 @@ const ModalMembership = () => {
                             />
                             <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" />
                         </label>
-                        <label className="inline-flex items-center mt-2 lg:mt-0 lg:ml-6">
+                        <label className="inline-flex items-center mt-2 lg:mt-0 lg:ml-6 hidden">
                             <input
                                 type="radio"
                                 className="form-radio h-6 w-6 text-theme"
@@ -185,6 +185,11 @@ const ModalMembership = () => {
                             />
                             <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" className="h-[45px] ml-3" />
                         </label>
+                    </div>
+
+                    <div className='flex items-center mb-5 px-1'>
+                        <ShieldCheckIcon className='h-4  text-green-500' />
+                        <span className='text-[10px] lg:text-[11px] opacity-60 font-poppins ml-1'>No adult related transaction in your bank statement</span>
                     </div>
 
 
@@ -250,9 +255,17 @@ const ModalMembership = () => {
                         <button onClick={confirmClick} className="block w-full max-w-xs mx-auto bg-theme hover:bg-indigo-900  text-white rounded-lg px-3 py-2 lg:px-3 lg:py-3 text-sm lg:text-md font-semibold"><i className="mdi mdi-lock-outline mr-1"></i> PAY NOW  ({selectedPlan.price})</button>
                     </div>
 
+
                     <div>
                         <button onClick={cancelCLick} className="block w-full max-w-xs mx-auto  items-center text-theme underline rounded-lg px-3 py-3 font-semibold"> Cancel</button>
                     </div>
+
+
+                    <div className='flex items-center  py-2'>
+                        <EyeOffIcon className='h-4  text-yellow-500' />
+                        <span className='text-[12px] lg:text-[14px] opacity-80 font-poppins ml-1 text-center'>    No hidden fees • Cancel subscription at any time</span>
+                    </div>
+                
                 </div>
             </div>
 
