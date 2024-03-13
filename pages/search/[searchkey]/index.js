@@ -7,6 +7,7 @@ import Pagination from '../../../components/Pagination';
 import { useEffect } from 'react';
 import { getCookie, setCookie } from "cookies-next";
 import { scrapeVideos } from '../../../config/spangbang';
+import {  updatekeywords } from "../../../config/firebase/lib";
 
 
 function Category({ video_collection, pages }) {
@@ -17,23 +18,7 @@ function Category({ video_collection, pages }) {
 
   async function updateKeywords_DB() {
     if (video_collection.length !== 0 && typeof getCookie('email') !== 'undefined') {
-
-      const parcelData = { searchKey: searchkey.trim(), email: getCookie('email') }
-      const rawResponse = await fetch(`${process.env.FRONTEND_URL}api/login/updatekeywords`, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify(parcelData),
-      });
-
-      const res = await rawResponse.json();
-      console.log(res);
-      if (res.sucess) {
-        var json_str = JSON.stringify(res.data.keywords);
-        setCookie('keywords', json_str, { maxAge: 900000 });
-      }
+      await updatekeywords(searchkey.trim(), getCookie('email'))
 
     } else {
       const keywordsCookie = getCookie('keywords')

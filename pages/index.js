@@ -14,6 +14,7 @@ import BannerAds from '../components/Ads/BannerAds';
 import Outstreams from '../components/Ads/Outstream';
 // import { getHomePageVideos } from '../config/getHomepageVideos';
 import { scrapeVideos } from '../config/spangbang';
+import { updateCountry } from '../config/firebase/lib';
 
 export default function Home({ video_collection, pages, desiVideosDataArray, desiMmsVideoArray }) {
 
@@ -80,21 +81,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
         // return 
 
       }
-      const parcelData = { email: email.trim(), country: country }
-      const rawResponse = await fetch(`${process.env.FRONTEND_URL}api/login/updateCountry`, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify(parcelData),
-      });
-
-      const res = await rawResponse.json();
-      if (res.sucess) {
-        setCookie('countryUpdated_DB', true, { maxAge: 900000 })
-      }
-      console.log(res);
+      await updateCountry(email.trim(), country)
     }
   }
 
@@ -195,7 +182,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
 export async function getStaticProps({ req, res }) {
 
   const parcelData = { href: "https://spankbang.party/" }
-  const API_URL=`https://chutlunds.com/api/spangbang/homepage`;
+  const API_URL = `https://chutlunds.com/api/spangbang/homepage`;
   // const API_URL=`https://clownfish-app-jn7w9.ondigitalocean.app/getHomePageVideos`;
   const rawResponse = await fetch(API_URL, {
     headers: {
@@ -206,7 +193,7 @@ export async function getStaticProps({ req, res }) {
     body: JSON.stringify(parcelData),
   });
   const ress = await rawResponse.json();;
-  const finalDataArray_Arrar =  ress.finalDataArray;
+  const finalDataArray_Arrar = ress.finalDataArray;
 
 
   var desiVideosDataArray = []

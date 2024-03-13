@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
             const salt = await bcrypt.genSalt(10);
             const hashpass = await bcrypt.hash(password, salt)
-            await saveUserProfile(firstName, lastName, email, hashpass, true, country, true)
+            await saveUserProfile(firstName, lastName, email, hashpass, true, country, true, false, [])
         }
 
         return res.status(200).send({ success: true, data: { membership: false, email: email }, message: 'Logged In' })
