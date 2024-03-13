@@ -67,7 +67,7 @@ const Membership = () => {
 
         const handleResize = () => {
             const width = window.innerWidth
-            if (width > 1000) {
+            if (width > 900) {
                 setfeaturesSelected(features)
             } else {
                 setfeaturesSelected(features.slice(0, 4))
