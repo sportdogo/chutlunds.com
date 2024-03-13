@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 import videosContext from '../context/videos/videosContext';
 import {
-    XCircleIcon, ShieldCheckIcon,EyeOffIcon
+    XCircleIcon, ShieldCheckIcon, EyeOffIcon
 } from '@heroicons/react/solid';
 import db from '../firebase';
 import { doc, setDoc, onSnapshot } from "firebase/firestore";
@@ -146,7 +146,7 @@ const ModalMembership = () => {
     return (
         <div className={` select-none fixed flex justify-center items-center inset-0 z-30  ${paymentModalVisible ? "" : "invisible"}`}>
 
-            <div className={`relative bg-white w-4/5 sm:w-3/4 md:w-1/2 lg:w-2/5/3 xl:w-1/3 2xl:w-1/5 p-[20px] py-[5px] rounded-xl shadow-md `}>
+            <div className={`relative bg-white w-full mx-[15px] sm:mx-0 sm:w-3/4 md:w-1/2 lg:w-2/5/3 xl:w-1/3 2xl:w-1/5 p-[20px] py-[5px] rounded-xl shadow-md `}>
 
                 <div className={`absolute inset-0 flex flex-col items-center justify-center   ${beatLoader ? "" : "invisible"}`}>
                     <BeatLoader loading size={25} color={'blue'} />
@@ -265,7 +265,7 @@ const ModalMembership = () => {
                         <EyeOffIcon className='h-4  text-yellow-500' />
                         <span className='text-[12px] lg:text-[14px] opacity-80 font-poppins ml-1 text-center'>    No hidden fees • Cancel subscription at any time</span>
                     </div>
-                
+
                 </div>
             </div>
 
