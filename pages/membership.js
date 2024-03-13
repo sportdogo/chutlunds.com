@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ModalMembership from '../components/ModalMembership'
 import videosContext from '../context/videos/videosContext'
 
@@ -19,16 +19,17 @@ const features = [
         heading: "HD Downloads up to 4K!",
         sub_heading: "Unlimited HD Downloads of all your favorite full length high-res movies."
     },
-    // {
-    //     img: "/membership/videos.png",
-    //     heading: "+650 NEW VIDEOS / DAY",
-    //     sub_heading: "Hundreds of new videos added every day / 617k complete videos"
-    // },
+
     {
         img: "/membership/exclu.png",
         heading: "EXCLUSIVE CONTENT",
         sub_heading: "Access premium, full movies and never before seen content"
     },
+    {
+        img: "/membership/videos.png",
+        heading: "+650 NEW VIDEOS / DAY",
+        sub_heading: "Hundreds of new videos added every day / 617k complete videos"
+    }
 ]
 
 const plans = [
@@ -59,6 +60,29 @@ const plans = [
     },
 ]
 const Membership = () => {
+
+    const [featuresSelected, setfeaturesSelected] = useState(features)
+
+    useEffect(() => {
+
+        const handleResize = () => {
+            const width = window.innerWidth
+            if (width > 1000) {
+                setfeaturesSelected(features)
+            } else {
+                setfeaturesSelected(features.slice(0, 4))
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+
+
+    }, [])
 
 
     const handlePlanChange = (plan) => {
@@ -107,12 +131,12 @@ const Membership = () => {
                 <button onClick={() => setpaymentModalVisible(true)} className='bg-theme text-white lg:px-8 lg:py-4 px-6 py-3 rounded-2xl font-poppins text-[14px] lg:text-[20px] mx-auto block  hover:scale-105 transition-all mt-4 lg:mt-6'>Get Access now!</button>
 
 
-                <div className=' absolute bottom-0 lg:fixed p-4 lg:p-6 gap-4 lg:gap-6 left-0 grid grid-cols-2 lg:grid-cols-4 bg-black bg-opacity-70  w-full'>
+                <div className=' absolute bottom-0 lg:fixed p-4 lg:p-6 gap-4 lg:gap-6 left-0 grid grid-cols-2 lg:grid-cols-5 bg-black bg-opacity-70  w-full'>
 
-                    {features.map(obj => {
+                    {featuresSelected.map(obj => {
                         return (
                             <div key={obj.img} className=''>
-                                <img src={obj.img} alt="" className='w-[70px] lg:w-[100px] 2xl:w-[120px] mx-auto mb-6 lg:mb-10' />
+                                <img src={obj.img} alt="" className='w-[70px] lg:w-[80px] 2xl:w-[90px]  mx-auto mb-6 lg:mb-10' />
                                 <p className='text-white font-semibold font-inter tracking-wider block mx-auto text-center my-1 text-[14px] lg:text-[20px]'>{obj.heading}</p>
                                 <p className='text-gray-300 font-thin font-poppins  block mx-auto text-center lg:w-3/4 text-[11px] lg:text-[15px]'>{obj.sub_heading}</p>
                             </div>
