@@ -367,7 +367,7 @@ function Navbar() {
                 </Link>
 
                 <Link href='/membership'>
-                    <p className=' sm:text-md text-sm text-white rounded-md text-center px-3 p-1 m-1  bg-red-600 hover:bg-red-500 navbar'>Join Now</p>
+                    <p className=' sm:text-md text-sm text-white rounded-md text-center px-3 p-1 m-1  bg-red-500 hover:bg-red-600 navbar'>Join Now</p>
                 </Link>
 
 
@@ -499,7 +499,7 @@ function Navbar() {
                         return (
                             <Link href={item.href} key={item.name}>
 
-                                <p key={item.name} className={`${item.name === "Join Now" ? "text-white rounded-md text-center px-3 p-1 m-1  bg-red-600 text-lg hover:bg-red-500 navbar" : "text-xl 2xl:text-2xl font-semibold hover:text-red-400"} cursor-pointer p-1 `}>{item.name}</p>
+                                <p key={item.name} className={`${item.name === "Join Now" ? "text-white rounded-md text-center px-3 p-1 m-1  bg-red-500 text-lg hover:bg-red-600 navbar" : "text-xl 2xl:text-2xl font-semibold hover:text-red-400"} cursor-pointer p-1 `}>{item.name}</p>
                             </Link>
                         )
                     })}
