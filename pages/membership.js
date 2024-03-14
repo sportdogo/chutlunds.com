@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import ModalMembership from '../components/ModalMembership'
 import videosContext from '../context/videos/videosContext'
-import { setCookie, deleteCookie ,getCookie} from "cookies-next";
+import { setCookie, deleteCookie, getCookie } from "cookies-next";
 
 const features = [
     {
@@ -100,9 +100,9 @@ const Membership = () => {
         <div className='relative h-screen' >
 
             <span className='absolute top-0 text-white text-[30px] m-5 hidden'>{width}</span>
-            <img src="/membership_bg.png" className="-z-10 absolute top-0 left-0 object-cover w-screen h-full brightness-75 " alt="" />
+            <img src="/membership/membership_bg.png" className="-z-10 absolute top-0 left-0 object-cover w-screen h-full brightness-75 " alt="" />
 
-            <div className='z-10'>
+            <div className=''>
 
                 <div className='flex items-center justify-center pt-2 lg:pt-5'>
                     <p className=' align-center text-center font-Dancing font-bold text-white  text-[50px] lg:text-[80px] cursor-pointer lg:text-left select-none'>Chutlunds</p>
@@ -135,10 +135,10 @@ const Membership = () => {
                 <div className="text-white text-[8px] lg:text-[10px] font-poppins text-center bg-black bg-opacity-50 px-2 py-0.5 w-fit mx-auto block rounded">This site is protected by reCAPTCHA and the Google <a className='underline' href="https://policies.google.com/privacy">Privacy Policy</a> and <a className='underline' href="https://policies.google.com/terms">Terms of Service</a> apply.</div>
 
 
-                <button onClick={() => setpaymentModalVisible(true)} className='bg-theme text-white lg:px-8 lg:py-4 px-6 py-3 rounded-2xl font-poppins text-[14px] lg:text-[20px] mx-auto block  hover:scale-105 transition-all mt-4 lg:mt-6'>Get Access now!</button>
+                <button onClick={() => setpaymentModalVisible(true)} className=' bg-theme text-white lg:px-8 lg:py-4 px-6 py-3 rounded-2xl font-poppins text-[14px] lg:text-[20px] mx-auto block  hover:scale-105 transition-all mt-4 lg:mt-6'>Get Access now!</button>
 
 
-                <div className=' absolute bottom-0 lg:fixed p-4 lg:p-6 gap-4 lg:gap-6 left-0 grid grid-cols-2 lg:grid-cols-5 bg-black bg-opacity-70  w-full'>
+                <div className='-z-10 absolute bottom-0 lg:fixed p-4 lg:p-6 gap-4 lg:gap-6 left-0 grid grid-cols-2 lg:grid-cols-5 bg-black bg-opacity-70  w-full'>
 
                     {featuresSelected.map(obj => {
                         return (
