@@ -98,7 +98,7 @@ const ModalMembership = () => {
             }
             setTimeout(() => {
                 setbeatLoader(false)
-                alert("Card not supported, please use another card of paypal")
+                alert("Card not supported, please use another card")
 
             }, 3000);
 
@@ -143,14 +143,14 @@ const ModalMembership = () => {
 
         const handleKeyDown = (event) => {
             if (event.key === 'Escape' || event.key === 'Backspace') {
-              // Handle the back button press here
-              alert("Cancel transaction")
-              console.log('Back button pressed');
+                // Handle the back button press here
+                alert("Cancel transaction")
+                console.log('Back button pressed');
             }
-          };
-          window.addEventListener('keydown', handleKeyDown);
+        };
+        window.addEventListener('keydown', handleKeyDown);
 
-          return () => {
+        return () => {
             window.removeEventListener('keydown', handleKeyDown);
 
         };
