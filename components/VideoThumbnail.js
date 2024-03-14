@@ -92,7 +92,9 @@ function VideoThumbnail({ details, type }) {
                     />
 
 
-                    <img src='/crown.png' className='absolute h-6 lg:h-8 m-2 bg-white bg-opacity-70 p-0.5 rounded-md top-0 right-0  '></img>
+                    {type === "premium" &&
+                        <img src='/crown.png' className='absolute h-6 lg:h-8 m-2 bg-white bg-opacity-70 p-0.5 rounded-md top-0 right-0  '></img>
+                    }
 
 
 
