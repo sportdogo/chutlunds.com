@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Head from 'next/head'
 import Outstreams from '../../components/Ads/Outstream';
-import Popunder_Web from '../../components/Ads/Popunder_Web';
+import Popunder from '../../components/Ads/Popunder';
 
 function Search({ tags }) {
 
@@ -89,7 +89,7 @@ function Search({ tags }) {
             </Head>
 
             <Outstreams />
-            <Popunder_Web />
+            <Popunder />
 
 
             <div className={`my-2  transition ease-in-out delay-150 mt-2 `}>
