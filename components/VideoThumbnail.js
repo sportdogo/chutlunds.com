@@ -8,16 +8,19 @@ import {
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import PopunderAds from './Ads/Popunder';
+import { useRouter } from 'next/router';
 
 
 
 
-function VideoThumbnail({ details }) {
+function VideoThumbnail({ details, type }) {
 
+
+    const router = useRouter()
     const [videoPage, setvideoPage] = useState(false);
 
     function abcd() {
-        if (window.location.href.includes("/video")){
+        if (window.location.href.includes("/video")) {
             setvideoPage(true)
         }
 
@@ -32,6 +35,10 @@ function VideoThumbnail({ details }) {
     const [spinnerloader, setspinnerloader] = useState(false);
 
     const OnClickHandler = () => {
+        if (type == "premium") {
+            router.push('/membership')
+            return
+        }
         const object = {
             Title: video.TitleArray,
             duration: video.durationArray,
@@ -70,7 +77,7 @@ function VideoThumbnail({ details }) {
 
     return (
         <div className="">
-            <a href={`/video/${keyy}*${title}`} onClick={OnClickHandler} data-title={video.TitleArray} >
+            <a href={type === "premium" ? "/membership" : `/video/${keyy}*${title}`} onClick={OnClickHandler} data-title={video.TitleArray} >
                 <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer  shadow-md shadow-blue-200  rounded-lg overflow-hidden transform transition duration-150`}>
 
 
@@ -83,6 +90,9 @@ function VideoThumbnail({ details }) {
                         preload='none'
                         muted="muted"
                     />
+
+
+                    <img src='/crown.png' className='absolute h-6 lg:h-8 m-2 bg-white bg-opacity-70 p-0.5 rounded-md top-0 right-0  '></img>
 
 
 

@@ -9,7 +9,8 @@ import BannerAds from "./Ads/BannerAds";
 import Outstream from './Ads/Outstream';
 import PopunderAds from "./Ads/Popunder";
 
-function Videos({ data }) {
+function Videos({ data,type }) {
+
 
     const router = useRouter()
 
@@ -36,7 +37,7 @@ function Videos({ data }) {
                 {
                     data.map(video => {
                         return (
-                            <VideoThumbnail key={video.thumbnailArray} details={video} />
+                            <VideoThumbnail key={video.thumbnailArray} details={video} type={type}/>
                         )
                     })
                 }
