@@ -36,10 +36,10 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
     //Quality Changer Onclick
     const menuItemOnClick = (quality) => {
-        if (quality == "1080p" || quality == "4k") {
-            router.push("/membership")
-            return
-        }
+        // if (quality == "1080p" || quality == "4k") {
+        //     router.push("/membership")
+        //     return
+        // }
         if (quality != Quality) {
 
             const currentTime = videoPlayerRef.current.currentTime;
@@ -189,7 +189,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
                                                     <div className='hover:bg-gray-300 hover:shadow-lg hover:rounded'>
                                                         <div className={`${quality === Quality ? "text-red-500" : ""} relative px-4  w-fit flex items-center justify-between`}>
 
-                                                            <LockClosedIcon className={`${quality === '1080p' || quality === '4k' ? "" : "hidden"} h-3 text-gray-600 absolute top-3 left-0.5`} />
+                                                            <LockClosedIcon className={`${quality === '1080p' || quality === '4k' ? "hidden" : "hidden"} h-3 text-gray-600 absolute top-3 left-0.5`} />
                                                             <a
                                                                 href="#"
                                                                 className={classNames(

@@ -67,7 +67,6 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
       } catch (error) {
         console.log(error);
       }
-
     }
   }
 
