@@ -66,7 +66,7 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
 
                         </div>
                     </div>
-                    <Videos data={video_collection} />
+                    <Videos data={video_collection} type="premium"/>
                 </div>
             </div>
 

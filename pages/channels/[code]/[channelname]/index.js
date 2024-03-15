@@ -70,7 +70,7 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
 
                     </div>
                 </div>
-                <Videos data={video_collection} />
+                <Videos data={video_collection} type="premium" />
             </div>
 
 
@@ -229,8 +229,8 @@ export async function getStaticProps(context) {
         }
     }
 
-    await scrape(`https://spankbang.party/${code}/channel/${channelname}/`)
-
+    await scrape(`https://spankbang.party/${code}/channel/${channelname}/?o=long`)
+console.log(`https://spankbang.party/${code}/channel/${channelname}/?o=long`);
 
     return {
         props: {

@@ -30,8 +30,8 @@ var navigation = [
     { name: 'Category', href: '/category', current: false },
     { name: 'Pornstars', href: '/pornstar', current: false },
     { name: 'Channels', href: '/channels', current: false },
-    { name: 'Premium Access', href: '/membership', current: false },
     { name: 'Sex Chat', href: 'https://play.google.com/store/apps/details?id=com.bhola.livevideochat4&hl=en-IN', current: false },
+    { name: 'Join Now', href: '/membership', current: false },
     // { name: 'Live Cams', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
     // { name: 'Meet & Fuck', href: "https://chaturbate.com/in/?tour=LQps&campaign=3v7pk&track=default&room=ukdevelopers", current: false },
 ]
@@ -166,7 +166,7 @@ function Navbar() {
 
     return (
 
-        <div className='font-inter navbar'>
+        <div className='font-inter'>
 
             <div className="bg-[#13274F] text-white p-2  shadow-md lg:hidden">
 
@@ -366,8 +366,8 @@ function Navbar() {
                     </div>
                 </Link>
 
-                <Link href='https://play.google.com/store/apps/details?id=com.bhola.livevideochat4&hl=en-IN'>
-                    <p className=' sm:text-xl xl:text-[28px] text-md text-theme  text-center p-1 hover:text-red-600 '>Sex Chat</p>
+                <Link href='/membership'>
+                    <p className=' sm:text-md text-sm text-white rounded-md text-center px-3 p-1 m-1  bg-red-500 hover:bg-red-600 navbar'>Join Now</p>
                 </Link>
 
 
@@ -499,7 +499,7 @@ function Navbar() {
                         return (
                             <Link href={item.href} key={item.name}>
 
-                                <p key={item.name} className='text-xl 2xl:text-2xl font-semibold cursor-pointer p-1 hover:text-red-400'>{item.name}</p>
+                                <p key={item.name} className={`${item.name === "Join Now" ? "text-white rounded-md text-center px-3 p-1 m-1  bg-red-500 text-lg hover:bg-red-600 navbar" : "text-xl 2xl:text-2xl font-semibold hover:text-red-400"} cursor-pointer p-1 `}>{item.name}</p>
                             </Link>
                         )
                     })}
@@ -515,7 +515,7 @@ function Navbar() {
             </div>
 
 
-        </div>
+        </div >
     )
 }
 

@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import Outstreams from '../../components/Ads/Outstream';
 import Head from 'next/head'
-import Popunder_Web from '../../components/Ads/Popunder_Web';
+import Popunder from '../../components/Ads/Popunder';
 import { scrapeChannelpage } from '../../config/channels';
 import Videos from '../../components/Videos';
 import channels from "../../config/Channels.json"
@@ -163,7 +163,7 @@ function Index({ video_collection, trendingChannels, newChannels }) {
 
 
             <Outstreams />
-            <Popunder_Web />
+            <Popunder />
             <div className={`grid grid-cols-4 py-3 sm:grid-cols-4 gap-3 md:gap-5 lg:gap-4  md:grid-cols-6 2xl:grid-cols-7`}>
                 {trendingChannels.map(channelName => {
                     const href = customiseUrl(channelName)
