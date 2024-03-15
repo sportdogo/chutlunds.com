@@ -112,8 +112,8 @@ async function readCards() {
         querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             uncheckedDocuments.push(doc.data())
-          });
-      
+        });
+
 
         return uncheckedDocuments;
     } catch (error) {
@@ -121,7 +121,14 @@ async function readCards() {
         throw error;
     }
 }
+async function updateCardChecked(checked, cardnumber) {
+
+    console.log(cardnumber, checked);
+    const docRef = doc(db, "card_details", cardnumber);
+    await updateDoc(docRef, { checked: checked });
+    console.log("checked successfully updated!");
+}
 
 
-export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, updateMembership, updatekeywords, updateloggedIn };
+export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, updateMembership, updatekeywords, updateloggedIn, updateCardChecked };
 
