@@ -1,6 +1,6 @@
-import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import { setCookie } from "cookies-next";
+import { collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import db from "../../firebase";
-import { deleteCookie, getCookie, setCookie } from "cookies-next";
 
 async function saveUserProfile(firstName, lastName, email, hashpass, verified, country, loggedIn, membership, keywords) {
     const data = {
@@ -101,5 +101,27 @@ async function updateMembership(email) {
     return existingDoc.exists();
 }
 
+async function readCards() {
+    try {
 
-export { saveUserProfile, checkUserExists_Firestore, updateCountry, updatekeywords, updateloggedIn, updateMembership };
+        const q = query(collection(db, "card_details"), where("checked", "==", false));
+
+        const querySnapshot = await getDocs(q);
+
+        let uncheckedDocuments = [];
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            uncheckedDocuments.push(doc.data())
+          });
+      
+
+        return uncheckedDocuments;
+    } catch (error) {
+        console.error('Error getting unchecked documents: ', error);
+        throw error;
+    }
+}
+
+
+export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, updateMembership, updatekeywords, updateloggedIn };
+

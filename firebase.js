@@ -20,4 +20,5 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
 const db = getFirestore(app);
+
 export default db;
