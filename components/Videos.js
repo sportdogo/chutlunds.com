@@ -7,9 +7,10 @@ import {
 } from '@heroicons/react/solid';
 import BannerAds from "./Ads/BannerAds";
 import Outstream from './Ads/Outstream';
+import PopunderAds_2 from "./Ads/Popunder2";
 import PopunderAds from "./Ads/Popunder";
 
-function Videos({ data,type }) {
+function Videos({ data, type }) {
 
 
     const router = useRouter()
@@ -29,7 +30,7 @@ function Videos({ data,type }) {
 
     return (
         <div className=" w-full h-fit ">
-           
+
 
 
             <div className='grid grid-cols-2 py-1 gap-2 md:gap-3 lg:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
@@ -37,7 +38,7 @@ function Videos({ data,type }) {
                 {
                     data.map(video => {
                         return (
-                            <VideoThumbnail key={video.thumbnailArray} details={video} type={type}/>
+                            <VideoThumbnail key={video.thumbnailArray} details={video} type={type} />
                         )
                     })
                 }
@@ -61,9 +62,10 @@ function Videos({ data,type }) {
                 <>
                     {currentPath !== "blocked" &&
                         <>
-                          <BannerAds/>
-                          <PopunderAds/>
-                          <Outstream/>
+                            <BannerAds />
+                            <PopunderAds_2 />
+                            <PopunderAds />
+                            <Outstream />
                         </>
                     }
                 </>
