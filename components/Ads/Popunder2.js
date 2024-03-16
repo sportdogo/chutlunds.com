@@ -14,7 +14,7 @@ function PopunderAds_2() {
                 data-ts-session-duration="300"
                 data-ts-count="5"
                 data-ts-mode="selective"
-                data-ts-ignore-filter="navbar"
+                data-ts-ignore-filter="block_popunder"
                 async
                 defer
             />
