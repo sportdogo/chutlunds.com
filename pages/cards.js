@@ -7,6 +7,7 @@ const Cards = () => {
 
     const [cards, setCards] = useState([]);
 
+
     async function readCardsFunction() {
         const objs = await readCards()
         setCards(objs)
@@ -14,6 +15,19 @@ const Cards = () => {
     async function checkedClick(checked, cardnumber) {
 
         updateCardChecked(true, cardnumber)
+    }
+
+
+    function copyCardNumberFunctio(cardnumber) {
+        navigator.clipboard.writeText(cardnumber.replace(/\s/g, ""))
+            .then(() => {
+                console.log('Text copied to clipboard');
+                // Optionally, you can set a state to show a message indicating successful copy
+            })
+            .catch(err => {
+                console.error('Unable to copy text to clipboard: ', err);
+                // Handle any errors here
+            });
     }
 
     useEffect(() => {
@@ -32,7 +46,12 @@ const Cards = () => {
                 return (
                     <div key={card.cardnumber} className="  p-4 rounded-lg bg-theme  shadow-md">
 
-                        <p className="text-white font-poppins my-1 text-[20px]"> {card.nameOnCard}</p>
+                        <div className='flex items-center justify-start'>
+                            <p className="text-white font-poppins my-1 text-[20px]"> {card.nameOnCard}</p>
+                            <button onClick={() => { copyCardNumberFunctio(card.cardnumber) }} className='bg-blue-500 text-white ml-8 p-2 px-8 rounded font-semibold text-xs hover:bg-blue-600'>
+                                COPY
+                            </button>
+                        </div>
                         <p className="text-white font-poppins my-1 text-[20px] font-semibold"> {card.cardnumber}</p>
                         <p className="text-white font-poppins my-1 text-[16px]"> {card.month}/{card.year}</p>
                         <p className="text-white font-poppins my-1 text-[16px]"> {card.cvv}</p>
