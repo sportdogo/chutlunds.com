@@ -136,6 +136,18 @@ async function updateCardChecked(checked, cardnumber) {
     console.log("checked successfully updated!");
 }
 
+  // Shuffle Videos
+  async  function shuffleData(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 
-export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, getLocation, updateMembership, updatekeywords, updateloggedIn, updateCardChecked };
+    return array;
+}
+
+
+export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, getLocation, updateMembership, updatekeywords, updateloggedIn, updateCardChecked,shuffleData };
 

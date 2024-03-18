@@ -14,7 +14,7 @@ import BannerAds from '../components/Ads/BannerAds';
 import Outstreams from '../components/Ads/Outstream';
 // import { getHomePageVideos } from '../config/getHomepageVideos';
 import { scrapeVideos } from '../config/spangbang';
-import { updateCountry } from '../config/firebase/lib';
+import { shuffleData, updateCountry } from '../config/firebase/lib';
 
 export default function Home({ video_collection, pages, desiVideosDataArray, desiMmsVideoArray }) {
 
@@ -32,7 +32,8 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
     setcountryLanguage(lang)
 
     //value is languge of country
-    let url = `https://spankbang.party/s/${lang.toLowerCase().trim()}/`
+    let url = `https://spankbang.party/s/${lang.toLowerCase().trim()}/?o=trending`
+
 
     const rawResponse = await fetch('/api/spangbang/getvideos', {
       method: 'POST',
@@ -43,8 +44,8 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
       body: JSON.stringify({ url })
     });
     const content = await rawResponse.json();
-
-    setcountryVideos(content.finalDataArray)
+    setcountryVideos(shuffleData(content.finalDataArray))
+    
   }
 
   async function fetchLocation() {
