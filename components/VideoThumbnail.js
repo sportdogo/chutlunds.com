@@ -23,8 +23,8 @@ function VideoThumbnail({ details, type }) {
         if (window.location.href.includes("/video")) {
             setvideoPage(true)
         }
-
     }
+    
     useEffect(() => {
         abcd()
     }, []);

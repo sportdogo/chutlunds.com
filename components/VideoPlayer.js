@@ -84,17 +84,31 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
 
 
-    const download = () => {
+    const download = async () => {
+        console.log(VideoSrc);
 
-        // router.push("/membership")
-        // return
-        if (!loggedIn) {
-            setCookie('videoRoute', window.location.href
-            );
-            router.push('/account/login')
-        } else {
-            router.push(VideoSrc)
+        try {
+            const response = await fetch(VideoSrc);
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'video.mp4'); // Set the filename for download
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+        } catch (error) {
+            console.error('Error downloading video: ', error);
         }
+
+
+        // if (!loggedIn) {
+        //     setCookie('videoRoute', window.location.href
+        //     );
+        //     router.push('/account/login')
+        // } else {
+        //     router.push(VideoSrc)
+        // }
     }
 
 
