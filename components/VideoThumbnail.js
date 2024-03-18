@@ -35,10 +35,7 @@ function VideoThumbnail({ details, type }) {
     const [spinnerloader, setspinnerloader] = useState(false);
 
     const OnClickHandler = () => {
-        // if (type == "premium") {
-        //     router.push('/membership')
-        //     return
-        // }
+
         const object = {
             Title: video.TitleArray,
             duration: video.durationArray,
@@ -77,7 +74,7 @@ function VideoThumbnail({ details, type }) {
 
     return (
         <div className="">
-            <a href={type === "premium" ? "/membership" : `/video/${keyy}*${title}`} onClick={OnClickHandler} data-title={video.TitleArray} >
+            <a href={`/video/${keyy}*${title}`} onClick={OnClickHandler} data-title={video.TitleArray} >
                 <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer  shadow-md shadow-blue-200  rounded-lg overflow-hidden transform transition duration-150`}>
 
 
