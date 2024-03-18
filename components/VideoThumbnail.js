@@ -35,10 +35,10 @@ function VideoThumbnail({ details, type }) {
     const [spinnerloader, setspinnerloader] = useState(false);
 
     const OnClickHandler = () => {
-        if (type == "premium") {
-            router.push('/membership')
-            return
-        }
+        // if (type == "premium") {
+        //     router.push('/membership')
+        //     return
+        // }
         const object = {
             Title: video.TitleArray,
             duration: video.durationArray,

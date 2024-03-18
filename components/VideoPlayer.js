@@ -86,8 +86,8 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
     const download = () => {
 
-        router.push("/membership")
-        return
+        // router.push("/membership")
+        // return
         if (!loggedIn) {
             setCookie('videoRoute', window.location.href
             );
