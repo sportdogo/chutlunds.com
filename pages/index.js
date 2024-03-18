@@ -44,7 +44,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
       body: JSON.stringify({ url })
     });
     const content = await rawResponse.json();
-    setcountryVideos(shuffleData(content.finalDataArray))
+    setcountryVideos(content.finalDataArray)
     
   }
 
