@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps }) {
 
   const router = useRouter();
   const currentRoute = router.pathname;
-  console.log(currentRoute);
 
   Router.events.on("routeChangeStart", (ur = -0) => {
     NProgress.start();

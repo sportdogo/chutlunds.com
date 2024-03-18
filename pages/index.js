@@ -28,22 +28,23 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
 
   async function fetchVideos(data) {
     const lang = getLanguge(data.countryName)
+
     setcountryLanguage(lang)
 
     //value is languge of country
     let url = `https://spankbang.party/s/${lang.toLowerCase().trim()}/`
 
-    const rawResponse = await fetch('/api/spangbang', {
+    const rawResponse = await fetch('/api/spangbang/getvideos', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(url)
+      body: JSON.stringify({ url })
     });
     const content = await rawResponse.json();
 
-    setcountryVideos(content.data.finalDataArray)
+    setcountryVideos(content.finalDataArray)
   }
 
   async function fetchLocation() {
@@ -51,15 +52,16 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
 
     const location_localstorage = localStorage.getItem("location")
     if (location_localstorage !== null) {
-      const parsedLoaction = JSON.parse(location_localstorage)
-      setcurrentLocation(parsedLoaction)
-      countryUpdated_DB(parsedLoaction.countryName)
-      await fetchVideos(parsedLoaction)
+      const parsedLocation = JSON.parse(location_localstorage)
+      setcurrentLocation(parsedLocation)
+      countryUpdated_DB(parsedLocation.countryName)
+      await fetchVideos(parsedLocation)
 
     } else {
       try {
         const response = await fetch('https://api.db-ip.com/v2/free/self')
         const data = await response.json();
+
         setcurrentLocation(data)
         await fetchVideos(data)
         await countryUpdated_DB(data.countryName)
@@ -139,7 +141,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
             Free desi sex videos, desi mms, Indian sex videos, desi porn videos, devar bhabhi ki chudai, aunty ki chudai collection. full hd indian sex videos download free.
           </h1> */}
 
-          {/* 
+
 
           {countryVideos.length !== 0 &&
             <>
@@ -147,7 +149,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
               <Videos data={shuffle(countryVideos).slice(0, 12)} />
             </>
           }
-
+          {/* 
           <HomepageTitle title='Desi Sex Videos' />
           <Videos data={shuffle(desiVideosDataArray).slice(0, 12)} />
           <HomepageTitle title='Desi MMS' />

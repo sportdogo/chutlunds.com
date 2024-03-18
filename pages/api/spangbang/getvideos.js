@@ -4,10 +4,7 @@ import fetchdata from 'node-fetch';
 export default async function handler(req, res) {
 
     let url  = req.body.url
-    console.log('====================================');
-    console.log(url);
-    console.log('====================================');
-    
+  
         if (url.includes("https://spankbang.com/")) {
         url = url.replace("https://spankbang.com/", "https://spankbang.party/");
     }

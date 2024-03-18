@@ -11,7 +11,6 @@ export default async function (req, res, next) {
         }
 
 
-        getLocation(data.email) // this fetch location and saves it to firestore using email
         // set cookie and send redirect
 
         setCookie('email', data.email, {
