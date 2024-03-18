@@ -44,8 +44,8 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
       body: JSON.stringify({ url })
     });
     const content = await rawResponse.json();
-    setcountryVideos(content.finalDataArray)
-    
+    setcountryVideos(shuffle(content.finalDataArray))
+
   }
 
   async function fetchLocation() {
@@ -144,12 +144,7 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
 
 
 
-          {countryVideos.length !== 0 &&
-            <>
-              <HomepageTitle title={`Popular Porn Videos in ${currentLocation.countryCode}`} country={currentLocation.countryName} language={countryLanguage} />
-              <Videos data={shuffle(countryVideos).slice(0, 12)} />
-            </>
-          }
+
           {/* 
           <HomepageTitle title='Desi Sex Videos' />
           <Videos data={shuffle(desiVideosDataArray).slice(0, 12)} />
@@ -160,6 +155,14 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
           <Outstreams />
           <HomepageTitle title='Popular Porn Videos' />
           <Videos data={video_collection[2].slice(0, 12)} />
+
+          {countryVideos.length !== 0 &&
+            <>
+              <HomepageTitle title={`Popular Porn Videos in ${currentLocation.countryCode}`} country={currentLocation.countryName} language={countryLanguage} />
+              <Videos data={shuffle(countryVideos).slice(0, 12)} />
+            </>
+          }
+
           <HomepageTitle title='Trending Porn Videos' />
           <Videos data={video_collection[0].slice(0, 12)} />
           <HomepageTitle title='Upcoming Porn Videos' />
