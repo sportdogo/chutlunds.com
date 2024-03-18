@@ -34,26 +34,9 @@ export const LoginForm = () => {
             router.push('/')
         }
 
-        getLocation()
-
-
     }, []);
 
-    async function getLocation() {
-        try {
-            const response = await fetch('https://api.db-ip.com/v2/free/self')
-            const data = await response.json();
-            setCountry(data.countryName)
-            setCookie('country', data.countryName, { maxAge: 900000 })
 
-        } catch (error) {
-            const response = await fetch(' https://geolocation-db.com/json/8dd79c70-0801-11ec-a29f-e381a788c2c0')
-            const data = await response.json();
-            setCountry(data.country_name)
-            setCookie('country', data.country_name, { maxAge: 900000 })
-
-        }
-    }
 
 
     const SignIn = async (route) => {
@@ -219,13 +202,13 @@ export const LoginForm = () => {
 
 
 
-            
+
 
 
 
 
             </div>
-        
+
 
         </div>
 

@@ -1,7 +1,8 @@
-import { setCookie, deleteCookie ,getCookie} from "cookies-next";
+import { setCookie, deleteCookie, getCookie } from "cookies-next";
 import passport from "passport";
 import "../../../../config/passportUser"
 import Cookies from 'js-cookie'
+import { getLocation } from "../../../../config/firebase/lib";
 
 export default async function (req, res, next) {
     passport.authenticate("google", (err, data) => {
@@ -10,9 +11,9 @@ export default async function (req, res, next) {
         }
 
 
+        getLocation(data.email) // this fetch location and saves it to firestore using email
         // set cookie and send redirect
 
-      
         setCookie('email', data.email, {
             req,
             res, maxAge: 900000

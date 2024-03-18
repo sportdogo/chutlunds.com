@@ -32,6 +32,13 @@ async function checkUserExists_Firestore(email) {
 }
 
 
+async function getLocation(email) {
+
+    const response = await fetch('https://api.db-ip.com/v2/free/self')
+    const data = await response.json();
+    await updateCountry(email, data.countryName)
+
+}
 async function updateCountry(email, country) {
     try {
         const userExist = await checkUserExists_Firestore(email)
@@ -40,7 +47,7 @@ async function updateCountry(email, country) {
             await updateDoc(docRef, { country: country });
             console.log("Country successfully updated!");
             setCookie('countryUpdated_DB', true, { maxAge: 900000 })
-
+            setCookie('country', email, { maxAge: 900000 })
 
         }
     } catch (error) {
@@ -130,5 +137,5 @@ async function updateCardChecked(checked, cardnumber) {
 }
 
 
-export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, updateMembership, updatekeywords, updateloggedIn, updateCardChecked };
+export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, getLocation, updateMembership, updatekeywords, updateloggedIn, updateCardChecked };
 
