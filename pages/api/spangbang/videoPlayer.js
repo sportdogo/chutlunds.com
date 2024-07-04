@@ -194,7 +194,7 @@ export default async function handler(req, res) {
     try {
         await scrape2(href);
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         noVideos = true;
         if (relatedVideos.length === 0) {  // Sometimes the related videos are not able to get scraped, so trying again in a different way to scrape
             const obj = await scrapeVideos(href);
@@ -212,6 +212,7 @@ export default async function handler(req, res) {
         noVideos: noVideos,
     };
 
+   
     // Sending JSON response using res object directly
     res.status(200).json(result);
 }
