@@ -137,8 +137,8 @@ export async function getServerSideProps(context) {
 
         const keyy = video.substring(video.indexOf("video/"), video.indexOf("*"));
         const title = video.substring(video.indexOf("*") + 1, video.length).trim();
-        // const api = `https://my-worker.ukdevelopers007.workers.dev/videoPlayer`;
-    const api="http://localhost:3000/api/spangbang/videoPlayer"
+        const api = `https://my-worker.ukdevelopers007.workers.dev/videoPlayer`;
+    // const api="http://localhost:3000/api/spangbang/videoPlayer"
         const rawResponse = await fetch(api, {
             method: 'POST',
             headers: {
