@@ -98,9 +98,18 @@ async function updatekeywords(searchkey, email) {
 }
 
 
-async function updateloggedIn(email) {
-    const existingDoc = await getDoc(doc(db, "Users", email));
-    return existingDoc.exists();
+async function updateloggedIn(email,loginStatus) {
+    try {
+        const userExist = await checkUserExists_Firestore(email)
+        console.log(userExist)
+        if (userExist) {
+            const docRef = doc(db, "Users", email);
+            await updateDoc(docRef, { loggedIn: loginStatus });
+            // console.log("loginStatus successfully updated!");
+        }
+    } catch (error) {
+        console.log("Error updating loginStatus: ", error);
+    }
 }
 
 async function updateMembership(email) {
@@ -136,8 +145,8 @@ async function updateCardChecked(checked, cardnumber) {
     console.log("checked successfully updated!");
 }
 
-  // Shuffle Videos
-  async  function shuffleData(array) {
+// Shuffle Videos
+async function shuffleData(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         var temp = array[i];
@@ -149,5 +158,5 @@ async function updateCardChecked(checked, cardnumber) {
 }
 
 
-export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, getLocation, updateMembership, updatekeywords, updateloggedIn, updateCardChecked,shuffleData };
+export { checkUserExists_Firestore, readCards, saveUserProfile, updateCountry, getLocation, updateMembership, updatekeywords, updateloggedIn, updateCardChecked, shuffleData };
 

@@ -44,3 +44,4 @@ export default async function (req, res, next) {
 
     })(req, res, next);
 }
+

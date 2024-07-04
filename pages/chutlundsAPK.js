@@ -1,7 +1,6 @@
-import { StarIcon, ChevronRightIcon } from '@heroicons/react/solid'
-import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { StarIcon } from '@heroicons/react/solid';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 
 
@@ -67,7 +66,7 @@ const MobileAppModal = () => {
 
                     <div className=' mt-3 xl:hidden font-inter text-[#374151]'>
 
-                        <p className='text-lg font-semibold mb-1.5 '>What's new</p>
+                        <p className='text-lg font-semibold mb-1.5 '>What&apos;s new</p>
                         <p className='mb-1 text-sm'>New Features Added:</p>
                         <p className='mb-1 text-sm'>1. Unlimited 4K, HD  Videos Added</p>
                         <p className='mb-1 text-sm'>2. Download your Favourite Video Offline</p>
@@ -108,7 +107,7 @@ const MobileAppModal = () => {
 
                             <div className='text-[14px] lg:text-[16px] mb-5 font-inter text-[#374151]  hidden xl:flex flex-col'>
 
-                                <p className='text-xl font-semibold mb-1.5'>What's new</p>
+                                <p className='text-xl font-semibold mb-1.5'>What&apos;s new</p>
                                 <p className='mb-1 '>New Features Added:</p>
                                 <p className='mb-1 '>1. Unlimited 4K, HD  Videos Added</p>
                                 <p className='mb-1 '>2. Download your Favourite Video Offline</p>

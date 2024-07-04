@@ -1,13 +1,13 @@
+import { AuthContextProvider } from '../context/AuthContext'
+import Head from 'next/head'
+import Router, { useRouter } from 'next/router'
 import Script from 'next/script'
+import NProgress from 'nprogress'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import VideoState from '../context/videos/VideoState'
 import '../styles/globals.css'
 import '../styles/nProgress.css'
-import Head from 'next/head'
-import Router from 'next/router'
-import NProgress from 'nprogress'
-import { useRouter } from 'next/router';
 
 
 
@@ -60,21 +60,26 @@ function MyApp({ Component, pageProps }) {
         gtag('config', 'G-6JFQKLE3DK');`}
       </Script>
 
+      <AuthContextProvider>
 
-      <VideoState>
+        <VideoState>
 
-        {/* <LoginForm />
+          {/* <LoginForm />
         <SignUpForm/>
         <SignUpFormOTP/>
         <PasswordReset/> */}
-        <Navbar />
-        <div className={`${currentRoute == "/membership" ? "" : "basicMargin"} `}>
-          <Component {...pageProps} />
-        </div>
-        <hr />
+          <Navbar />
+          <div className={`${currentRoute == "/membership" ? "" : "basicMargin"} `}>
+            <Component {...pageProps} />
+          </div>
+          <hr />
 
-        {/* <Footer /> */}
-      </VideoState>
+          {currentRoute != "/membership" &&
+            <Footer />
+          }
+        </VideoState>
+      </AuthContextProvider>
+
     </>
   )
 }

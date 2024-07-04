@@ -14,7 +14,7 @@ function privacy() {
             <h1 className="header">18 U.S.C. § 2257 STATEMENT </h1>
             <p className="para"> Although we are not subject to United States law, we voluntarily comply with certain legal safe guards. For the purposes of 18 U.S.C. § 2257; chudlunds.live is not a producer (primary or secondary) of any content found on this website. For § 2257 records for any content found on this website, please direct your request to the site or user which produced the content. </p>
 
-            <p className="para">Our website allows for third parties to upload their own content, but we do not create the content ourselves. So while we strive for accurate compliance, we may not be 100% accurate. Any content that we are notified of as being inappropriate, illegal; unlawful; harassing, offensive or otherwise objectionable may be removed by us, therefore we ask users to flag any such content by e-mailing us or clicking the appropriate link on the content's webpage. </p>
+            <p className="para">Our website allows for third parties to upload their own content, but we do not create the content ourselves. So while we strive for accurate compliance, we may not be 100% accurate. Any content that we are notified of as being inappropriate, illegal; unlawful; harassing, offensive or otherwise objectionable may be removed by us, therefore we ask users to flag any such content by e-mailing us or clicking the appropriate link on the content&apos;s webpage. </p>
 
             <p className="para">
                 We undertake the following procedures in order to ensure compliance with § 2257: (1) we require that all users, both those only accessing the website and those uploading content, be at least 18 years of age or the age of majority in their jurisdiction; and (2) we require that all users uploading content onto the website represent and warrant that they have complied with § 2257, including by ensuring that all persons appearing in the content are over the age of 18, that they have consented to the use of their likeness and that the user uploading the work is keeping records in compliance with § 2257.
@@ -23,11 +23,11 @@ function privacy() {
             <h1 className="header">Privacy Policy </h1>
 
             <p className="para">
-                Pursuant to our Terms of Use, this document describes how we treat personal information related to your use of chudlunds.live and its affiliated websites (the "Website"), including information you provide when using it.
+                Pursuant to our Terms of Use, this document describes how we treat personal information related to your use of chudlunds.live and its affiliated websites (the &quot;Website&quot;), including information you provide when using it.
             </p>
 
             <p className="para">
-                We expressly and strictly limit use of the Website to adults over 18 years of age or the age of majority in the individual's jurisdiction, whichever is greater. Anyone under this age is strictly forbidden from using the Website. We do not knowingly seek or collect any personal information or data from persons who have not attained this age.
+                We expressly and strictly limit use of the Website to adults over 18 years of age or the age of majority in the individual&apos;s jurisdiction, whichever is greater. Anyone under this age is strictly forbidden from using the Website. We do not knowingly seek or collect any personal information or data from persons who have not attained this age.
             </p>
 
             <h1 className="header">Data Collected </h1>

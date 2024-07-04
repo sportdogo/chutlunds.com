@@ -61,7 +61,7 @@ function terms() {
             <p className='para'>You represent and warrant that you have all the rights, power and authority necessary to grant the rights granted herein to
                 User Submissions. Specifically, you represent and warrant that you own the title to the User Submissions, that you have the
                 fight to upload the User Submissions to the Website, and that uploading the User Submissions will not infringe upon any
-                other party's rights or your contractual obligations to other parties.</p>
+                other party&apos;s rights or your contractual obligations to other parties.</p>
 
             <p className='para'>You acknowledge that we may at our sole discretion refuse to publish, remove, or block access to any User Submission for
                 any reason, o for no reason at all, with or without notice.</p>
@@ -93,7 +93,7 @@ function terms() {
                 and Third Party Content).</p>
 
             <p className='para'>‘Without limiting the provisions below on limitations of liability and disclaimers of warranties, all Content (including User
-                Submissions and Third Party Content) on the Website is provided to you “AS-IS" for your information and personal use only
+                Submissions and Third Party Content) on the Website is provided to you “AS-IS&quot; for your information and personal use only
                 and you shall not use, copy, reproduce, distribute, transmit, broadcast, display, sell, license or otherwise exploit for any other
                 purpose whatsoever the Content without the prior written consent of the respective owners/licensors of the Content.</p>
 

@@ -28,7 +28,7 @@ function Sidebar() {
 
     return (
         <div className='hidden md:flex md:flex-col mr-2' >
-            {shuffle(categories).map(category => {
+            {categories.map(category => {
                 return (
 
                     <Link key={category.name}  href={`/category/${category.name.replaceAll('.png',"").toLowerCase().trim()}`}>

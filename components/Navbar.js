@@ -1,28 +1,21 @@
-import { useState, useRef, useEffect, } from 'react';
-import { useContext } from 'react'
-import videosContext from '../context/videos/videosContext'
-import ReactCountryFlag from "react-country-flag"
-import { getCookie, deleteCookie } from "cookies-next";
+import { updateloggedIn } from "../config/firebase/lib";
+import { deleteCookie } from "cookies-next";
+import { useContext, useEffect, useRef, useState, } from 'react';
+import ReactCountryFlag from "react-country-flag";
+import { UserAuth } from "../context/AuthContext";
+import videosContext from '../context/videos/videosContext';
 
-import { Fragment } from 'react'
+import { Fragment } from 'react';
 
 import {
-
-} from '@heroicons/react/solid'
-import {
-    MoonIcon,
     MenuIcon,
-    SearchIcon,
-    SunIcon,
-    LoginIcon,
-    UserIcon,
-    UserCircleIcon
-
-} from '@heroicons/react/outline'
+    SearchIcon
+} from '@heroicons/react/outline';
+import { } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
 
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { XIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 
 var navigation = [
@@ -43,52 +36,44 @@ function classNames(...classes) {
 
 function Navbar() {
 
+    const { user, logOut } = UserAuth();
+
     const router = useRouter();
+
     const context = useContext(videosContext);
-    const { currentLocation, countryBlocked, loggedIn, setloggedIn } = context;
+    const { currentLocation, countryBlocked } = context;
 
     const [location, setlocation] = useState(currentLocation)
     const [searchKey, setsearchKey] = useState('')
     const [showSuggested, setshowSuggested] = useState(false)
 
     useEffect(() => {
+        console.log("----------------------------");
+        console.log("User", user);
+
         if (localStorage.getItem("location") && !currentLocation) {
             setlocation(JSON.parse(localStorage.getItem("location")))
         }
-
-        const emailExists = getCookie("email");
-        if (typeof emailExists !== 'undefined' && emailExists.length > 4) {
-            setloggedIn(true)
-        }
-
 
 
     }, [])
 
 
-    const signOut = async () => {
-        const Email = getCookie('email')
+    const signOut_method = async () => {
+
+
+        const Email = user.email
         deleteCookie('membership');
         deleteCookie('countryUpdated_DB');
         deleteCookie('account');
         deleteCookie('email');
 
+        await updateloggedIn(Email, false)
         try {
-            const parcelData = { email: Email }
-            const rawResponse = await fetch(`${process.env.FRONTEND_URL}api/login/logout`, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                method: 'POST',
-                body: JSON.stringify(parcelData),
-            });
-            const res = await rawResponse.json();
-            console.log(res);
-            window.location.reload()
+            logOut();
 
         } catch (error) {
-            window.location.reload()
+            // window.location.reload()
         }
     }
 
@@ -168,7 +153,7 @@ function Navbar() {
 
         <div className='font-inter'>
 
-            <div className="bg-[#13274F] text-white p-2  shadow-md lg:hidden">
+            <div className="bg-theme text-white p-2  shadow-md lg:hidden">
 
                 <Disclosure as="nav" >
                     {({ open }) => (
@@ -178,7 +163,7 @@ function Navbar() {
                                 <div className='flex items-center space-x-1' >
 
                                     <Link href='/'>
-                                        <p className=' align-center text-center font-Dancing font-bold  text-3xl pl-1 pr-1 cursor-pointer lg:text-left lg:ml-6 '>Chutlunds.com</p>
+                                    <p className=' align-center text-center font-Dancing font-bold  text-3xl pl-1 pr-1 cursor-pointer lg:text-left lg:ml-6 '>Chutlunds.com</p>
                                     </Link>
                                     {location &&
                                         <div className='cursor-pointer' onClick={handleClickFlag}>
@@ -211,11 +196,11 @@ function Navbar() {
                                         <div>
                                             <Menu.Button className=" ">
 
-                                                {!loggedIn &&
+                                                {!user &&
                                                     <img src='/login/user.png' className='cursor-pointer h-5 w-5 mt-1.5'></img>
                                                 }
 
-                                                {loggedIn &&
+                                                {user &&
                                                     <img src='/login/userOnline.png' className='cursor-pointer h-5 w-5 mt-1.5'></img>
                                                 }
                                             </Menu.Button>
@@ -234,7 +219,7 @@ function Navbar() {
 
 
 
-                                                {!loggedIn &&
+                                                {!user &&
                                                     <Menu.Item>
                                                         <button onClick={() => { router.push('/account/login') }} className='text-white w-[150px] h-[30px] text-[11px] font-inter px-[25px] py-[7px] bg-button hover:bg-button_hover rounded mt-[24px] mx-auto'>
                                                             Sign In / Sign Up
@@ -244,14 +229,14 @@ function Navbar() {
 
                                                 }
 
-                                                {loggedIn &&
-                                                    <h2 className='font-Opensans text-theme  text-[14px] cursor-pointer text-center text-theme font-semibold my-2'>{getCookie("email")}</h2>
+                                                {user &&
+                                                    <h2 className='font-Opensans text-theme  text-[14px] cursor-pointer text-center font-semibold my-2'>{user.email}</h2>
                                                 }
 
 
-                                                {loggedIn &&
+                                                {user &&
                                                     <Menu.Item>
-                                                        <button onClick={signOut} className='text-white w-[150px] h-[30px] text-[11px] font-inter px-[25px] py-[7px] bg-button hover:bg-button_hover rounded mt-[8px] mx-auto'>
+                                                        <button onClick={signOut_method} className='text-white w-[150px] h-[30px] text-[11px] font-inter px-[25px] py-[7px] bg-button hover:bg-button_hover rounded mt-[8px] mx-auto'>
                                                             Sign Out
                                                         </button>
                                                     </Menu.Item>
@@ -332,7 +317,7 @@ function Navbar() {
                                 return (
                                     <div key={tag} onClick={() => {
                                         setsearchKey(tag); setshowSuggested(false); router.push(`/search/${tag.trim()}`)
-                                    }} className='flex items-center space-x-2 p-2 border-[1px] border-gray-300 cursor-pointer hover:bg-blue-100 pl-4'>
+                                    }} className='flex items-center space-x-2 p-2 border-[1px] border-gray-300 cursor-pointer hover:bg-red-100 pl-4'>
                                         {/* <img src='/login/history.png' className='h-[20px]' /> */}
                                         <p className='text-[12px] fontinter text-theme'>{tag}</p>
 
@@ -376,20 +361,21 @@ function Navbar() {
 
             </div>
 
+
             {/* Large Sreeen NavBar  */}
 
             <div className='flex-col hidden lg:flex ' >
 
 
                 {/* Navbar */}
-                <div className=' flex items-center justify-between bg-[#13274F] pt-2 pb-2 text-white'>
+                <div className=' flex items-center justify-between bg-theme pt-2 pb-2 text-white'>
 
                     <div className='flex items-center space-x-1 md:space-x-3  ml-2' >
 
                         <img src='/erotic.png' alt="loading..." className='w-14' />
 
                         <Link href='/'>
-                            <p className=' align-center text-center font-Dancing font-bold  text-4xl cursor-pointer lg:text-left '>Chutlunds.com</p>
+                        <p className=' align-center text-center font-Dancing font-bold  text-4xl cursor-pointer lg:text-left '>Chutlunds.com</p>
                         </Link>
                         {location &&
 
@@ -438,8 +424,7 @@ function Navbar() {
                                             return (
                                                 <div key={tag} onClick={() => {
                                                     setsearchKey(tag); setshowSuggested(false); router.push(`/search/${tag.trim()}`)
-                                                }} className='flex items-center space-x-2 p-2 border-[1px] border-gray-300 cursor-pointer hover:bg-blue-100 pl-4'>
-                                                    {/* <img src='/login/history.png' className='h-[20px]' /> */}
+                                                }} className='flex items-center space-x-2 p-2 border-[1px] border-gray-300 cursor-pointer hover:bg-red-100 pl-4'>
                                                     <p className='text-[12px] fontinter text-theme'>{tag}</p>
 
                                                 </div>
@@ -468,17 +453,17 @@ function Navbar() {
                         <div className='flex items-center '>
                             {/* <UserIcon className='h-8 w-8' /> */}
 
-                            {!loggedIn &&
+                            {!user &&
                                 <div className='flex items-center space-x-2 pr-12 font-inter'>
                                     <p onClick={() => { router.push('/account/login') }} className=' m-2 rounded underline  pl-2 pr-2  cursor-pointer hover:text-white'>Login</p>
                                     {/* <p onClick={() => { router.push('/account/register') }} className='m-1 underline rounded   pl-2 pr-2  cursor-pointer hover:text-white'>Register</p> */}
                                 </div>
                             }
 
-                            {loggedIn &&
+                            {user &&
                                 <div className='flex items-center space-x-2 pr-12 font-inter'>
-                                    <p className=' m-2 rounded underline   pl-2 pr-2 cursor-pointer '>{getCookie('email')}</p>
-                                    <button className='font-inter bg-green-500 px-3 py-1 rounded' onClick={signOut}>Logout</button>
+                                    <p className=' m-2 rounded underline   pl-2 pr-2 cursor-pointer '>{user.email}</p>
+                                    <button className='font-inter bg-green-500 px-3 py-1 rounded' onClick={signOut_method}>Logout</button>
                                 </div>
                             }
 
@@ -515,7 +500,7 @@ function Navbar() {
             </div>
 
 
-        </div >
+        </div>
     )
 }
 

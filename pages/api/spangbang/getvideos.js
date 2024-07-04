@@ -1,130 +1,57 @@
 import cheerio from 'cheerio';
-import fetchdata from 'node-fetch';
+import { Scrape_Video_Item } from '@/config/Scrape_Video_Item';
 
 export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.status(405).json({ message: 'Only POST requests are allowed' });
+    return;
+  }
 
-    let url  = req.body.url
-  
-        if (url.includes("https://spankbang.com/")) {
-        url = url.replace("https://spankbang.com/", "https://spankbang.party/");
+  try {
+    const body_object = req.body;
+    let url = body_object.url;
+
+    if (url.includes("https://spankbang.com/")) {
+      url = url.replace("https://spankbang.com/", "https://spankbang.party/");
     }
 
-    var finalDataArray = []
-    var pages = []
+    var finalDataArray = [];
+    var pages = [];
 
-
-    var thumbnailArray = []
-    var TitleArray = []
-    var durationArray = []
-    var likedPercentArray = []
-    var viewsArray = []
-    var previewVideoArray = []
-    var hrefArray = []
-
-
-    const response = await fetchdata(url)
+    const response = await fetch(url);
     const body = await response.text();
-    const $ = cheerio.load(body)
+    const $ = cheerio.load(body);
 
-
-
-
-
-    $('.video-list.video-rotate.video-list-with-ads .video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("data-src")
-        thumbnailArray.push(data)
-
-
-    })
-
-    $('.video-list.video-rotate.video-list-with-ads .video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("alt")
-        TitleArray.push(data)
-
-
-    })
-    $('.video-list.video-rotate.video-list-with-ads .video-item .l').each((i, el) => {
-
-        const data = $(el).text()
-        durationArray.push(data)
-    })
-
-
-
-    $('.video-list.video-rotate.video-list-with-ads .video-item .stats').each((i, el) => {
-
-        const text = $(el).text()
-        const likePercentage = text.substring(text.indexOf("%") - 4, text.indexOf("%") + 1)
-        const views = text.substring(0, text.indexOf("%") - 4)
-
-        likedPercentArray.push(likePercentage.trim())
-        viewsArray.push(views.trim())
-    })
-
-
-    $('.video-list.video-rotate.video-list-with-ads .video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("data-preview")
-        previewVideoArray.push(data)
-    })
-
-
-
-    $('.video-list.video-rotate.video-list-with-ads .video-item').each((i, el) => {
-
-        const data = $(el).children().eq(1).attr("href")
-        if (data) {
-            hrefArray.push(`https://spankbang.com${data}`)
-        }
-
-
-    })
+    finalDataArray = Scrape_Video_Item($);
 
     $('.paginate-bar .status').each((i, el) => {
-        const data = $(el).text().replace("page", '')
-        pages = data.split('/')
-    })
+      const data = $(el).text().replace("page", '');
+      pages = data.split('/');
+    });
 
     if (pages.length === 0) {
-        //This is for pornstar page bacause the pornstar page is not updated to new 
-        let tempArray = []
-        $('.pagination ul li').each((i, el) => {
-            const data = $(el).text()
-            tempArray.push(data)
+      // This is for pornstar page because the pornstar page is not updated to new
+      let tempArray = [];
+      $('.pagination ul li').each((i, el) => {
+        const data = $(el).text();
+        tempArray.push(data);
+      });
 
-        })
-
-        if (tempArray.length !== 0) {
-            pages.push(tempArray[1])
-            pages.push(tempArray[tempArray.length - 2])
-        }
+      if (tempArray.length !== 0) {
+        pages.push(tempArray[1]);
+        pages.push(tempArray[tempArray.length - 2]);
+      }
     }
 
+    let result = {
+      finalDataArray: finalDataArray,
+      pages: pages,
+      noVideos: finalDataArray.length === 0
+    };
 
-    for (let index = 0; index < thumbnailArray.length; index++) {
-
-        if (hrefArray[index] != undefined && previewVideoArray[index] != undefined && !thumbnailArray[index].includes("//assets.sb-cd.com")) {
-
-            finalDataArray.push({
-                thumbnailArray: thumbnailArray[index],
-                TitleArray: TitleArray[index],
-                durationArray: durationArray[index],
-                likedPercentArray: likedPercentArray[index],
-                viewsArray: viewsArray[index],
-                previewVideoArray: previewVideoArray[index],
-                hrefArray: hrefArray[index],
-
-            })
-        }
-    }
-
-    if (finalDataArray.length == 0) {
-        res.status(200).json({ finalDataArray: finalDataArray, pages: pages, noVideos: true })
-
-    } else {
-
-        res.status(200).json({ finalDataArray: finalDataArray, pages: pages, noVideos: false })
-    }
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error processing request:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 }

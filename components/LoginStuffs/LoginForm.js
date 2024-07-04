@@ -1,13 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { CheckCircleIcon } from '@heroicons/react/solid'
-import { XCircleIcon } from '@heroicons/react/solid'
-import Link from 'next/link'
-import Router, { useRouter } from 'next/router'
-import Cookies from 'js-cookie'
-import videosContext from '../../context/videos/videosContext'
-import ClipLoader from "react-spinners/ClipLoader";
-import { setCookie, getCookie } from "cookies-next";
-
+import { setCookie } from "cookies-next";
+import { useRouter } from 'next/router';
+import { useContext, useEffect, useState } from 'react';
+import { UserAuth } from "../../context/AuthContext";
+import videosContext from '../../context/videos/videosContext';
 
 
 
@@ -18,7 +13,7 @@ export const LoginForm = () => {
 
     const router = useRouter()
 
-
+    const { user, googleSignIn, logOut } = UserAuth();
 
     const { OTPemail, setOTPemail, loggedIn, setloggedIn } = useContext(videosContext)
 
@@ -29,87 +24,50 @@ export const LoginForm = () => {
     const [Country, setCountry] = useState('');
 
 
-    useEffect(() => {
-        if (typeof getCookie('email') !== 'undefined') {
-            router.push('/')
-        }
 
-    }, []);
-
-
-
-
-    const SignIn = async (route) => {
-        router.push(`/api/${route}`)
-    }
-
-    const submitForm = async (event) => {
-
-        event.preventDefault();
-        setmessage('')
-        setloading(true)
-
-
+    async function getLocation() {
         try {
-            const parcelData = { email: email.trim(), password: password }
-            const rawResponse = await fetch(`${process.env.FRONTEND_URL}api/login/login`, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                method: 'POST',
-                body: JSON.stringify(parcelData),
-            });
-
-            const res = await rawResponse.json();
-            console.log(res);
-            setloading(false)
-
-            if (res.message === 'OTP Sent') {
-                setOTPemail(res.data.email)
-                Router.push({
-                    pathname: `/account/verifyOTP`,
-                    query: { email: email.trim() }
-                })
-            }
-
-            if (res.message === 'Password Incorrect') {
-                setmessage("Password Incorrect !")
-                return
-            }
-            if (res.message === 'User not found') {
-                setmessage("User not found !")
-                return
-            }
-
-            if (res.message === 'Logged In') {
-                setCookie('email', res.data.email, { maxAge: 900000 });
-                setCookie('account', 'credential', { maxAge: 900000 });
-                setCookie('membership', res.data.membership, { maxAge: 900000 });
-                setloggedIn(true)
-                router.push('/')
-
-            }
-
+            const response = await fetch('https://api.db-ip.com/v2/free/self')
+            const data = await response.json();
+            setCountry(data.countryName)
+            setCookie('country', data.countryName, { maxAge: 900000 })
 
         } catch (error) {
-            setloading(false)
-            console.log(error);
-            alert(error);
+            const response = await fetch(' https://geolocation-db.com/json/8dd79c70-0801-11ec-a29f-e381a788c2c0')
+            const data = await response.json();
+            setCountry(data.country_name)
+            setCookie('country', data.country_name, { maxAge: 900000 })
 
+        }
+    }
+
+
+    const SignIn = async (auth_provider) => {
+        try {
+            await googleSignIn();
+        } catch (error) {
+            console.log(error);
         }
 
 
     }
 
-    const forgotPassword = async () => {
-        router.push('/account/forgotPassword')
-    }
+    const handleSignOut = async () => {
+        try {
+            await logOut();
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    const registerClick = async () => {
-        router.push('/account/register')
-    }
+    useEffect(() => {
+        getLocation()
 
+        const checkAuthentication = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 50));
+        };
+        checkAuthentication();
+    }, [user]);
 
 
 
@@ -187,14 +145,14 @@ export const LoginForm = () => {
 
             <div className=' w-full  mt-[76px]  mx-auto  flex flex-col items-start  space-y-6 px-6'>
 
-                <div onClick={() => SignIn('user/google')}
+                <div onClick={() => SignIn('google')}
                     className='hover:bg-slate-200 w-full rounded-xl  flex items-center justify-center space-x-4 cursor-pointer py-1.5  px-6 border-[1px] border-slate-300  '>
                     <img src='/login/google.png' className='lg:h-[38px] object-contain h-[28px] w-[28px] cursor-pointer ml-1'></img>
                     <h2 className=' font-semibold font-inter text-[#323232] text-[11px] lg:text-[14px]'>Continue with Google</h2>
                 </div>
 
 
-                <div onClick={() => SignIn('user/facebook')}
+                <div onClick={() => SignIn('facebook')}
                     className='hover:bg-slate-200 w-full  flex items-center justify-center space-x-4 cursor-pointer py-1.5  px-6  rounded-xl border-[1px] border-slate-300 '>
                     <img src='/login/facebook.png' className='lg:h-[40px] object-contain h-[28px] w-[28px] cursor-pointer ml-1'></img>
                     <h2 className='font-semibold font-inter text-[#323232] text-[11px] lg:text-[14px]'>Continue with Facebook</h2>

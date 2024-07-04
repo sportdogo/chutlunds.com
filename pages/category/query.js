@@ -1,12 +1,9 @@
+import Head from 'next/head';
 import { useRouter } from "next/router";
+import PaginationQuery from '../../components/PaginationQuery';
 import Sidebar from "../../components/Sidebar";
 import Videos from "../../components/Videos";
-import Header from '../../components/searchPage/Header'
-import { useContext, useState } from 'react';
-import videosContext from '../../context/videos/videosContext';
-import Router from 'next/router'
-import Head from 'next/head'
-import PaginationQuery from '../../components/PaginationQuery';
+import Header from '../../components/searchPage/Header';
 import { scrapeVideos } from '../../config/spangbang';
 
 function Category({ video_collection, pages, query, keyword, currentPage, filteredObjsArray }) {
@@ -28,8 +25,8 @@ function Category({ video_collection, pages, query, keyword, currentPage, filter
 
 
       <Head>
-        <title>{capitalizeFirstLetter(keyword)} sex videos | Chutlunds</title>
-        <meta name="description" content={`Watch free collection of ${capitalizeFirstLetter(keyword)} sex videos, ${keyword} porn videos, latest ${keyword} videos in high quality only on Chutlunds.`} />
+        <title>{capitalizeFirstLetter(keyword)} sex videos | FuckVideo</title>
+        <meta name="description" content={`Watch free collection of ${capitalizeFirstLetter(keyword)} sex videos, ${keyword} porn videos, latest ${keyword} videos in high quality only on FuckVideo.`} />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       </Head>
 
@@ -139,3 +136,6 @@ export async function getServerSideProps(context) {
 
 
 }
+
+
+

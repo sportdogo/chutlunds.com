@@ -1,7 +1,6 @@
 import React from 'react'
 import cheerio from 'cheerio';
 import { useState, useRef, } from 'react';
-import fetchdata from 'node-fetch';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Head from 'next/head'
@@ -146,7 +145,7 @@ export async function getServerSideProps() {
 
 
 
-        const response = await fetchdata(url)
+        const response = await fetch(url)
         const body = await response.text();
         const $ = cheerio.load(body)
 
@@ -180,3 +179,4 @@ export async function getServerSideProps() {
 
 
 }
+

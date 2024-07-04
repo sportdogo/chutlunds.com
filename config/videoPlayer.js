@@ -1,8 +1,7 @@
 import cheerio from 'cheerio';
-import fetchdata from 'node-fetch';
 import { scrapeVideos } from './spangbang';
 import extractUrls from "extract-urls";
-
+import { Scrape_Video_Item } from './Scrape_Video_Item';
 
 
 
@@ -18,87 +17,16 @@ const scrape = async (body) => {
 
     //Related Videos
 
-    var thumbnailArray = []
-    var TitleArray = []
-    var durationArray = []
-    var likedPercentArray = []
-    var viewsArray = []
-    var previewVideoArray = []
-    var hrefArray = []
+  
 
     const $ = cheerio.load(body)
 
 
 
-    $('.right .video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("data-src")
-        thumbnailArray.push(data)
-
-
-    })
-    $('.right .video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("alt")
-        TitleArray.push(data)
-
-
-    })
-    $('.right .video-item .l').each((i, el) => {
-
-        const data = $(el).text()
-        durationArray.push(data)
-    })
+    finalDataArray= Scrape_Video_Item($)
 
 
 
-    $('.stats').each((i, el) => {
-
-        const text = $(el).text()
-        const likePercentage = text.substring(text.indexOf("%") - 4, text.indexOf("%") + 1)
-        const views = text.substring(0, text.indexOf("%") - 4)
-
-        likedPercentArray.push(likePercentage.trim())
-        viewsArray.push(views.trim())
-    })
-
-
-    $('.right .video-item picture img').each((i, el) => {
-
-        const data = $(el).attr("data-preview")
-        previewVideoArray.push(data)
-    })
-
-
-
-    $('.right .video-item').each((i, el) => {
-
-        const data = $(el).children().eq(1).attr("href")
-        if (data) {
-            hrefArray.push(`https://spankbang.com${data}`)
-        }
-
-
-    })
-
-
-
-    for (let index = 0; index < thumbnailArray.length; index++) {
-
-        if (hrefArray[index] != undefined && previewVideoArray[index] != undefined && !thumbnailArray[index].includes("//assets.sb-cd.com")) {
-
-            relatedVideos.push({
-                thumbnailArray: thumbnailArray[index],
-                TitleArray: TitleArray[index],
-                durationArray: durationArray[index],
-                likedPercentArray: likedPercentArray[index],
-                viewsArray: viewsArray[index],
-                previewVideoArray: previewVideoArray[index],
-                hrefArray: hrefArray[index],
-
-            })
-        }
-    }
 
 
 }
@@ -115,9 +43,10 @@ const scrape2 = async (url) => {
 
     var tagsArray = []
     var categoriesArray = []
+    var positionsArray = []
 
 
-    const response = await fetchdata(url)
+    const response = await fetch(url)
     const body = await response.text();
     const $ = cheerio.load(body)
 
@@ -131,7 +60,7 @@ const scrape2 = async (url) => {
         default_video_src = data
     })
 
-    const cut1 = body.substring(body.indexOf('<main id="container">'), body.indexOf(`<main id="container">`) + 1000);
+    const cut1 = body.substring(body.indexOf('<main class="main-container">'), body.indexOf(`<main class="main-container">`) + 1000);
     const cut2 = cut1.substring(cut1.indexOf('var stream_data'), body.indexOf("mpd"));
     let video_qualities_url_array = extractUrls(cut2)
 
@@ -242,6 +171,14 @@ const scrape2 = async (url) => {
 
     })
 
+    $('.vjs-timeline-positions span').each((index, element) => {
+        const style = $(element).attr('style');
+        const percentage = style.match(/left:\s*(\d+)%/)[1];
+        const positionName = $(element).find('strong').attr('class');
+        
+        positionsArray.push({ positionName, percentage });
+    });
+
 
     // This is the data for video Details which was getting from localstorage previosly
     var Title = ''
@@ -309,14 +246,18 @@ export const getVideoPageData = async (href) => {
             relatedVideos = obj.finalDataArray;
         }
     }
+
+
     const returnObj={
         videolink_qualities_screenshots: finalDataArray,
         preloaded_video_quality: preloaded_video_quality,
         relatedVideos: relatedVideos,
+        positionsArray:positionsArray,
         pornstar: pornstar,
         video_details: videodetails,
         noVideos: noVideos,
     }
+
     return returnObj;
     
 }
