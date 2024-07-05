@@ -47,7 +47,9 @@ const Videoplayer = () => {
         setVideoTitleBackup(title);
 
         const fetchVideoDetails = async () => {
-            const api = 'https://my-worker.ukdevelopers007.workers.dev/videoPlayer';
+
+            const api = `${process.env.BACKEND_URL}videoPlayer`;
+
             const rawResponse = await fetch(api, {
                 method: 'POST',
                 headers: {
@@ -149,52 +151,59 @@ const Videoplayer = () => {
         );
     }
 
-    if (preloadedVideoQuality.length > 0) {
-        return (
-            <div>
-                <Head>
-                    <title>{`${noVideo ? videoTitleBackup : videoDetails.Title} - ${noVideo ? "720p" : videolinkQualitiesScreenshots.video_qualities_available[videolinkQualitiesScreenshots.video_qualities_available.length - 1].toUpperCase()}`} | Chutlunds</title>
-                    <meta name="description" content={`${capitalizeFirstLetter(noVideo ? videoTitleBackup : videoDetails.Title)} sex video${noVideo ? "." : `, ${tagString} sex videos.`}`} />
-                    <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-                </Head>
+    return (
+        <div>
 
-                {!noVideo ? (
-                    <>
-                        <div className='flex text-sm md:text-lg '>
-                            <div className='flex items-center mt-2 space-x-1 lg:space-x-2'>
-                                <FilmIcon className='h-[20px] md:h-9 hover:scale-100 text-red-600' />
-                                {videolinkQualitiesScreenshots.video_qualities_available.map(quality => (
-                                    <p key={quality} className='font-poppins pr-1'>{quality.toUpperCase()}</p>
-                                ))}
-                            </div>
+            {preloadedVideoQuality.length > 0 && !noVideo ? (
+                <>
+                    <Head>
+                        <title>{`${noVideo ? videoTitleBackup : videoDetails.Title} - ${noVideo ? "720p" : videolinkQualitiesScreenshots.video_qualities_available[videolinkQualitiesScreenshots.video_qualities_available.length - 1].toUpperCase()}`} | Chutlunds</title>
+                        <meta name="description" content={`${capitalizeFirstLetter(noVideo ? videoTitleBackup : videoDetails.Title)} sex video${noVideo ? "." : `, ${tagString} sex videos.`}`} />
+                        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+                    </Head>
+
+                    <div className='flex text-sm md:text-lg '>
+                        <div className='flex items-center mt-2 space-x-1 lg:space-x-2'>
+                            <FilmIcon className='h-[20px] md:h-9 hover:scale-100 text-red-600' />
+                            {videolinkQualitiesScreenshots.video_qualities_available.map(quality => (
+                                <p key={quality} className='font-poppins pr-1'>{quality.toUpperCase()}</p>
+                            ))}
                         </div>
+                    </div>
 
-                        <h1 className='text-md sm:text-lg font-semibold my-1 text-wrap text-gray-700 md:text-2xl font-inter'>{videoDetails.Title}</h1>
+                    <h1 className='text-md sm:text-lg font-semibold my-1 text-wrap text-gray-700 md:text-2xl font-inter'>{videoDetails.Title}</h1>
 
-                        <div className='py-1 rounded overflow-hidden sm:cursor-pointer md:w-4/5'>
-                            <VideoPlayer
-                                video_details={videoDetails}
-                                VideoSrc={VideoSrc}
-                                Qualitys={Quality}
-                                videolink_qualities_screenshots={videolinkQualitiesScreenshots}
-                                preloaded_video_quality={preloadedVideoQuality}
-                                pornstar={pornstar}
-                                positionsArray={positionsArray}
-                                loggedIn={loggedIn}
-                            />
-                        </div>
+                    <div className='py-1 rounded overflow-hidden sm:cursor-pointer md:w-4/5'>
+                        <VideoPlayer
+                            video_details={videoDetails}
+                            VideoSrc={VideoSrc}
+                            Qualitys={Quality}
+                            videolink_qualities_screenshots={videolinkQualitiesScreenshots}
+                            preloaded_video_quality={preloadedVideoQuality}
+                            pornstar={pornstar}
+                            positionsArray={positionsArray}
+                            loggedIn={loggedIn}
+                        />
+                    </div>
 
-                        <div className='flex flex-col p-1 px-3 space-x-2 items-center md:flex-row sm:justify-items-start'>
-                            <p className='font-semibold text-button text-[18px] lg:text-[24px] font-manrope'>Videos related to</p>
-                            <p className='font-semibold text-[15px] lg:text-[20px] pl-1 font-inter'>{videoDetails.Title}</p>
-                        </div>
-                        <Videos data={relatedVideos} />
+                    <div className='flex flex-col p-1 px-3 space-x-2 items-center md:flex-row sm:justify-items-start'>
+                        <p className='font-semibold text-button text-[18px] lg:text-[24px] font-manrope'>Videos related to</p>
+                        <p className='font-semibold text-[15px] lg:text-[20px] pl-1 font-inter'>{videoDetails.Title}</p>
+                    </div>
+                    <Videos data={relatedVideos} />
 
-                        <BannerAds />
-                        <Outstreams />
-                        {latestVideo.length !== 0 && <Videos data={latestVideo} />}
-                    </>
-                ) : (
+                    <BannerAds />
+                    <Outstreams />
+                    {latestVideo.length !== 0 && <Videos data={latestVideo} />}
+                </>
+            ) : (
+
+                <>
+                    <Head>
+                        <title>{`${videoTitleBackup}`} | Chutlunds</title>
+                        <meta name="description" content={`${capitalizeFirstLetter(videoTitleBackup)} sex video`} />
+                        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+                    </Head>
                     <div>
                         {relatedVideos.length !== 0 && (
                             <div className='relative'>
@@ -210,10 +219,11 @@ const Videoplayer = () => {
                             </div>
                         )}
                     </div>
-                )}
-            </div>
-        );
-    }
+                </>
+            )}
+        </div>
+    );
+
     return null;
 };
 

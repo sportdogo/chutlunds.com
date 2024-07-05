@@ -22,7 +22,7 @@ module.exports = {
   },
   env: {
     CLOUDFLARE_STORAGE: 'https://pub-46cdeefeaf774247ab99232ab1ebaa66.r2.dev/',
-    BACKEND_URL: 'https://clownfish-app-jn7w9.ondigitalocean.app/',
+    BACKEND_URL: 'https://my-worker.ukdevelopers007.workers.dev/',
     FRONTEND_URL: 'https://www.chutlunds.com/',
     FACEBOOK_APP_SECRET: '691004714be90ba61d9ab8e0ba0d0c5e',
     FACEBOOK_APP_ID: '412940630805200',

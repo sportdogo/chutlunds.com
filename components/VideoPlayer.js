@@ -147,7 +147,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
         const [minutes, seconds] = timeString.split(':').map(parseFloat);
         return minutes * 60 + seconds;
     }
-    
+
 
     const calculateLeftPosition = (timestamp) => {
         return `calc(${(timestamp / videoDuration) * 100}% - 10px)`;
@@ -172,7 +172,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
                 <button className="hidden" id="playButton">Play</button>
 
 
-                <div className="absolute bottom-[50px] left-0 right-0 flex justify-between">
+                <div className="absolute bottom-[50px] left-0 right-0 flex justify-between hidden xl:flex">
                     {/* Scene icons */}
                     {positionsArray.map(obj => (
                         <img
@@ -187,6 +187,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
                         />
                     ))}
                 </div>
+
 
 
 
@@ -281,7 +282,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
                 <div className='flex  items-center mb-2 '>
 
-<span className="font-inter text-sm lg:text-md 2xl:text-xl font-bold whitespace-nowrap">Skip to scene:</span>
+                    <span className="font-inter text-sm lg:text-md 2xl:text-xl font-bold whitespace-nowrap">Skip to scene:</span>
 
                     <div className='flex flex-wrap  ml-2'>
                         {
@@ -364,7 +365,9 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
                                 src={shot.url}
 
                             ></img>
-                            <strong className='absolute bottom-0 right-0 text-white m-2 bg-transparent bg-black font-inter rounded  bg-opacity-50 text-sm px-1'>{shot.seekTime}</strong>
+<strong className='absolute bottom-0 right-0 text-white m-2 bg-black bg-opacity-50 font-inter rounded text-sm px-1'>
+    {shot.seekTime}
+</strong>
                         </div>
                     )
                 })}
