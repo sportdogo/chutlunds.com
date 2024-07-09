@@ -149,7 +149,7 @@ function autoplayChecksResolved() {
 
   // Request video ads.
   const adsRequest = new google.ima.AdsRequest();
-  adsRequest.adTagUrl = 'https://tsyndicate.com/do2/73e880481e704a218ce8626225782244/vast?extid={extid}';
+  adsRequest.adTagUrl = 'https://tsyndicate.com/do2/b6ffbde36fb14472b1f802ccbb02bc3b/vast?extid={extid}';
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
   // select the correct creative if multiple are returned.
