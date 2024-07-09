@@ -25,7 +25,6 @@ function InterstitialAds() {
 
             <Script
                 src="//cdn.tsyndicate.com/sdk/v1/interstitial.ts.js"
-                strategy="lazyOnload"
             />
 
             <Script
