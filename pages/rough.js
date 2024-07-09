@@ -5,11 +5,12 @@ import InterstitialAds from '@/components/Ads/InterstitialAds'
 
 export default function Rough() {
 
-    
+
     return (
         <div>
 
-        <InterstitialAds/>
+            <a href='/'>Click me</a>
+            <InterstitialAds />
         </div>
     )
 }
