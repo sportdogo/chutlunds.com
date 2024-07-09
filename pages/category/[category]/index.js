@@ -35,8 +35,8 @@ function Category({ video_collection, pages }) {
     <>
 
       <Head>
-        <title>{capitalizeFirstLetter(category)} sex videos | FuckVideo</title>
-        <meta name="description" content={`Watch free collection of ${capitalizeFirstLetter(category)} sex videos, ${category} porn videos, latest ${category} videos in high quality only on FuckVideo.`} />
+        <title>{capitalizeFirstLetter(category)} sex videos | Chutlunds</title>
+        <meta name="description" content={`Watch free collection of ${capitalizeFirstLetter(category)} sex videos, ${category} porn videos, latest ${category} videos in high quality only on Chutlunds.`} />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       </Head>
 

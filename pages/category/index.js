@@ -74,8 +74,8 @@ function Index() {
 
         <div className="">
             <Head>
-                <title>FuckVideo Categories: Find Your Favorite Free Hardcore Porn Videos</title>
-                <meta name="description" content="FuckVideo has the best hardcore porn videos. Discover the newest XXX to stream in your favorite sex category. See the hottest amateurs and pornstars in action." />
+                <title>Chutlunds Categories: Find Your Favorite Free Hardcore Porn Videos</title>
+                <meta name="description" content="Chutlunds has the best hardcore porn videos. Discover the newest XXX to stream in your favorite sex category. See the hottest amateurs and pornstars in action." />
             </Head>
 
 
