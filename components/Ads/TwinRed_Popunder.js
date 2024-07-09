@@ -2,9 +2,9 @@ import React from 'react';
 
 import Script from 'next/script';
 
-const TwinRed_InterstitialAd = () => (
+const TwinRed_Popunder = () => (
     <>
-        <Script id="cf-async-script" strategy="afterInteractive" data-cfasync="false">
+     <Script id="cf-async-script" strategy="afterInteractive" data-cfasync="false">
             {`
                         (function(s,o,l,v,e,d){
                             if(s[o]==null&&s[l+e]){
@@ -28,4 +28,4 @@ const TwinRed_InterstitialAd = () => (
     </>
 );
 
-export default TwinRed_InterstitialAd;
+export default TwinRed_Popunder;

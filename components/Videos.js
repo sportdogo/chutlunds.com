@@ -10,6 +10,7 @@ import Outstream from './Ads/Outstream';
 import PopunderAds_2 from "./Ads/Popunder2";
 import PopunderAds from "./Ads/Popunder";
 import InterstitialAds from "./Ads/InterstitialAds";
+import TwinRed_Popunder from "./Ads/TwinRed_Popunder";
 
 function Videos({ data, type }) {
 
@@ -66,6 +67,7 @@ function Videos({ data, type }) {
                             <BannerAds />
                             <PopunderAds_2 />
                             <PopunderAds />
+                            <TwinRed_Popunder/>
                             <Outstream />
                         </>
                     }
