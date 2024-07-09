@@ -5,9 +5,7 @@ import Link from 'next/link';
 export default function Rough() {
     return (
         <div>
-            <Link href="/">
-                <a>Click me</a>
-            </Link>
+            <Link href="/">Click me</Link>
             <InterstitialAds />
         </div>
     );
