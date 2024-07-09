@@ -9,6 +9,7 @@ import BannerAds from "./Ads/BannerAds";
 import Outstream from './Ads/Outstream';
 import PopunderAds_2 from "./Ads/Popunder2";
 import PopunderAds from "./Ads/Popunder";
+import InterstitialAds from "./Ads/InterstitialAds";
 
 function Videos({ data, type }) {
 
@@ -72,7 +73,7 @@ function Videos({ data, type }) {
             }
 
 
-
+            <InterstitialAds />
 
         </div>
 
