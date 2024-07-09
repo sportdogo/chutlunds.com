@@ -1,10 +1,8 @@
-import InterstitialAds from '@/components/Ads/InterstitialAds';
 import React from 'react';
-import Link from 'next/link';
 
 import Script from 'next/script';
 
-const MyComponent = () => (
+const TwinRed_InterstitialAd = () => (
     <>
         <Script id="cf-async-script" strategy="afterInteractive" data-cfasync="false">
             {`
@@ -27,11 +25,7 @@ const MyComponent = () => (
             strategy="afterInteractive"
         />
 
-        <div className='h-[500px] w-[500px] bg-red-300 m-auto flex items-center'>
-
-            <Link className='mx-auto' href="/">Click me Popunder</Link>
-        </div>
     </>
 );
 
-export default MyComponent;
+export default TwinRed_InterstitialAd;
