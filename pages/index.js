@@ -13,9 +13,10 @@ import { getLanguge } from '../config/getLanguge';
 import videosContext from '../context/videos/videosContext';
 // import { getHomePageVideos } from '../config/getHomepageVideos';
 import { updateCountry } from '../config/firebase/lib';
-import { scrapeVideos } from '../config/spangbang';
 
-export default function Home({ video_collection, pages, desiVideosDataArray, desiMmsVideoArray }) {
+
+
+export default function Home({ video_collection, trendingChannels, tags, trendingCategories, trendingPornstars }) {
 
 
   const { currentLocation, setcurrentLocation } = useContext(videosContext);
@@ -137,23 +138,11 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
       <main className="flex-row flex  mt-1 md:mt-3 md:space-x-3 space-x-2">
         <Sidebar />
         <div>
-          {/* <h1 className="lg:mb-3 mb-2 lg:text-lg text-center lg:text-left text-[15px] md:text-lg border-t-[0.5px] md:border-0 border-slate-300  shadow-xl px-1 pb-2 pt-2 md:pt-0 lg:py-0 font-inter">
-            Free desi sex videos, desi mms, Indian sex videos, desi porn videos, devar bhabhi ki chudai, aunty ki chudai collection. full hd indian sex videos download free.
-          </h1> */}
 
-
-
-
-          {/* 
-          <HomepageTitle title='Desi Sex Videos' />
-          <Videos data={shuffle(desiVideosDataArray).slice(0, 12)} />
-          <HomepageTitle title='Desi MMS' />
-          <Videos data={shuffle(desiMmsVideoArray).slice(0, 12)} /> */}
 
           <BannerAds />
           <Outstreams />
-          <HomepageTitle title='Popular Porn Videos' />
-          <Videos data={video_collection[2].slice(0, 12)} />
+
 
           {countryVideos.length !== 0 &&
             <>
@@ -162,12 +151,19 @@ export default function Home({ video_collection, pages, desiVideosDataArray, des
             </>
           }
 
-          <HomepageTitle title='Trending Porn Videos' />
-          <Videos data={video_collection[0].slice(0, 12)} />
-          <HomepageTitle title='Upcoming Porn Videos' />
-          <Videos data={video_collection[1]} />
-          <HomepageTitle title='New Porn Videos' />
-          <Videos data={video_collection[3]} />
+
+          {video_collection.map(obj => {
+            return (
+              <div key={obj.videosGroupName}>
+                <HomepageTitle title={obj.videosGroupName} />
+                <Videos data={obj.finalDataArray} />
+              </div>
+            )
+
+          })}
+
+
+
 
         </div>
       </main>
@@ -198,25 +194,15 @@ export async function getStaticProps({ req, res }) {
     body: JSON.stringify(parcelData),
   });
   const ress = await rawResponse.json();;
-  const finalDataArray_Arrar = await ress.finalDataArray;
-  
-
-  var desiVideosDataArray = []
-  var desiMmsVideoArray = []
-
-  const obj = await scrapeVideos(`https://spankbang.party/s/desi%20sex%20videos/?o=all`)
-  desiVideosDataArray = obj.finalDataArray
-
-  const obj2 = await scrapeVideos(`https://spankbang.party/s/desi%20mms/?o=all`)
-  desiMmsVideoArray = obj2.finalDataArray
-
 
 
   return {
     props: {
-      video_collection: finalDataArray_Arrar,
-      desiVideosDataArray: desiVideosDataArray,
-      desiMmsVideoArray: desiMmsVideoArray
+      video_collection: ress.result.finalDataArray_Array,
+      trendingChannels: ress.result.trendingChannels,
+      tags: ress.result.tags,
+      trendingCategories: ress.result.trendingCategories,
+      trendingPornstars: ress.result.trendingPornstars
     }
   }
 
