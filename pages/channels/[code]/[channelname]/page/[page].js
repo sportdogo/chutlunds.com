@@ -7,10 +7,12 @@ import Pagination from '../../../../../components/Pagination';
 import Header from '../../../../../components/Pornstar/Header';
 import Sidebar from '../../../../../components/Sidebar';
 import Videos from "../../../../../components/Videos";
+import { Scrape_Video_Item } from '@/config/Scrape_Video_Item';
 
 
 
-function Index({ video_collection, pages, channel_name, channel_subscriber, channel_by }) {
+
+function Index({ video_collection, pages, channel_name, channel_subscriber, channel_by, channel_imageUrl }) {
 
     const router = useRouter();
     if (router.isFallback) {
@@ -46,7 +48,7 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
 
                         <img
                             className={`object-cover w-44 h-56    rounded-[15px] border-[1px] border-gray-200 `}
-                            src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channel_name.replace(/ /g, "_").toLowerCase()}.jpg`}
+                            src={channel_imageUrl}
                             alt={channel_name}
                             loading='lazy'
                         ></img>
@@ -64,7 +66,7 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
 
                         </div>
                     </div>
-                    <Videos data={video_collection} type="premium"/>
+                    <Videos data={video_collection} type="premium" />
                 </div>
             </div>
 
@@ -107,23 +109,18 @@ export async function getStaticProps(context) {
     var channel_name = ""
     var channel_subscriber = ""
     var channel_by = ""
+    var channel_imageUrl = ""
 
 
     const scrape = async (url) => {
 
-        var thumbnailArray = []
-        var TitleArray = []
-        var durationArray = []
-        var likedPercentArray = []
-        var viewsArray = []
-        var previewVideoArray = []
-        var hrefArray = []
 
         const response = await fetch(url)
         const body = await response.text();
         const $ = cheerio.load(body)
 
 
+        finalDataArray = Scrape_Video_Item($)
 
 
         let tempArray = []
@@ -149,17 +146,18 @@ export async function getStaticProps(context) {
         const secondSpan = $('.i span').eq(1);
         channel_by = secondSpan.find("a").text()
 
+        channel_imageUrl = $('.top .i .p img').attr('src');
 
-      
+
     }
     await scrape(`https://spankbang.party/${code}/channel/${channelname}/${page}`)
-
     return {
         props: {
             video_collection: finalDataArray,
             pages: pages,
             channel_name: channel_name,
             channel_subscriber: channel_subscriber,
+            channel_imageUrl: channel_imageUrl.replace(".com", ".party"),
             channel_by: channel_by
         }
     }

@@ -10,7 +10,7 @@ import { Scrape_Video_Item } from '@/config/Scrape_Video_Item';
 
 
 
-function Index({ video_collection, pages, channel_name, channel_subscriber, channel_by,channel_image }) {
+function Index({ video_collection, pages, channel_name, channel_subscriber, channel_by, channel_imageUrl }) {
 
 
 
@@ -54,7 +54,7 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
 
                     <img
                         className={`object-cover w-44 h-44    rounded-[15px] border-[1px] border-gray-200 `}
-                        src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channel_image.replace("+"," ").replace("+"," ").replace("+"," ").replace(/ /g, "_").toLowerCase()}.jpg`}
+                        src={channel_imageUrl}
                         alt={channel_name}
                         loading='lazy'
                     ></img>
@@ -119,7 +119,7 @@ export async function getStaticProps(context) {
     var channel_name = ""
     var channel_subscriber = ""
     var channel_by = ""
-
+    let channel_imageUrl=""
 
     const scrape = async (url) => {
 
@@ -128,8 +128,6 @@ export async function getStaticProps(context) {
         const response = await fetch(url)
         const body = await response.text();
         const $ = cheerio.load(body)
-
-
 
         finalDataArray = Scrape_Video_Item($)
 
@@ -158,11 +156,11 @@ export async function getStaticProps(context) {
         channel_by = secondSpan.find("a").text()
 
 
+         channel_imageUrl =  $('.top .i .p img').attr('src');
 
     }
 
     await scrape(`https://spankbang.party/${code}/channel/${channelname}/?o=long`)
-
 
     return {
         props: {
@@ -171,7 +169,8 @@ export async function getStaticProps(context) {
             channel_name: channel_name,
             channel_subscriber: channel_subscriber,
             channel_by: channel_by,
-            channel_image:channelname
+            channel_imageUrl:channel_imageUrl.replace(".com",".party"),
+            channel_image: channelname
         }
     }
 }

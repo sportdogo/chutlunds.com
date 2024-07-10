@@ -132,7 +132,8 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
       </Head>
 
 
-      <Category_slider />
+      <h2 className='text-[20px] md:hidden font-semibold m-4 font-inter'>Trending Channels</h2>
+      <Category_slider trendingChannels={trendingChannels} />
 
 
       <main className="flex-row flex  mt-1 md:mt-3 md:space-x-3 space-x-2">
@@ -152,16 +153,23 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
           }
 
 
-          {video_collection.map(obj => {
-            return (
-              <div key={obj.videosGroupName}>
-                <HomepageTitle title={obj.videosGroupName} />
-                <Videos data={obj.finalDataArray} />
-              </div>
-            )
+          <HomepageTitle title={video_collection[0].videosGroupName} />
+          <Videos data={video_collection[0].finalDataArray} />
 
-          })}
+          <HomepageTitle title={video_collection[1].videosGroupName} />
+          <Videos data={video_collection[1].finalDataArray} />
 
+          <HomepageTitle title={video_collection[2].videosGroupName} />
+          <Videos data={video_collection[2].finalDataArray} />
+
+          <HomepageTitle title={video_collection[3].videosGroupName} />
+          <Videos data={video_collection[3].finalDataArray} />
+
+          <HomepageTitle title={video_collection[4].videosGroupName} />
+          <Videos data={video_collection[4].finalDataArray} />
+
+          <HomepageTitle title={video_collection[5].videosGroupName} />
+          <Videos data={video_collection[5].finalDataArray} />
 
 
 

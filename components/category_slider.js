@@ -1,27 +1,25 @@
 import React from 'react'
 import Link from 'next/link'
-import jsonData from "../JsonData/categoryImages/data.json"
 
 
-function Category_slider() {
+function Category_slider(trendingChannels) {
 
-
-
-
-    // Used like so
-    var array = jsonData;
 
     return (
-        <div className='flex items-start space-x-1 text-color overflow-x-scroll scrollbar-hide md:hidden mt-4'>
+        <div className='flex items-start space-x-1 text-color overflow-x-scroll scrollbar-hide md:hidden my-4'>
 
-            {array.map(category => {
+            {trendingChannels.trendingChannels.map(category => {
+                // extract code and channelname for href 
+                const code = category.href.substring(category.href.indexOf('/channel') - 2, category.href.indexOf('/channel')).toLowerCase();
+                console.log(`/channels/${code}/${category.channelName.replace(/ /g, "_").toLowerCase()}`);
+
                 return (
-                    <Link href={`/category/${category.name.substring(0, category.name.indexOf('.png')).toLowerCase()}`} key={category.name} >
+                    <Link href={`/channels/${code}/${category.channelName.replace(/ /g, "_").toLowerCase()}`} key={category.imageUrl} >
                         <div className='flex flex-col justify-center items-center mx-1'>
                             <div className='w-[90px]'>
-                                <img className='shadow-md rounded-full object-cover aspect-square'   src={`${process.env.CLOUDFLARE_STORAGE}category_images/${category.name}`} alt={category.name.substring(0, category.name.indexOf('.png')).toUpperCase()} loading="lazy"></img>
+                                <img className='shadow-md rounded-full object-cover aspect-square' src={category.imageUrl} loading="lazy"></img>
                             </div>
-                            <h2 className='text-xs text-center font-poppins text-gray-600 font-semibold mt-1 whitespace-nowrap'>{category.name.substring(0, category.name.indexOf('.png')).toUpperCase()}</h2>
+                            <h2 className='text-xs text-center font-poppins text-gray-600 font-semibold mt-1 whitespace-nowrap'>{category.channelName.toUpperCase()}</h2>
                         </div>
                     </Link>
                 )
