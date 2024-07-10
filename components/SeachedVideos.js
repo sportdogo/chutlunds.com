@@ -59,7 +59,7 @@ function SearchVideos() {
 
             {spinnerLoading &&
                 <div className="flex justify-center mx-auto mt-10 ">
-                    <BeatLoader loading size={25} color={'red'} />
+                    <BeatLoader loading size={25} color={'#13274F'} />
                 </div>
             }
             <div className="grid   grid-cols-2  gap-x-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-1 sm:pl-4 sm:pr-4 ">

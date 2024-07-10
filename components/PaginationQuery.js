@@ -48,7 +48,7 @@ const PaginationQuery = ({ data }) => {
                 <button onClick={() => { clickHandler(parseInt(currentPageNumberURL) - 1) }} className={`${parseInt(currentPageNumberURL) === 1 ? "hidden" : ""} scale-90 md:scale-100 font-inter sm:text-med font-bold   sm:mx-4  rounded-lg bg-button px-6 py-2 text-white hover:bg-button_hover`}>{'<'}</button>
 
                 <div className="flex items-center justify-center  rounded py-[1px]">
-                    <p className="font-inter px-4 py-1 rounded text-gray-700  text-md sm:text-lg">{pages[0]}</p>
+                    <p className="font-inter px-4 py-1 rounded text-gray-700  text-md sm:text-lg">{currentPageNumberURL}</p>
                     <span className="mb-1 scale-125 text-red-600">/</span>
                     <p className="font-inter px-4 py-1 rounded text-gray-500  text-md sm:text-lg">{pages[1]}</p>
                 </div>

@@ -16,7 +16,7 @@ function Category({ video_collection, pages }) {
     if (router.isFallback) {
         return (
             <div className="flex justify-center mx-auto mt-10 ">
-                <BeatLoader loading size={25} color={'red'} />
+                <BeatLoader loading size={25} color={'#13274F'} />
             </div>
         )
     }
@@ -77,8 +77,6 @@ export async function getStaticProps(context) {
 
 
 
-
-
     if (homepageVideos === 'trending') {
 
         const obj = await scrapeVideos(`https://spankbang.party/trending_videos/${page}`)
@@ -92,8 +90,17 @@ export async function getStaticProps(context) {
         pages = obj.pages
 
     }
+    else if (homepageVideos === 'featured') {
+        //this will goto channels page from HomepageTitle component
+    }
     else if (homepageVideos === 'popular') {
         const obj = await scrapeVideos(`https://spankbang.party/most_popular/${page}`)
+        finalDataArray = obj.finalDataArray
+        pages = obj.pages
+
+    }
+    else if (homepageVideos === 'random') {
+        const obj = await scrapeVideos(`https://spankbang.party/trending_videos/${page}`)
         finalDataArray = obj.finalDataArray
         pages = obj.pages
 
@@ -104,6 +111,8 @@ export async function getStaticProps(context) {
         pages = obj.pages
 
     }
+
+
 
 
     return {

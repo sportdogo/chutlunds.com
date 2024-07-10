@@ -23,7 +23,7 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
     if (router.isFallback) {
         return (
             <div className="flex justify-center mx-auto mt-10 ">
-                <BeatLoader loading size={25} color={'red'} />
+                <BeatLoader loading size={25} color={'#13274F'} />
             </div>
         )
     }

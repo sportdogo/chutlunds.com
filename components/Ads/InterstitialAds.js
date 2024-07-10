@@ -15,6 +15,8 @@ const InterstitialAds = () => {
                     InterstitialTsAd({
                         spot: "ee9ab24036174503b1debe6c3ccc7fdf",
                         extid: "{extid}",
+                        cookieExpires: 1
+                        
                     });
                 }}
             />

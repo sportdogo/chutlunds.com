@@ -168,7 +168,7 @@ const ModalMembership = () => {
             <div className={`relative bg-white w-full mx-[15px] sm:mx-0 sm:w-3/4 md:w-1/2 lg:w-2/5/3 xl:w-1/3 2xl:w-1/5 p-[20px] py-[5px] rounded-xl shadow-md `}>
 
                 <div className={`absolute inset-0 flex flex-col items-center justify-center   ${beatLoader ? "" : "invisible"}`}>
-                    <BeatLoader loading size={25} color={'blue'} />
+                    <BeatLoader loading size={25} color={'#13274F'} />
                     <p>{message}</p>
                 </div>
 

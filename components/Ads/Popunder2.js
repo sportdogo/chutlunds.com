@@ -11,7 +11,7 @@ function PopunderAds_2() {
                 src="//cdn.tsyndicate.com/sdk/v1/p.js"
                 data-ts-spot="a10d216ce99841069e6f28bf6fd113a2"
                 data-ts-extid="{extid}"
-                data-ts-session-duration="300"
+                data-ts-session-duration="100"
                 data-ts-count="5"
                 data-ts-mode="selective"
                 data-ts-ignore-filter="block_popunder"

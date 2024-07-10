@@ -10,6 +10,8 @@ const Pagination = ({ data }) => {
     const currentPageNumberURL = data.currentPageNumberURL;
     const pages = data.pages;
 
+    console.log(currentPageNumberURL);
+
 
     if (pages.length !== 2) {
 
@@ -33,7 +35,7 @@ const Pagination = ({ data }) => {
 
 
                 <div className="flex items-center justify-center  rounded py-[1px]">
-                    <p className="font-inter px-4 py-1 rounded text-gray-700  text-md sm:text-lg">{pages[0]}</p>
+                    <p className="font-inter px-4 py-1 rounded text-gray-700  text-md sm:text-lg">{currentPageNumberURL}</p>
                     <span className="mb-1 scale-125 text-red-600">/</span>
                     <p className="font-inter px-4 py-1 rounded text-gray-500  text-md sm:text-lg">{pages[1]}</p>
                 </div>
