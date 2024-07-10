@@ -67,7 +67,7 @@ function Videos({ data, type }) {
                             <BannerAds />
                             <PopunderAds_2 />
                             <PopunderAds />
-                            <TwinRed_Popunder/>
+                            {/* <TwinRed_Popunder/> */}
                             <Outstream />
                         </>
                     }
