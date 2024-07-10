@@ -199,7 +199,7 @@ const VideoPlayer = ({ video_details, Qualitys, videolink_qualities_screenshots,
 
                     <div className='flex items-center space-x-1'>
                         <ClockIcon className='h-6 hover:scale-100 text-red-700 md:h-9' />
-                        <p className=' font-bold'>{video_details.duration}</p>
+                        <p className=' font-bold'>{video_details.duration.substring(0,5)}</p>
                     </div>
                     <div className='flex items-center space-x-1'>
                         <EyeIcon className="h-6 text-blue-600  md:h-9" />
