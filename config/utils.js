@@ -2,7 +2,7 @@
 import { setCookie, destroyCookie, getCookie } from 'cookies-next';
 
 export const getViewTypeFromCookie = () => {
-    return getCookie('viewType') || 'grid'; // Default value 'grid'
+    return getCookie('viewType') ; 
 };
 
 export const setViewTypeCookie = (value) => {

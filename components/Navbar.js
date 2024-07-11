@@ -48,8 +48,6 @@ function Navbar() {
     const [showSuggested, setshowSuggested] = useState(false)
 
     useEffect(() => {
-        console.log("----------------------------");
-        console.log("User", user);
 
         if (localStorage.getItem("location") && !currentLocation) {
             setlocation(JSON.parse(localStorage.getItem("location")))

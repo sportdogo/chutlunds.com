@@ -104,6 +104,7 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
     setViewType(getViewTypeFromCookie());
 
 
+
   }, []);
 
   function shuffle(array) {
@@ -147,8 +148,8 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
       <div className='flex justify-between items-center m-4 md:hidden'>
         <h2 className='text-[20px]  font-semibold  font-inter'>Trending Channels</h2>
         <img
-          className='h-[20px] w-[20px] cursor-pointer fill-blue-500'
-          src={viewType === 'grid' ? './grid.png' : './horizontal.png'}
+          className='h-[20px] w-[20px] cursor-pointer'
+          src={viewType === undefined ? './grid.png' : (viewType === 'horizontal' ? './horizontal.png' : './grid.png')}
           onClick={toggleViewType}
           alt="Toggle View"
         />
@@ -167,7 +168,7 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
 
       <main className="flex-row flex  mt-1 md:mt-3 md:space-x-3 space-x-2">
         <Sidebar />
-        <div className='w-full'>
+        <div className='w-full overflow-hidden'>
 
 
           <BannerAds />
