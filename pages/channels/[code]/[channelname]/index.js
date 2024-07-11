@@ -54,13 +54,13 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
 
                     <img
                         className={`object-cover w-44 h-44    rounded-[15px] border-[1px] border-gray-200 `}
-                        src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channel_name.trim().toLowerCase().replace(/ /g, "_")}.jpg`}
+                        src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channel_name.trim().toLowerCase().replace(/ /g, "_").replace(/\+/g, "_")}.jpg`}
                         alt={channel_name}
                         loading='lazy'
                     ></img>
 
                     <div className=' mx-4 font-inter flex flex-col m-auto' >
-                        <h2 className='text-lg lg:text-xl 2xl:text-2xl font-poppins text-theme my-1'> {channel_name}</h2>
+                        <h2 className='text-lg lg:text-xl 2xl:text-2xl font-poppins text-theme my-1'> {capitalizeFirstLetter(channel_name.replace(/\+/g, " "))}</h2>
 
                         <div className='cursor-pointer flex items-center justify-center space-x-2 border-[1px] border-gray-300 text-theme px-3 lg:px-5  p-1.5 shadow-md rounded-md hover:bg-theme hover:text-white'>
                             <PlusIcon className='h-4 lg:h-5 text-red-500' />
@@ -160,7 +160,6 @@ export async function getStaticProps(context) {
 
     await scrape(`https://spankbang.party/${code}/channel/${channelname}/?o=long`)
 
-    console.log(`https://spankbang.party/${code}/channel/${channelname}/?o=long`);
     return {
         props: {
             video_collection: finalDataArray,

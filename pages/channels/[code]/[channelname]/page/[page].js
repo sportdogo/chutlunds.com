@@ -47,16 +47,16 @@ function Index({ video_collection, pages, channel_subscriber, channel_by }) {
                     <div className=' flex font-semibold  items-center justify-start  md:ml-4 m-2 ' >
 
                         <img
-                            className={`object-cover w-44 h-56    rounded-[15px] border-[1px] border-gray-200 `}
+                            className={`object-cover w-44 h-44    rounded-[15px] border-[1px] border-gray-200 `}
              
 
-                            src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channelname.trim().toLowerCase().replace(/ /g, "_")}.jpg`}
+                            src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channelname.trim().toLowerCase().replace(/ /g, "_").replace(/\+/g, "_")}.jpg`}
                             alt={channelname}
                             loading='lazy'
                         ></img>
 
                         <div className=' mx-4 font-inter flex flex-col m-auto' >
-                            <h2 className='text-lg lg:text-xl 2xl:text-2xl font-poppins text-theme my-1'> {channelname}</h2>
+                            <h2 className='text-lg lg:text-xl 2xl:text-2xl font-poppins text-theme my-1'> {capitalizeFirstLetter(channelname.replace(/\+/g, " "))}</h2>
 
                             <div className='cursor-pointer flex items-center justify-center space-x-2 border-[1px] border-gray-300 text-theme px-3 lg:px-5  p-1.5 shadow-md rounded-md hover:bg-theme hover:text-white'>
                                 <PlusIcon className='h-4 lg:h-5 text-red-500' />
@@ -142,7 +142,6 @@ export async function getStaticProps(context) {
 
         const secondSpan = $('.i span').eq(1);
         channel_by = secondSpan.find("a").text()
-
 
 
     }
