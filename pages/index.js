@@ -13,7 +13,7 @@ import videosContext from '../context/videos/videosContext';
 // import { getHomePageVideos } from '../config/getHomepageVideos';
 import { updateCountry } from '../config/firebase/lib';
 
-import Link from 'next/link';
+import { getViewTypeFromCookie, setViewTypeCookie } from '../config/utils';
 import Pornstar_slider from '../components/pornstar_slider';
 import Channels_slider from '../components/channels_slider';
 import Category_slider from '../components/category_slider';
@@ -22,7 +22,7 @@ import Category_slider from '../components/category_slider';
 export default function Home({ video_collection, trendingChannels, tags, trendingCategories, trendingPornstars }) {
 
 
-  const { currentLocation, setcurrentLocation } = useContext(videosContext);
+  const { currentLocation, setcurrentLocation,viewType, setViewType } = useContext(videosContext);
   const [countryVideos, setcountryVideos] = useState([]);
   const [countryLanguage, setcountryLanguage] = useState('');
 
@@ -101,6 +101,9 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
 
     fetchLocation()
 
+    setViewType(getViewTypeFromCookie());
+
+
   }, []);
 
   function shuffle(array) {
@@ -121,6 +124,12 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
     return array;
   }
 
+  const toggleViewType = () => {
+    const newViewType = viewType === 'grid' ? 'horizontal' : 'grid';
+    setViewTypeCookie(newViewType);
+    setViewType(newViewType);
+  };
+
   return (
     <div className=" ">
 
@@ -135,7 +144,15 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
       </Head>
 
 
-      <h2 className='text-[20px] md:hidden font-semibold m-4 font-inter'>Trending Channels</h2>
+      <div className='flex justify-between items-center m-4 md:hidden'>
+        <h2 className='text-[20px]  font-semibold  font-inter'>Trending Channels</h2>
+        <img
+          className='h-[20px] w-[20px] cursor-pointer fill-blue-500'
+          src={viewType === 'grid' ? './grid.png' : './horizontal.png'}
+          onClick={toggleViewType}
+          alt="Toggle View"
+        />
+      </div>
       <Channels_slider trendingChannels={trendingChannels} />
 
       <div className="w-full overflow-x-auto whitespace-nowrap py-2  scrollbar-hide md:hidden select-none">
@@ -150,7 +167,7 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
 
       <main className="flex-row flex  mt-1 md:mt-3 md:space-x-3 space-x-2">
         <Sidebar />
-        <div>
+        <div className='w-full'>
 
 
           <BannerAds />

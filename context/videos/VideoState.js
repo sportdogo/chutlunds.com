@@ -1,5 +1,7 @@
 import videosContext from "./videosContext";
 import { useEffect, useState } from "react";
+import { getViewTypeFromCookie, setViewTypeCookie } from '../../config/utils';
+
 import { useRouter } from "next/router";
 const plans = [
     {
@@ -41,6 +43,7 @@ const VideoState = (props) => {
     const [currentLocation, setcurrentLocation] = useState(null)
 
     const [selectedPlan, setSelectedPlan] = useState(plans[0]);
+    const [viewType, setViewType] = useState(getViewTypeFromCookie());  // grid or horizontal for video thumbnails
 
     //Login stuffs
 
@@ -73,7 +76,7 @@ const VideoState = (props) => {
 
 
     return (
-        <videosContext.Provider value={{ spinnerLoading, setSpinner, setDarkThemeFunc, DarkTheme, currentLocation, setcurrentLocation, OTPemail, setOTPemail, loggedIn, setloggedIn, tagsContext, settagsContext, paymentModalVisible, setpaymentModalVisible, selectedPlan, setSelectedPlan }}>
+        <videosContext.Provider value={{ spinnerLoading, setSpinner, setDarkThemeFunc, DarkTheme, currentLocation, setcurrentLocation, OTPemail, setOTPemail, loggedIn, setloggedIn, tagsContext, settagsContext, paymentModalVisible, setpaymentModalVisible, selectedPlan, setSelectedPlan,viewType, setViewType }}>
             {props.children}
         </videosContext.Provider>
     )

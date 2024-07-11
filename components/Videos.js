@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import VideoThumbnail from "./VideoThumbnail";
+import videosContext from '../context/videos/videosContext';
+
 
 import {
     LightningBoltIcon,
@@ -14,6 +16,8 @@ import TwinRed_Popunder from "./Ads/TwinRed_Popunder";
 
 function Videos({ data, type }) {
 
+
+    const { viewType } = useContext(videosContext);
 
     const router = useRouter()
 
@@ -35,8 +39,8 @@ function Videos({ data, type }) {
 
 
 
-            <div className='grid grid-cols-2 py-1 gap-2 md:gap-3 lg:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-            >
+            <div className={`grid py-1 gap-2 md:gap-3 lg:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ${viewType === 'horizontal' ? 'grid-cols-1' : 'grid-cols-2'}`}>
+
                 {
                     data.map(video => {
                         return (
