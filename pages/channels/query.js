@@ -43,7 +43,7 @@ function Pornstar({ video_collection, pages, query, keyword, currentPage, filter
 
 
         {/* PAGINATION */}
-        <PaginationQuery data={{ keyword: keyword, pathname: `/category/query/`, currentPageNumberURL: currentPageNumberURL, pages: pages, filteredObjsArray: filteredObjsArray }} />
+        <PaginationQuery data={{ keyword: keyword, pathname: `/channels/query/`, currentPageNumberURL: currentPageNumberURL, pages: pages, filteredObjsArray: filteredObjsArray }} />
 
       </div>
 

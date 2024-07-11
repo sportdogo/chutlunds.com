@@ -12,7 +12,7 @@ import { Scrape_Video_Item } from '@/config/Scrape_Video_Item';
 
 
 
-function Index({ video_collection, pages, channel_name, channel_subscriber, channel_by, channel_imageUrl }) {
+function Index({ video_collection, pages, channel_subscriber, channel_by }) {
 
     const router = useRouter();
     if (router.isFallback) {
@@ -34,13 +34,13 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
         <>
 
             <Head>
-                <title>{`${capitalizeFirstLetter(channel_name.replace('+', " ").replace("+", " "))} Porn Videos - ${currentPageNumberURL}`}</title>
+                <title>{`${capitalizeFirstLetter(channelname.replace('+', " ").replace("+", " "))} Porn Videos - ${currentPageNumberURL}`}</title>
                 <meta name="description"
-                    content={`Check out the best porn videos, images, gifs and playlists from pornstar ${capitalizeFirstLetter(channel_name.replace('+', " ").replace("+", " "))}. Browse through the content she uploaded herself on her verified pornstar profile, only on Chutlunds.com. Subscribe to ${capitalizeFirstLetter(channel_name.replace('+', " ").replace("+", " "))}'s feed and add her as a friend. See ${capitalizeFirstLetter(channel_name.replace('+', " ").replace("+", " "))} naked in an incredible selection of hardcore FREE sex movies.`} />
+                    content={`Check out the best porn videos, images, gifs and playlists from pornstar ${capitalizeFirstLetter(channelname.replace('+', " ").replace("+", " "))}. Browse through the content she uploaded herself on her verified pornstar profile, only on Chutlunds.com. Subscribe to ${capitalizeFirstLetter(channelname.replace('+', " ").replace("+", " "))}'s feed and add her as a friend. See ${capitalizeFirstLetter(channelname.replace('+', " ").replace("+", " "))} naked in an incredible selection of hardcore FREE sex movies.`} />
             </Head>
 
 
-            <Header keyword={channel_name.replace('+', ' ')} pageNumber={currentPageNumberURL} />
+            <Header keyword={capitalizeFirstLetter(channelname.replace('+', ' '))} pageNumber={currentPageNumberURL} />
             <div className="flex">
                 <Sidebar />
                 <div>
@@ -48,13 +48,15 @@ function Index({ video_collection, pages, channel_name, channel_subscriber, chan
 
                         <img
                             className={`object-cover w-44 h-56    rounded-[15px] border-[1px] border-gray-200 `}
-                            src={channel_imageUrl}
-                            alt={channel_name}
+             
+
+                            src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${channelname.trim().toLowerCase().replace(/ /g, "_")}.jpg`}
+                            alt={channelname}
                             loading='lazy'
                         ></img>
 
                         <div className=' mx-4 font-inter flex flex-col m-auto' >
-                            <h2 className='text-lg lg:text-xl 2xl:text-2xl font-poppins text-theme my-1'> {channel_name}</h2>
+                            <h2 className='text-lg lg:text-xl 2xl:text-2xl font-poppins text-theme my-1'> {channelname}</h2>
 
                             <div className='cursor-pointer flex items-center justify-center space-x-2 border-[1px] border-gray-300 text-theme px-3 lg:px-5  p-1.5 shadow-md rounded-md hover:bg-theme hover:text-white'>
                                 <PlusIcon className='h-4 lg:h-5 text-red-500' />
@@ -106,7 +108,6 @@ export async function getStaticProps(context) {
 
     var finalDataArray = []
     var pages = []
-    var channel_name = ""
     var channel_subscriber = ""
     var channel_by = ""
     var channel_imageUrl = ""
@@ -135,10 +136,6 @@ export async function getStaticProps(context) {
         }
 
 
-
-        $('h1 em').each((i, el) => {
-            channel_name = $(el).text()
-        })
         $('span em').each((i, el) => {
             channel_subscriber = $(el).text()
         })
@@ -146,18 +143,18 @@ export async function getStaticProps(context) {
         const secondSpan = $('.i span').eq(1);
         channel_by = secondSpan.find("a").text()
 
-        channel_imageUrl = $('.top .i .p img').attr('src');
 
 
     }
-    await scrape(`https://spankbang.party/${code}/channel/${channelname}/${page}`)
+    await scrape(`https://spankbang.party/${code}/channel/${channelname}/${page}/`)
+
+
+
     return {
         props: {
             video_collection: finalDataArray,
             pages: pages,
-            channel_name: channel_name,
             channel_subscriber: channel_subscriber,
-            channel_imageUrl: channel_imageUrl.replace(".com", ".party"),
             channel_by: channel_by
         }
     }

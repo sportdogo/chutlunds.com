@@ -79,13 +79,13 @@ export async function getStaticProps(context) {
 
     if (homepageVideos === 'trending') {
 
-        const obj = await scrapeVideos(`https://spankbang.party/trending_videos/${page}`)
+        const obj = await scrapeVideos(`https://spankbang.party/trending_videos/${page}/`)
         finalDataArray = obj.finalDataArray
         pages = obj.pages
 
     }
     else if (homepageVideos === 'upcoming') {
-        const obj = await scrapeVideos(`https://spankbang.party/upcoming/${page}`)
+        const obj = await scrapeVideos(`https://spankbang.party/upcoming/${page}/`)
         finalDataArray = obj.finalDataArray
         pages = obj.pages
 
@@ -94,19 +94,19 @@ export async function getStaticProps(context) {
         //this will goto channels page from HomepageTitle component
     }
     else if (homepageVideos === 'popular') {
-        const obj = await scrapeVideos(`https://spankbang.party/most_popular/${page}`)
+        const obj = await scrapeVideos(`https://spankbang.party/most_popular/${page}/`)
         finalDataArray = obj.finalDataArray
         pages = obj.pages
 
     }
     else if (homepageVideos === 'random') {
-        const obj = await scrapeVideos(`https://spankbang.party/trending_videos/${page}`)
+        const obj = await scrapeVideos(`https://spankbang.party/trending_videos/${page}/`)
         finalDataArray = obj.finalDataArray
         pages = obj.pages
 
     }
     else {
-        const obj = await scrapeVideos(`https://spankbang.party/new_videos/${page}`)
+        const obj = await scrapeVideos(`https://spankbang.party/new_videos/${page}/`)
         finalDataArray = obj.finalDataArray
         pages = obj.pages
 
