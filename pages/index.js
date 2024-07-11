@@ -8,12 +8,15 @@ import Outstreams from '../components/Ads/Outstream';
 import HomepageTitle from '../components/HomepageTitle';
 import Sidebar from '../components/Sidebar';
 import Videos from '../components/Videos';
-import Category_slider from '../components/category_slider';
 import { getLanguge } from '../config/getLanguge';
 import videosContext from '../context/videos/videosContext';
 // import { getHomePageVideos } from '../config/getHomepageVideos';
 import { updateCountry } from '../config/firebase/lib';
 
+import Link from 'next/link';
+import Pornstar_slider from '../components/pornstar_slider';
+import Channels_slider from '../components/channels_slider';
+import Category_slider from '../components/category_slider';
 
 
 export default function Home({ video_collection, trendingChannels, tags, trendingCategories, trendingPornstars }) {
@@ -133,7 +136,16 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
 
 
       <h2 className='text-[20px] md:hidden font-semibold m-4 font-inter'>Trending Channels</h2>
-      <Category_slider trendingChannels={trendingChannels} />
+      <Channels_slider trendingChannels={trendingChannels} />
+
+      <div className="w-full overflow-x-auto whitespace-nowrap py-2  scrollbar-hide md:hidden select-none">
+        {tags.map((tag, index) => (
+          <a key={tag.tag} href={`/search/${tag.tag.trim()}`} className="bg-theme text-white px-3 py-1.5 rounded-lg m-1 inline-block text-sm">
+
+            {tag.tag}
+          </a>
+        ))}
+      </div>
 
 
       <main className="flex-row flex  mt-1 md:mt-3 md:space-x-3 space-x-2">
@@ -156,8 +168,17 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
           <HomepageTitle title={video_collection[0].videosGroupName} />
           <Videos data={video_collection[0].finalDataArray} />
 
+          <h2 className='text-[20px] md:hidden font-semibold m-4 font-inter'>Trending Pornstars</h2>
+          <Pornstar_slider trendingPornstars={trendingPornstars} />
+
+
           <HomepageTitle title={video_collection[1].videosGroupName} />
           <Videos data={video_collection[1].finalDataArray} />
+
+          <h2 className='text-[20px] md:hidden font-semibold m-4 font-inter'>Trending Categories</h2>
+          <Category_slider trendingCategories={trendingCategories.slice(1)} />
+
+
 
           <HomepageTitle title={video_collection[2].videosGroupName} />
           <Videos data={video_collection[2].finalDataArray} />

@@ -1,46 +1,43 @@
-import React from 'react';
-import Link from 'next/link';
-import channelsJSON from "@/JsonData/Channels.json";
+import React from 'react'
+import Link from 'next/link'
+import categoriesJSON from "../JsonData/categoryImages/data.json"
 
-function Category_slider({ trendingChannels }) {
-    // Function to normalize channel names
-    const normalizeName = (name) => name.toLowerCase().replace(/ /g, "_");
-    
+
+function Category_slider({ trendingCategories }) {
+
+    const normalizeName = (name) => name.toLowerCase().replace(/ /g, "_").replace(".png", "");
+
     // Get normalized channel names from trendingChannels
-    const trendingChannelNames = trendingChannels.map(channel => normalizeName(channel.channelName));
-    
+    const trendingCategoryNames = trendingCategories.map(categoryObj => normalizeName(categoryObj.categoryName));
+
     // Filter channelsJSON based on normalized trendingChannelNames
-    const filteredChannels = channelsJSON.filter(channelObj =>
-        trendingChannelNames.includes(normalizeName(channelObj.channel_name))
+    const filteredCategories = categoriesJSON.filter(categoryObj =>
+        trendingCategoryNames.includes(normalizeName(categoryObj.name))
     );
+
 
     return (
-        <div className='flex items-start space-x-1 text-color overflow-x-scroll scrollbar-hide md:hidden my-4'>
-            {filteredChannels.map(channelObj => {
-                // Extract code and normalized channel name
-                const code = channelObj.channel_href.substring(channelObj.channel_href.indexOf('/channel') - 2, channelObj.channel_href.indexOf('/channel')).toLowerCase();
-                const normalizedChannelName = normalizeName(channelObj.channel_name);
+        <div className='w-screen flex items-start space-x-1 text-color overflow-x-scroll scrollbar-hide md:hidden my-4'>
+
+            {filteredCategories.map(category => {
 
                 return (
-                    <Link href={`/channels/${code}/${normalizedChannelName}`} key={channelObj.image_url}>
+                    <Link href={`/category/${category.name.substring(0, category.name.indexOf('.png')).toLowerCase()}`} key={category.name} >
                         <div className='flex flex-col justify-center items-center mx-1'>
                             <div className='w-[90px]'>
-                                <img
-                                    className='shadow-md rounded-full object-cover aspect-square'
-                                    src={`${process.env.CLOUDFLARE_STORAGE}Chutlunds_channels_images/${normalizedChannelName}.jpg`}
-                                    loading="lazy"
-                                    alt={channelObj.channel_name}
+                                <img className='shadow-md rounded-full object-cover aspect-square'
+                                    src={`${process.env.CLOUDFLARE_STORAGE}category_images/${category.name.toLowerCase().substring(0, category.name.indexOf('.png'))}.png`}
+
                                 />
                             </div>
-                            <h2 className='text-xs text-center font-poppins text-gray-600 font-semibold mt-1 whitespace-nowrap'>
-                                {channelObj.channel_name.toUpperCase()}
-                            </h2>
+                            <h2 className='text-xs text-center font-poppins text-gray-600 font-semibold mt-1 whitespace-nowrap'>{category.name.substring(0, category.name.indexOf('.png')).toUpperCase()}</h2>
                         </div>
                     </Link>
-                );
+                )
             })}
+
         </div>
-    );
+    )
 }
 
-export default Category_slider;
+export default Category_slider

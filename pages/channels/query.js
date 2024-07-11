@@ -1,12 +1,18 @@
-import Head from 'next/head';
 import { useRouter } from "next/router";
-import PaginationQuery from '../../components/PaginationQuery';
-import Header from '../../components/Pornstar/Header';
 import Sidebar from "../../components/Sidebar";
 import Videos from "../../components/Videos";
+import Header from '../../components/Pornstar/Header'
+import Link from 'next/link'
+import { BeatLoader } from 'react-spinners'
+import { useContext, useState } from 'react';
+import videosContext from '../../context/videos/videosContext';
+import Router from 'next/router'
+import Head from 'next/head'
+import Pagination from '../../components/Pagination';
+import PaginationQuery from '../../components/PaginationQuery';
 import { scrapeVideos } from '../../config/spangbang';
 
-function Pornstar({ video_collection, pages, query, keyword, currentPage, filteredObjsArray }) {
+function ChannelsQuery({ video_collection, pages, query, keyword, currentPage, filteredObjsArray }) {
 
 
 
@@ -26,7 +32,7 @@ function Pornstar({ video_collection, pages, query, keyword, currentPage, filter
       <Head>
         <title>{`${capitalizeFirstLetter(keyword.replace('+', " ").replace("+", " "))} Porn Videos - Chutlunds`}</title>
         <meta name="description"
-          content={`Check out the best porn videos, images, gifs and playlists from pornstar ${capitalizeFirstLetter(keyword.replace('+', " ").replace("+", " "))}. Browse through the content she uploaded herself on her verified pornstar profile, only on Chutlunds.com. Subscribe to ${capitalizeFirstLetter(keyword.replace('+', " ").replace("+", " "))}'s feed and add her as a friend. See ${capitalizeFirstLetter(keyword.replace('+', " ").replace("+", " "))} naked in an incredible selection of hardcore FREE sex movies.`} />
+          content={`Check out the best porn videos, images, gifs and playlists from Channels ${capitalizeFirstLetter(keyword.replace('+', " ").replace("+", " "))}. Browse through the content she uploaded herself on her verified pornstar profile, only on Chutlunds.com. Subscribe to ${capitalizeFirstLetter(keyword.replace('+', " ").replace("+", " "))}'s feed and add her as a friend. See ${capitalizeFirstLetter(keyword.replace('+', " ").replace("+", " "))} naked in an incredible selection of hardcore FREE sex movies.`} />
       </Head>
 
 
@@ -52,13 +58,15 @@ function Pornstar({ video_collection, pages, query, keyword, currentPage, filter
   )
 }
 
-export default Pornstar
+export default ChannelsQuery
 
 
 
 
 export async function getServerSideProps(context) {
-  const { pornstar, page, code } = context.query;
+  const { channelname, page, code } = context.query;
+
+
   var finalDataArray = []
   var pages = []
 
@@ -108,20 +116,20 @@ export async function getServerSideProps(context) {
 
   if (filteredObjsArray.length > 0) {
 
-    const obj = await scrapeVideos(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`)
+    const obj = await scrapeVideos(`https://spankbang.party/${code}/channel/${channelname.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
     pages[0] = page;
-    console.log(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`);
+    console.log(`https://spankbang.party/${code}/channel/${channelname.replace(' ', '+').toLowerCase()}/${page}/?${completeSearch}`);
   }
   else {
 
-    const obj = await scrapeVideos(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?o=all`)
+    const obj = await scrapeVideos(`https://spankbang.party/${code}/channel/${channelname.replace(' ', '+').toLowerCase()}/${page}/?o=all`)
     finalDataArray = obj.finalDataArray
     pages = obj.pages
     pages[0] = page;
 
-    console.log(`https://spankbang.party/${code}/pornstar/${pornstar.replace(' ', '+').toLowerCase()}/${page}/?o=all`);
+    console.log(`https://spankbang.party/${code}/channel/${channelname.replace(' ', '+').toLowerCase()}/${page}/?o=all`);
 
 
   }
@@ -131,7 +139,7 @@ export async function getServerSideProps(context) {
       video_collection: finalDataArray,
       pages: pages,
       query: filteredObjsArray,
-      keyword: pornstar,
+      keyword: channelname,
       currentPage: page,
       filteredObjsArray: filteredObjsArray
     }

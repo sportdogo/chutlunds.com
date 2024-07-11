@@ -12,7 +12,7 @@ import Pagination from '../../components/Pagination';
 import PaginationQuery from '../../components/PaginationQuery';
 import { scrapeVideos } from '../../config/spangbang';
 
-function Pornstar({ video_collection, pages, query, keyword, currentPage, filteredObjsArray }) {
+function PornstarQuery({ video_collection, pages, query, keyword, currentPage, filteredObjsArray }) {
 
 
 
@@ -58,7 +58,7 @@ function Pornstar({ video_collection, pages, query, keyword, currentPage, filter
   )
 }
 
-export default Pornstar
+export default PornstarQuery
 
 
 

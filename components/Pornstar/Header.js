@@ -143,10 +143,22 @@ export default function Header({ keyword, pageNumber, filteredObjsArrayProps, co
 
     const clickHandler = (query) => {
         setSpinner(true)
-        var queryObj = {
-            pornstar: keyword,
-            page: 1,
-            code: code
+
+        if (Router.pathname.includes("/channels/")) {
+            //this code is just to change     channelname: keyword and pornstar: keyword
+
+            var queryObj = {
+                channelname: keyword,
+                page: 1,
+                code: code
+            }
+        } else {
+
+            var queryObj = {
+                pornstar: keyword,
+                page: 1,
+                code: code
+            }
         }
 
         if (filteredObjsArrayProps) {
@@ -159,10 +171,15 @@ export default function Header({ keyword, pageNumber, filteredObjsArrayProps, co
         if (query) {
             queryObj[query.substring(0, query.indexOf('='))] = query.substring(query.indexOf('=') + 1, query.length)
         }
-
+        var pathname = ""
+        if (Router.pathname.includes("/channels/")) {
+            pathname = "/channels/query/"
+        } else {
+            pathname = "/pornstar/query/"
+        }
 
         Router.push({
-            pathname: `/pornstar/query/`,
+            pathname: pathname,
             query: queryObj
         })
     }

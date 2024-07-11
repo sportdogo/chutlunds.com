@@ -10,7 +10,7 @@ import { scrapeVideos } from '../../../config/spangbang';
 import {  updatekeywords } from "../../../config/firebase/lib";
 
 
-function Category({ video_collection, pages }) {
+function Search({ video_collection, pages }) {
 
   const router = useRouter();
   const { searchkey } = router.query
@@ -80,7 +80,7 @@ function Category({ video_collection, pages }) {
   )
 }
 
-export default Category
+export default Search
 
 
 
