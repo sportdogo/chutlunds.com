@@ -85,7 +85,7 @@ function VideoThumbnail({ details, type }) {
     return (
         <div className="">
             <a href={`/video/${keyy}*${title}`} onClick={OnClickHandler} data-title={video.title} >
-                <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer rounded-md    overflow-hidden transform transition duration-150`}>
+                <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer rounded-md    overflow-hidden transform transition duration-150 mb-1`}>
 
 
                     <div className="relative w-full  overflow-hidden aspect-video">
@@ -123,17 +123,17 @@ function VideoThumbnail({ details, type }) {
 
                     
                         <div className="flex justify-center items-center ">
-                            <p className='text-sm md:text-md lg:text-lg text-[#777777]  font-inter'>{video.views} Views</p>
+                            <p className='text-xs md:text-md lg:text-lg text-[#777777]  font-inter'>{video.views} Views</p>
                         </div>
 
                         <div className="flex justify-center items-center ml-3">
-                            <img className="w-[18px] h-[18px] mb-1 lg:w-[25px] lg:h-[25px]" src='/icons/thumb.png' />
-                            <p className='text-sm md:text-md text-[#777777] font-inter ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
+                            <img className="w-[15px] h-[15px] mb-1 lg:w-[25px] lg:h-[25px]" src='/icons/thumb.png' />
+                            <p className='text-xs md:text-md text-[#777777] font-inter ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
                         </div>
 
                         <div className="flex justify-center items-center ml-2">
-                            <ClockIcon className="icon text-[#777777]  w-[18px] h-[18px]  lg:w-[25px] lg:h-[25px]" />
-                            <p className='text-sm md:text-md text-[#777777] font-inter   lg:text-lg text-[#777777]'>{video.uploadedTime}</p>
+                            <ClockIcon className="icon text-[#777777]  w-[15px] h-[15px]  lg:w-[25px] lg:h-[25px]" />
+                            <p className='text-xs md:text-md text-[#777777] font-inter   lg:text-lg text-[#777777]'>{video.uploadedTime}</p>
                         </div>
 
 

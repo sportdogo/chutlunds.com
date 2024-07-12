@@ -27,6 +27,8 @@ module.exports = {
         'lg': '1000px',
         'xl': '1300px',
         '2xl': '1600px',
+        '3xl': '2000px',
+        '4xl': '2400px',
       },
       colors: {
         'github': '#24292F',
