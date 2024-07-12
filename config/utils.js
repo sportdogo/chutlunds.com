@@ -12,3 +12,11 @@ export const setViewTypeCookie = (value) => {
 export const removeViewTypeCookie = () => {
     destroyCookie('viewType');
 };
+
+
+export const formatDuration = (duration) => {
+    const minutes = parseInt(duration.replace('m', ''), 10);
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${String(hours).padStart(2, '0')}:${String(remainingMinutes).padStart(2, '0')}`;
+};

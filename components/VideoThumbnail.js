@@ -5,18 +5,17 @@ import {
 import {
     EyeIcon
 } from '@heroicons/react/solid';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import PopunderAds from './Ads/Popunder';
-
+import { formatDuration } from '../config/utils';
 
 
 
 function VideoThumbnail({ details, type }) {
 
 
-    const router = useRouter()
     const [videoPage, setvideoPage] = useState(false);
+    const [showPoster, setShowPoster] = useState(true);
 
     function abcd() {
         if (window.location.href.includes("/video")) {
@@ -51,15 +50,17 @@ function VideoThumbnail({ details, type }) {
 
     const stopMovie = (e) => {
         e.target.load();
-        setspinnerloader(false)
-
-    }
+        setShowPoster(true);
+        setspinnerloader(false);
+    };
 
     const playMovie = (e) => {
-        e.target.play();
-        setspinnerloader(true)
-    }
+        console.log(video.thumbnail);
 
+        e.target.play();
+        setShowPoster(false);
+        setspinnerloader(true);
+    };
 
 
 
@@ -67,51 +68,72 @@ function VideoThumbnail({ details, type }) {
     var keyy = key_title.substring(0, key_title.indexOf('/video'))
     var title = key_title.substring(key_title.indexOf('video/') + 6, key_title.length)
 
+    // {
+    //     thumbnail: 'https://tbi.sb-cd.com/t/15980977/1/5/w:800/t6-enh/porn.jpg',
+    //     title: 'オトギフロンティア（リサイクル）',
+    //     duration: '4m',
+    //     views: '42',
+    //     likePercentage: '93%',
+    //     uploadedTime: '16 minutes',
+    //     videoBadge: 'HD',
+    //     previewVideo: 'https://tbv.sb-cd.com/t/15980977/1/5/td.mp4',
+    //     href: 'https://spankbang.com/9ij01/video/porn'
+    //   }
 
 
-
-
+    console.log(video.videoBadge);
     return (
         <div className="">
             <a href={`/video/${keyy}*${title}`} onClick={OnClickHandler} data-title={video.title} >
-                <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer  shadow-md shadow-blue-200  rounded-lg overflow-hidden transform transition duration-150`}>
+                <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer rounded-md    overflow-hidden transform transition duration-150`}>
 
 
-                    <video
-                        className={`w-full aspect-custom md:aspect-video object-cover md:object-contain ${spinnerloader ? "" : ""} lazy`}
-                        onMouseOver={playMovie}
-                        onMouseLeave={stopMovie}
-                        src={video.previewVideo}
-                        poster={video.thumbnail}
-                        preload='none'
-                        muted="muted"
-                    />
+                    <div className="relative w-full  overflow-hidden aspect-video">
+                        <img
+                            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out `}
+                            src={video.thumbnail}
+                            alt="Video Thumbnail"
+                        />
+                         <div className="absolute bottom-1.5 right-2 bg-black bg-opacity-60 text-white text-xs font-semibold font-inter px-2 py-1 rounded">
+                             {`${video.videoBadge}  ${video.duration}`}
+                        </div>
 
+                        <video
+                            className={`absolute top-0 left-0 w-full h-full  object-contain ${showPoster ? 'opacity-0' : 'opacity-100'}`}
+                            onMouseOver={playMovie}
+                            onMouseLeave={stopMovie}
+                            src={video.previewVideo}
+                            preload="none"
+                            muted="muted"
+                        />
+                       
+                    </div>
 
                     {type === "premium" &&
                         <img src='/crown.png' className='absolute h-6 lg:h-8 m-2 bg-white bg-opacity-70 p-0.5 rounded-md top-0 right-0  '></img>
                     }
 
 
-
-                    <h2 className=" text-sm sm:text-md lg:text-lg  pl-1  lg:pl-4 pt-[1px] md:pt-1  whitespace-nowrap overflow-hidden font-inter  text-gray-800 ">{video.title}</h2>
-
+                    <h2 className="font-inter font-semibold text-sm sm:text-md lg:text-lg px-1 lg:pl-2 p-1   text-gray-800 whitespace-nowrap">
+                        {video.title}
+                    </h2>
 
                     <div className="flex items-center justify-start space-x-2 md:justify-start lg:space-x-6 
-                        overflow-hidden w-full pl-1 pb-[1.5px] pt-[1px] md:pt-1 md:pb-2 lg:pl-4  font-arial ">
+                        overflow-hidden w-full pl-1 pb-[1.5px] md:pb-2 lg:pl-2  font-arial ">
 
+                    
                         <div className="flex justify-center items-center ">
-                            <ClockIcon className="icon text-red-500" />
-                            <p className='text-sm md:text-md text-gray-700 font-light font-inter'>{video.duration}</p>
-                        </div>
-                        <div className="flex justify-center items-center ">
-                            <EyeIcon className="icon text-yellow-400" />
-                            <p className='text-sm md:text-md text-gray-700 font-light font-inter'>{video.views}</p>
+                            <p className='text-sm md:text-md lg:text-lg text-[#777777]  font-inter'>{video.views} Views</p>
                         </div>
 
-                        <div className="flex justify-center items-center ">
-                            <ThumbUpIcon className="icon text-green-500" />
-                            <p className='text-sm md:text-md text-gray-700 font-light font-inter'>{video.likedPercent}</p>
+                        <div className="flex justify-center items-center ml-3">
+                            <img className="w-[18px] h-[18px] mb-1 lg:w-[25px] lg:h-[25px]" src='/icons/thumb.png' />
+                            <p className='text-sm md:text-md text-[#777777] font-inter ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
+                        </div>
+
+                        <div className="flex justify-center items-center ml-2">
+                            <ClockIcon className="icon text-[#777777]  w-[18px] h-[18px]  lg:w-[25px] lg:h-[25px]" />
+                            <p className='text-sm md:text-md text-[#777777] font-inter   lg:text-lg text-[#777777]'>{video.uploadedTime}</p>
                         </div>
 
 
