@@ -118,7 +118,7 @@ function VideoThumbnail({ details, type }) {
                         {video.title}
                     </h2>
 
-                    <div className="flex items-center justify-start space-x-2 md:justify-start lg:space-x-6 
+                    <div className="flex items-center justify-start space-x-1 md:justify-start lg:space-x-6 
                         overflow-hidden w-full pl-1 pb-[1.5px] md:pb-2 lg:pl-2  font-arial ">
 
                     
