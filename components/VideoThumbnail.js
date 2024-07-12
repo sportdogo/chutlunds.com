@@ -128,7 +128,7 @@ function VideoThumbnail({ details, type }) {
 
                         <div className="flex justify-center items-center ml-3">
                             <img className="w-[15px] h-[15px] mb-1 lg:w-[25px] lg:h-[25px]" src='/icons/thumb.png' />
-                            <p className='text-xs md:text-md text-[#777777] font-inter ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
+                            <p className='text-xs md:text-md text-[#777777] font-inter sm:ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
                         </div>
 
                         <div className="flex justify-center items-center ml-2">
