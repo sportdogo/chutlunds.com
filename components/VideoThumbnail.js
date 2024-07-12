@@ -85,7 +85,7 @@ function VideoThumbnail({ details, type }) {
     return (
         <div className="">
             <a href={`/video/${keyy}*${title}`} onClick={OnClickHandler} data-title={video.title} >
-                <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer rounded-md    overflow-hidden transform transition duration-150 mb-1`}>
+                <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer rounded-md    overflow-hidden transform transition duration-150 mb-3 2xl:mb-4`}>
 
 
                     <div className="relative w-full  overflow-hidden aspect-video">
