@@ -119,7 +119,7 @@ function VideoThumbnail({ details, type }) {
                     </h2>
 
                     <div className="flex items-center justify-start md:space-x-2 md:justify-start lg:space-x-6 
-                        overflow-hidden w-full pl-1 pb-[1.5px] md:pb-2 lg:pl-2  font-arial ">
+                        overflow-hidden w-full pl-0.5 sm:pl-1 md:pb-2 lg:pl-2  font-arial ">
 
                     
                         <div className="flex justify-center items-center ">
