@@ -98,6 +98,11 @@ function VideoThumbnail({ details, type }) {
                              {`${video.videoBadge}  ${video.duration}`}
                         </div>
 
+                        <div className="absolute bottom-1.5 left-1 flex sm:hidden justify-center items-center  bg-black bg-opacity-60 px-2 py-1 rounded">
+                            <ClockIcon className="icon text-white text-xs  w-[15px] h-[15px]  lg:w-[25px] lg:h-[25px]" />
+                            <p className='text-xs md:text-md font-inter   lg:text-lg text-white text-xs'>{video.uploadedTime}</p>
+                        </div>
+
                         <video
                             className={`absolute top-0 left-0 w-full h-full  object-contain ${showPoster ? 'opacity-0' : 'opacity-100'}`}
                             onMouseOver={playMovie}
@@ -131,7 +136,7 @@ function VideoThumbnail({ details, type }) {
                             <p className='text-xs md:text-md text-[#777777] font-inter sm:ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
                         </div>
 
-                        <div className="flex justify-center items-center ml-2">
+                        <div className="hidden sm:flex justify-center items-center ml-2">
                             <ClockIcon className="icon text-[#777777]  w-[15px] h-[15px]  lg:w-[25px] lg:h-[25px]" />
                             <p className='text-xs md:text-md text-[#777777] font-inter   lg:text-lg text-[#777777]'>{video.uploadedTime}</p>
                         </div>
