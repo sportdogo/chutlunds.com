@@ -94,13 +94,13 @@ function VideoThumbnail({ details, type }) {
                             src={video.thumbnail}
                             alt="Video Thumbnail"
                         />
-                         <div className="absolute bottom-1.5 right-2 bg-black bg-opacity-60 text-white text-xs font-semibold font-inter px-2 py-1 rounded">
-                             {`${video.videoBadge}  ${video.duration}`}
+                        <div className="absolute bottom-1.5 right-2 bg-black bg-opacity-60 text-white text-xs font-semibold font-inter px-2 py-1 rounded">
+                            {`${video.videoBadge}  ${video.duration}`}
                         </div>
 
-                        <div className="absolute bottom-1.5 left-1 flex sm:hidden justify-center items-center  bg-black bg-opacity-60 px-2 py-1 rounded">
-                            <ClockIcon className="icon text-white text-xs  w-[15px] h-[15px]  lg:w-[25px] lg:h-[25px]" />
-                            <p className='text-xs md:text-md font-inter   lg:text-lg text-white text-xs'>{video.uploadedTime}</p>
+                        <div className="absolute bottom-1.5 left-2 flex sm:hidden justify-center items-center bg-black bg-opacity-60 px-2 py-1 rounded">
+                            <ThumbUpIcon className="w-[15px] h-[15px] mb-1 text-white" />
+                            <p className='text-xs md:text-md text-white text-xs font-inter '>{video.likePercentage}</p>
                         </div>
 
                         <video
@@ -111,7 +111,7 @@ function VideoThumbnail({ details, type }) {
                             preload="none"
                             muted="muted"
                         />
-                       
+
                     </div>
 
                     {type === "premium" &&
@@ -126,17 +126,17 @@ function VideoThumbnail({ details, type }) {
                     <div className="flex items-center justify-start md:space-x-2 md:justify-start lg:space-x-6 
                         overflow-hidden w-full pl-0.5 sm:pl-1 md:pb-2 lg:pl-2  font-arial ">
 
-                    
+
                         <div className="flex justify-center items-center ">
                             <p className='text-xs md:text-md lg:text-lg text-[#777777]  font-inter'>{video.views} Views</p>
                         </div>
 
-                        <div className="flex justify-center items-center ml-3">
+                        <div className="hidden sm:flex justify-center items-center ml-3">
                             <img className="w-[15px] h-[15px] mb-1 lg:w-[25px] lg:h-[25px]" src='/icons/thumb.png' />
                             <p className='text-xs md:text-md text-[#777777] font-inter sm:ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
                         </div>
 
-                        <div className="hidden sm:flex justify-center items-center ml-2">
+                        <div className="flex justify-center items-center ml-2">
                             <ClockIcon className="icon text-[#777777]  w-[15px] h-[15px]  lg:w-[25px] lg:h-[25px]" />
                             <p className='text-xs md:text-md text-[#777777] font-inter   lg:text-lg text-[#777777]'>{video.uploadedTime}</p>
                         </div>
