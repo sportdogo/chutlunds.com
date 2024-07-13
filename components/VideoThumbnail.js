@@ -88,7 +88,7 @@ function VideoThumbnail({ details, type }) {
                 <div className={`animate-fade flex  items-start  flex-col justify-center  cursor-pointer rounded-md    overflow-hidden transform transition duration-150 mb-3 2xl:mb-4`}>
 
 
-                    <div className="relative w-full  overflow-hidden aspect-video">
+                    <div className="relative w-full   overflow-hidden aspect-video">
                         <img
                             className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-300 ease-in-out `}
                             src={video.thumbnail}
@@ -98,13 +98,8 @@ function VideoThumbnail({ details, type }) {
                             {`${video.videoBadge}  ${video.duration}`}
                         </div>
 
-                        <div className="absolute bottom-1.5 left-2 flex sm:hidden justify-center items-center bg-black bg-opacity-60 px-2 py-1 rounded">
-                            <ThumbUpIcon className="w-[15px] h-[15px] mb-1 text-white" />
-                            <p className='text-xs md:text-md text-white text-xs font-inter '>{video.likePercentage}</p>
-                        </div>
-
                         <video
-                            className={`absolute top-0 left-0 w-full h-full  object-contain ${showPoster ? 'opacity-0' : 'opacity-100'}`}
+                            className={`absolute top-0 left-0 w-full h-full   object-contain ${showPoster ? 'opacity-0' : 'opacity-100'}`}
                             onMouseOver={playMovie}
                             onMouseLeave={stopMovie}
                             src={video.previewVideo}
@@ -128,17 +123,17 @@ function VideoThumbnail({ details, type }) {
 
 
                         <div className="flex justify-center items-center ">
-                            <p className='text-xs md:text-md lg:text-lg text-[#777777]  font-inter'>{video.views} Views</p>
+                            <p className='text-sm md:text-md lg:text-lg text-[#777777]  font-inter'>{video.views} Views</p>
                         </div>
 
-                        <div className="hidden sm:flex justify-center items-center ml-3">
+                        <div className="flex justify-center items-center ml-3">
                             <img className="w-[15px] h-[15px] mb-1 lg:w-[25px] lg:h-[25px]" src='/icons/thumb.png' />
-                            <p className='text-xs md:text-md text-[#777777] font-inter sm:ml-1 lg:ml-2 lg:text-lg text-[#777777]'>{video.likePercentage}</p>
+                            <p className='text-sm md:text-md text-[#777777] font-inter sm:ml-1 lg:ml-2 lg:text-lg '>{video.likePercentage}</p>
                         </div>
 
-                        <div className="flex justify-center items-center ml-2">
+                        <div className="hidden sm:flex justify-center items-center ml-2">
                             <ClockIcon className="icon text-[#777777]  w-[15px] h-[15px]  lg:w-[25px] lg:h-[25px]" />
-                            <p className='text-xs md:text-md text-[#777777] font-inter   lg:text-lg text-[#777777]'>{video.uploadedTime}</p>
+                            <p className='text-sm md:text-md text-[#777777] font-inter   lg:text-lg text-[#777777]'>{video.uploadedTime}</p>
                         </div>
 
 
