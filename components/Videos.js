@@ -39,7 +39,7 @@ function Videos({ data, type }) {
 
 
 
-            <div className={`grid py-1 gap-2 md:gap-3 lg:gap-4 sm:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 ${viewType === 'horizontal' ? 'grid-cols-1' : 'grid-cols-2'}`}>
+            <div className={`grid py-1 gap-2 md:gap-3 lg:gap-4 sm:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 ${viewType === 'horizontal' ? 'grid-cols-2' : 'grid-cols-2'}`}>
 
                 {
                     data.map(video => {

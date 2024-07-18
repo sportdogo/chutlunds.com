@@ -175,16 +175,16 @@ export default function Home({ video_collection, trendingChannels, tags, trendin
           <Outstreams />
 
 
+          <HomepageTitle title={video_collection[0].videosGroupName} />
+          <Videos data={video_collection[0].finalDataArray} />
+
+
           {countryVideos.length !== 0 &&
             <>
               <HomepageTitle title={`Popular Porn Videos in ${currentLocation.countryCode}`} country={currentLocation.countryName} language={countryLanguage} />
               <Videos data={shuffle(countryVideos).slice(0, 12)} />
             </>
           }
-
-
-          <HomepageTitle title={video_collection[0].videosGroupName} />
-          <Videos data={video_collection[0].finalDataArray} />
 
           <h2 className='text-[20px] md:hidden font-semibold m-4 font-inter'>Trending Pornstars</h2>
           <Pornstar_slider trendingPornstars={trendingPornstars} />
